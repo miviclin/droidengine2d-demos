@@ -1,7 +1,5 @@
 package com.miviclin.droidengine2ddemos.rectangle.basic;
 
-import android.opengl.GLES20;
-
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
@@ -13,6 +11,7 @@ import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class RectanglesScene extends Scene {
 	
+	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle1;
 	private Rectangle<ColorMaterial> rectangle2;
 	private Rectangle<ColorMaterial> rectangle3;
@@ -27,7 +26,7 @@ public class RectanglesScene extends Scene {
 	
 	@Override
 	public void draw(Graphics g) {
-		GLES20.glClearColor(1, 1, 1, 1);
+		g.setBackgroundColor(backgroundColor);
 		g.drawRect(rectangle1.getMaterial(), rectangle1.getTransform());
 		g.drawRect(rectangle2.getMaterial(), rectangle2.getTransform());
 		g.drawRect(rectangle3.getMaterial(), rectangle3.getTransform());
@@ -35,6 +34,8 @@ public class RectanglesScene extends Scene {
 	
 	@Override
 	public void onRegister() {
+		backgroundColor = new Color(1, 1, 1);
+		
 		Vector2 pos1 = new Vector2(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
 		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, new Vector2(200, 200)), new ColorMaterial(new Color(0, 0, 0)));
 		

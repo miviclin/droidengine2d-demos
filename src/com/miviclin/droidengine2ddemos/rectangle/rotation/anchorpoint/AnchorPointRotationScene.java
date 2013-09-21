@@ -1,7 +1,5 @@
 package com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint;
 
-import android.opengl.GLES20;
-
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
@@ -13,6 +11,7 @@ import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class AnchorPointRotationScene extends Scene {
 	
+	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle1;
 	private Rectangle<ColorMaterial> rectangle2;
 	
@@ -28,13 +27,15 @@ public class AnchorPointRotationScene extends Scene {
 	
 	@Override
 	public void draw(Graphics g) {
-		GLES20.glClearColor(1, 1, 1, 1);
+		g.setBackgroundColor(backgroundColor);
 		g.drawRect(rectangle1.getMaterial(), rectangle1.getTransform());
 		g.drawRect(rectangle2.getMaterial(), rectangle2.getTransform());
 	}
 	
 	@Override
 	public void onRegister() {
+		backgroundColor = new Color(1, 1, 1);
+		
 		Vector2 pos1 = new Vector2(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
 		Vector2 scale1 = new Vector2(200, 200);
 		Vector2 orig1 = new Vector2(scale1.getX() / 2, scale1.getY() / 2);

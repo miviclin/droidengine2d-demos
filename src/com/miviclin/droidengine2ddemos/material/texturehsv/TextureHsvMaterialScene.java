@@ -1,6 +1,5 @@
 package com.miviclin.droidengine2ddemos.material.texturehsv;
 
-import android.opengl.GLES20;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -13,8 +12,8 @@ import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.scene.Scene;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
-import com.miviclin.droidengine2ddemos.util.Rectangle;
 import com.miviclin.droidengine2ddemos.R;
+import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class TextureHsvMaterialScene extends Scene {
 	
@@ -36,7 +35,6 @@ public class TextureHsvMaterialScene extends Scene {
 	
 	@Override
 	public void draw(Graphics g) {
-		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 		g.drawRect(rectangle.getMaterial(), rectangle.getTransform());
 	}
 	

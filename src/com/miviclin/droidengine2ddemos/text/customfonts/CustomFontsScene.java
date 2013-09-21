@@ -1,7 +1,5 @@
 package com.miviclin.droidengine2ddemos.text.customfonts;
 
-import android.opengl.GLES20;
-
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
@@ -9,7 +7,9 @@ import com.miviclin.droidengine2d.graphics.text.BitmapFont;
 import com.miviclin.droidengine2d.scene.Scene;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class CustomFontsDemoScene extends Scene {
+public class CustomFontsScene extends Scene {
+	
+	private Color backgroundColor;
 	
 	private BitmapFont fontArial;
 	private BitmapFont fontRosewood;
@@ -22,7 +22,7 @@ public class CustomFontsDemoScene extends Scene {
 	
 	private int textSizePx;
 	
-	public CustomFontsDemoScene(Game game) {
+	public CustomFontsScene(Game game) {
 		super(game);
 	}
 	
@@ -33,7 +33,7 @@ public class CustomFontsDemoScene extends Scene {
 	
 	@Override
 	public void draw(Graphics g) {
-		GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+		g.setBackgroundColor(backgroundColor);
 		g.drawText(textRosewood, fontRosewood, textRosewoodPosition, textSizePx, rotationPoint, 45, textRosewoodColor1);
 		g.drawText(textRosewood, fontRosewood, textRosewoodPosition, textSizePx, textRosewoodColor2);
 		g.drawText(textArial, fontArial, textArialPosition, textSizePx, textArialColor);
@@ -42,6 +42,8 @@ public class CustomFontsDemoScene extends Scene {
 	
 	@Override
 	public void onRegister() {
+		backgroundColor = new Color(0.5f, 0.5f, 0.5f);
+		
 		fontArial = new BitmapFont();
 		fontArial.loadFromXML("fonts/arial.fnt", getGame().getActivity());
 		getGame().getTextureManager().addFontTextures(fontArial);
