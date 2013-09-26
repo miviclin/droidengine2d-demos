@@ -15,12 +15,12 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.miviclin.droidengine2ddemos.material.blendingoptions.BlendingOptionsActivity;
 import com.miviclin.droidengine2ddemos.material.texturehsv.TextureHsvMaterialActivity;
 import com.miviclin.droidengine2ddemos.rectangle.basic.RectanglesActivity;
 import com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint.AnchorPointRotationActivity;
 import com.miviclin.droidengine2ddemos.rectangle.rotation.basic.BasicRotationActivity;
 import com.miviclin.droidengine2ddemos.text.customfonts.CustomFontsActivity;
-import com.miviclin.droidengine2ddemos.R;
 
 public class MainActivity extends Activity {
 	
@@ -52,6 +52,9 @@ public class MainActivity extends Activity {
 				case TEXT_CUSTOM_FONTS:
 					intent = new Intent(MainActivity.this, CustomFontsActivity.class);
 					break;
+				case MATERIAL_BLENDING_OPTIONS:
+					intent = new Intent(MainActivity.this, BlendingOptionsActivity.class);
+					break;
 				case MATERIAL_TEXTURE_HSV:
 					intent = new Intent(MainActivity.this, TextureHsvMaterialActivity.class);
 					break;
@@ -78,6 +81,7 @@ public class MainActivity extends Activity {
 		listData.addGroup(DemosGroup.TEXT, textDemos);
 		
 		List<Demo> materialDemos = new ArrayList<Demo>();
+		materialDemos.add(Demo.MATERIAL_BLENDING_OPTIONS);
 		materialDemos.add(Demo.MATERIAL_TEXTURE_HSV);
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
 		
