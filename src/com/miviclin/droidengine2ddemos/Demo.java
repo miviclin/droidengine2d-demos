@@ -9,17 +9,17 @@ public enum Demo {
 	TEXT_CUSTOM_FONTS(R.string.group_text_custom_fonts),
 	MATERIAL_BLENDING_OPTIONS(R.string.group_materials_blending_options),
 	MATERIAL_TEXTURE_HSV(R.string.group_materials_texture_hsv);
-	
+
 	private int resId;
-	
+
 	private Demo(int resId) {
 		this.resId = resId;
 	}
-	
+
 	public int getResId() {
 		return resId;
 	}
-	
+
 	public String getString(Context context) {
 		return context.getString(resId);
 	}
