@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  -->
+    <!-- General -->
+    <!--  -->
+
     <string name="app_name">DroidEngine2D Demos</string>
     <string name="action_settings">Settings</string>
+    <string name="ok">OK</string>
 
+    <!--  -->
     <!-- Groups -->
+    <!--  -->
 
 
     <!-- Rectangles -->
@@ -33,5 +40,14 @@
 
     <!-- User input -->
     <string name="group_input">User input</string>
+
+    <!--  -->
+    <!-- Demos -->
+    <!--  -->
+
+
+    <!-- Blending Options -->
+    <string name="blending_options_alert_title">Warning!</string>
+    <string name="blending_options_alert_msg">The specified blending options are not supported by the current driver.</string>
 
 </resources>
