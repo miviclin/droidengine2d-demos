@@ -3,10 +3,11 @@ package com.miviclin.droidengine2ddemos.material.blendingoptions;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.opengl.GLES20;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Graphics;
+import com.miviclin.droidengine2d.graphics.material.BlendingOptions;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
@@ -27,11 +29,16 @@ import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class BlendingOptionsScene extends Scene {
 
+	private static final BlendingFactor DEFAULT_SOURCE_FACTOR = BlendingFactor.GL_SRC_ALPHA;
+	private static final BlendingFactor DEFAULT_DEST_FACTOR = BlendingFactor.GL_ONE_MINUS_SRC_ALPHA;
+	private static final BlendingEquation DEFAULT_EQUATION = BlendingEquation.GL_FUNC_ADD;
+
 	private final Map<String, Integer> blendingFactors;
 	private final Map<String, Integer> blendingEquations;
 	private final Rectangle<TextureMaterial> square;
 	private ArrayList<Rectangle<TextureMaterial>> backgroundTiles;
 	private AlertDialog alertDialog;
+	private AtomicBoolean handlingException;
 
 	public BlendingOptionsScene(Game game) {
 		super(game);
@@ -42,6 +49,7 @@ public class BlendingOptionsScene extends Scene {
 		this.square = new Rectangle<TextureMaterial>(squareTransform, new TextureMaterial(null));
 
 		this.backgroundTiles = new ArrayList<Rectangle<TextureMaterial>>();
+		this.handlingException = new AtomicBoolean();
 	}
 
 	@Override
@@ -50,13 +58,19 @@ public class BlendingOptionsScene extends Scene {
 
 	@Override
 	public void draw(Graphics g) {
+		if (handlingException.get()) {
+			return;
+		}
 		for (int i = 0; i < backgroundTiles.size(); i++) {
 			g.drawRect(backgroundTiles.get(i).getMaterial(), backgroundTiles.get(i).getTransform());
 		}
 		try {
 			g.drawRect(square.getMaterial(), square.getTransform());
+			g.flush();
 		} catch (Exception e) {
+			handlingException.set(true);
 			handleBlendingException();
+			Log.d("blending_exception", "exception handled");
 		}
 	}
 
@@ -87,98 +101,9 @@ public class BlendingOptionsScene extends Scene {
 			}
 		}
 
-		blendingFactors.put("GL_ZERO", GLES20.GL_ZERO);
-		blendingFactors.put("GL_ONE", GLES20.GL_ONE);
-		blendingFactors.put("GL_SRC_COLOR", GLES20.GL_SRC_COLOR);
-		blendingFactors.put("GL_ONE_MINUS_SRC_COLOR", GLES20.GL_ONE_MINUS_SRC_COLOR);
-		blendingFactors.put("GL_DST_COLOR", GLES20.GL_DST_COLOR);
-		blendingFactors.put("GL_ONE_MINUS_DST_COLOR", GLES20.GL_ONE_MINUS_DST_COLOR);
-		blendingFactors.put("GL_SRC_ALPHA", GLES20.GL_SRC_ALPHA);
-		blendingFactors.put("GL_ONE_MINUS_SRC_ALPHA", GLES20.GL_ONE_MINUS_SRC_ALPHA);
-		blendingFactors.put("GL_DST_ALPHA", GLES20.GL_DST_ALPHA);
-		blendingFactors.put("GL_ONE_MINUS_DST_ALPHA", GLES20.GL_ONE_MINUS_DST_ALPHA);
-		blendingFactors.put("GL_CONSTANT_COLOR", GLES20.GL_CONSTANT_COLOR);
-		blendingFactors.put("GL_ONE_MINUS_CONSTANT_COLOR", GLES20.GL_ONE_MINUS_CONSTANT_COLOR);
-		blendingFactors.put("GL_CONSTANT_ALPHA", GLES20.GL_CONSTANT_ALPHA);
-		blendingFactors.put("GL_ONE_MINUS_CONSTANT_ALPHA", GLES20.GL_ONE_MINUS_CONSTANT_ALPHA);
-		blendingFactors.put("GL_SRC_ALPHA_SATURATE", GLES20.GL_SRC_ALPHA_SATURATE);
-
-		blendingEquations.put("GL_FUNC_ADD", GLES20.GL_FUNC_ADD);
-		blendingEquations.put("GL_FUNC_SUBTRACT", GLES20.GL_FUNC_SUBTRACT);
-		blendingEquations.put("GL_FUNC_REVERSE_SUBTRACT", GLES20.GL_FUNC_REVERSE_SUBTRACT);
-
-		getGame().getActivity().runOnUiThread(new Runnable() {
-
-			@Override
-			public void run() {
-				initializeAlertDialog();
-
-				CharSequence[] blendingFactorsNames = new String[blendingFactors.keySet().size()];
-				ArrayAdapter<CharSequence> factorsAdapter = new ArrayAdapter<CharSequence>(getGame().getActivity(),
-						android.R.layout.simple_spinner_item, blendingFactors.keySet().toArray(blendingFactorsNames));
-
-				factorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-				Spinner spinnerSource = (Spinner) getGame().getActivity().findViewById(R.id.spinner_source);
-				spinnerSource.setAdapter(factorsAdapter);
-
-				spinnerSource.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-						Object selectedItem = parent.getItemAtPosition(position);
-						int sourceFactor = blendingFactors.get(selectedItem.toString()).intValue();
-						square.getMaterial().getBlendingOptions().setSourceFactor(sourceFactor);
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent) {
-					}
-				});
-
-				Spinner spinnerDest = (Spinner) getGame().getActivity().findViewById(R.id.spinner_destination);
-				spinnerDest.setAdapter(factorsAdapter);
-
-				spinnerDest.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-						Object selectedItem = parent.getItemAtPosition(position);
-						int destFactor = blendingFactors.get(selectedItem.toString()).intValue();
-						square.getMaterial().getBlendingOptions().setDestinationFactor(destFactor);
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent) {
-					}
-				});
-
-				CharSequence[] blendingEquationsNames = new String[blendingEquations.keySet().size()];
-				ArrayAdapter<CharSequence> equationsAdapter = new ArrayAdapter<CharSequence>(getGame().getActivity(),
-						android.R.layout.simple_spinner_item,
-						blendingEquations.keySet().toArray(blendingEquationsNames));
-
-				equationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-				Spinner spinnerEquation = (Spinner) getGame().getActivity().findViewById(R.id.spinner_equation);
-				spinnerEquation.setAdapter(equationsAdapter);
-
-				spinnerEquation.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-						Object selectedItem = parent.getItemAtPosition(position);
-						int equation = blendingEquations.get(selectedItem.toString()).intValue();
-						square.getMaterial().getBlendingOptions().setBlendEquationMode(equation);
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent) {
-					}
-				});
-			}
-		});
-
+		initializeBlendingOptionsMaps();
+		initializeAlertDialog();
+		initializeSpinners();
 	}
 
 	@Override
@@ -192,26 +117,14 @@ public class BlendingOptionsScene extends Scene {
 	@Override
 	public void onPause() {
 		if (alertDialog != null) {
-			getGame().getActivity().runOnUiThread(new Runnable() {
-
-				@Override
-				public void run() {
-					dismissAlertDialog();
-				}
-			});
+			dismissAlertDialog();
 		}
 	}
 
 	@Override
 	public void onResume() {
 		if (alertDialog == null) {
-			getGame().getActivity().runOnUiThread(new Runnable() {
-
-				@Override
-				public void run() {
-					initializeAlertDialog();
-				}
-			});
+			initializeAlertDialog();
 		}
 	}
 
@@ -219,7 +132,130 @@ public class BlendingOptionsScene extends Scene {
 	public void dispose() {
 	}
 
+	private void initializeBlendingOptionsMaps() {
+		addBlendingFactor(BlendingFactor.GL_ZERO);
+		addBlendingFactor(BlendingFactor.GL_ONE);
+		addBlendingFactor(BlendingFactor.GL_SRC_COLOR);
+		addBlendingFactor(BlendingFactor.GL_ONE_MINUS_SRC_COLOR);
+		addBlendingFactor(BlendingFactor.GL_DST_COLOR);
+		addBlendingFactor(BlendingFactor.GL_ONE_MINUS_DST_COLOR);
+		addBlendingFactor(BlendingFactor.GL_SRC_ALPHA);
+		addBlendingFactor(BlendingFactor.GL_ONE_MINUS_SRC_ALPHA);
+		addBlendingFactor(BlendingFactor.GL_DST_ALPHA);
+		addBlendingFactor(BlendingFactor.GL_ONE_MINUS_DST_ALPHA);
+		addBlendingFactor(BlendingFactor.GL_CONSTANT_COLOR);
+		addBlendingFactor(BlendingFactor.GL_ONE_MINUS_CONSTANT_COLOR);
+		addBlendingFactor(BlendingFactor.GL_CONSTANT_ALPHA);
+		addBlendingFactor(BlendingFactor.GL_ONE_MINUS_CONSTANT_ALPHA);
+		addBlendingFactor(BlendingFactor.GL_SRC_ALPHA_SATURATE);
+
+		addBlendingEquation(BlendingEquation.GL_FUNC_ADD);
+		addBlendingEquation(BlendingEquation.GL_FUNC_SUBTRACT);
+		addBlendingEquation(BlendingEquation.GL_FUNC_REVERSE_SUBTRACT);
+	}
+
+	private void addBlendingFactor(BlendingFactor blendingFactor) {
+		blendingFactors.put(blendingFactor.toString(), blendingFactor.getValue());
+	}
+
+	private void addBlendingEquation(BlendingEquation blendingEquation) {
+		blendingEquations.put(blendingEquation.toString(), blendingEquation.getValue());
+	}
+
+	private void initializeSpinners() {
+		getGame().getActivity().runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				final BlendingOptions squareBlendingOptions = square.getMaterial().getBlendingOptions();
+
+				CharSequence[] blendingFactorsNames = new String[blendingFactors.keySet().size()];
+				ArrayAdapter<CharSequence> factorsAdapter = new ArrayAdapter<CharSequence>(getGame().getActivity(),
+						android.R.layout.simple_spinner_item, blendingFactors.keySet().toArray(blendingFactorsNames));
+
+				factorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+				// Source factors
+				Spinner spinnerSource = (Spinner) getGame().getActivity().findViewById(R.id.spinner_source);
+				spinnerSource.setAdapter(factorsAdapter);
+				spinnerSource.setSelection(getFactorIndex(DEFAULT_SOURCE_FACTOR));
+				squareBlendingOptions.setSourceFactor(DEFAULT_SOURCE_FACTOR.getValue());
+
+				spinnerSource.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+						Object selectedItem = parent.getItemAtPosition(position);
+						int sourceFactor = blendingFactors.get(selectedItem.toString()).intValue();
+						squareBlendingOptions.setSourceFactor(sourceFactor);
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {
+					}
+				});
+
+				// Destination factors
+				Spinner spinnerDest = (Spinner) getGame().getActivity().findViewById(R.id.spinner_destination);
+				spinnerDest.setAdapter(factorsAdapter);
+				spinnerDest.setSelection(getFactorIndex(DEFAULT_DEST_FACTOR));
+				squareBlendingOptions.setDestinationFactor(DEFAULT_DEST_FACTOR.getValue());
+
+				spinnerDest.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+						Object selectedItem = parent.getItemAtPosition(position);
+						int destFactor = blendingFactors.get(selectedItem.toString()).intValue();
+						squareBlendingOptions.setDestinationFactor(destFactor);
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {
+					}
+				});
+
+				// Blending equations
+				CharSequence[] blendingEquationsNames = new String[blendingEquations.keySet().size()];
+				ArrayAdapter<CharSequence> equationsAdapter = new ArrayAdapter<CharSequence>(getGame().getActivity(),
+						android.R.layout.simple_spinner_item,
+						blendingEquations.keySet().toArray(blendingEquationsNames));
+
+				equationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+				Spinner spinnerEquation = (Spinner) getGame().getActivity().findViewById(R.id.spinner_equation);
+				spinnerEquation.setAdapter(equationsAdapter);
+				spinnerEquation.setSelection(getEquationIndex(DEFAULT_EQUATION));
+				squareBlendingOptions.setBlendEquationMode(DEFAULT_EQUATION.getValue());
+
+				spinnerEquation.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+						Object selectedItem = parent.getItemAtPosition(position);
+						int equation = blendingEquations.get(selectedItem.toString()).intValue();
+						squareBlendingOptions.setBlendEquationMode(equation);
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {
+					}
+				});
+			}
+		});
+	}
+
 	private void initializeAlertDialog() {
+		getGame().getActivity().runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				alertDialog = createAlertDialog();
+			}
+		});
+	}
+
+	private AlertDialog createAlertDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getGame().getActivity());
 		builder.setMessage(R.string.blending_options_alert_msg)
 				.setTitle(R.string.blending_options_alert_title)
@@ -228,24 +264,34 @@ public class BlendingOptionsScene extends Scene {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-
 					}
 				});
 
-		alertDialog = builder.create();
+		return builder.create();
 	}
 
 	private void showAlertDialog() {
-		if (alertDialog != null) {
-			alertDialog.show();
-		}
+		getGame().getActivity().runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				if (alertDialog == null) {
+					alertDialog = createAlertDialog();
+				}
+				alertDialog.show();
+			}
+		});
 	}
 
 	private void dismissAlertDialog() {
-		if (alertDialog != null) {
-			alertDialog.dismiss();
-			alertDialog = null;
-		}
+		getGame().getActivity().runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				alertDialog.dismiss();
+				alertDialog = null;
+			}
+		});
 	}
 
 	private void handleBlendingException() {
@@ -253,44 +299,49 @@ public class BlendingOptionsScene extends Scene {
 
 			@Override
 			public void run() {
-				int factor1Index = 0;
-				int factor2Index = 0;
-				int i = 0;
-				for (String blendingFactorKey : blendingFactors.keySet()) {
-					if (blendingFactorKey.equals("GL_SRC_ALPHA")) {
-						factor1Index = i;
-					} else if (blendingFactorKey.equals("GL_ONE_MINUS_SRC_ALPHA")) {
-						factor2Index = i;
-					}
-					i++;
-				}
-				int equationIndex = 0;
-				i = 0;
-				for (String blendingEquationKey : blendingEquations.keySet()) {
-					if (blendingEquationKey.equals("GL_FUNC_ADD")) {
-						equationIndex = i;
-					}
-					i++;
-				}
+				BlendingOptions squareBlendingOptions = square.getMaterial().getBlendingOptions();
 
 				Spinner spinnerSource = (Spinner) getGame().getActivity().findViewById(R.id.spinner_source);
-				spinnerSource.setSelection(factor1Index);
-				int sourceFactor = blendingFactors.get(spinnerSource.getSelectedItem().toString()).intValue();
-				square.getMaterial().getBlendingOptions().setSourceFactor(sourceFactor);
+				spinnerSource.setSelection(getFactorIndex(DEFAULT_SOURCE_FACTOR));
+				squareBlendingOptions.setSourceFactor(DEFAULT_SOURCE_FACTOR.getValue());
 
 				Spinner spinnerDest = (Spinner) getGame().getActivity().findViewById(R.id.spinner_destination);
-				spinnerDest.setSelection(factor2Index);
-				int destFactor = blendingFactors.get(spinnerDest.getSelectedItem().toString()).intValue();
-				square.getMaterial().getBlendingOptions().setDestinationFactor(destFactor);
+				spinnerDest.setSelection(getFactorIndex(DEFAULT_DEST_FACTOR));
+				squareBlendingOptions.setDestinationFactor(DEFAULT_DEST_FACTOR.getValue());
 
 				Spinner spinnerEquation = (Spinner) getGame().getActivity().findViewById(R.id.spinner_equation);
-				spinnerEquation.setSelection(equationIndex);
-				int equation = blendingEquations.get(spinnerEquation.getSelectedItem().toString()).intValue();
-				square.getMaterial().getBlendingOptions().setBlendEquationMode(equation);
-				
+				spinnerEquation.setSelection(getEquationIndex(DEFAULT_EQUATION));
+				squareBlendingOptions.setBlendEquationMode(DEFAULT_EQUATION.getValue());
+
+				handlingException.set(false);
+
 				showAlertDialog();
 			}
 		});
+	}
+
+	private int getFactorIndex(BlendingFactor blendingFactor) {
+		int factorIndex = 0;
+		int i = 0;
+		for (String blendingFactorKey : blendingFactors.keySet()) {
+			if (blendingFactorKey.equals(blendingFactor.toString())) {
+				factorIndex = i;
+			}
+			i++;
+		}
+		return factorIndex;
+	}
+
+	private int getEquationIndex(BlendingEquation blendingEquation) {
+		int equationIndex = 0;
+		int i = 0;
+		for (String blendingEquationKey : blendingEquations.keySet()) {
+			if (blendingEquationKey.equals(blendingEquation.toString())) {
+				equationIndex = i;
+			}
+			i++;
+		}
+		return equationIndex;
 	}
 
 }
