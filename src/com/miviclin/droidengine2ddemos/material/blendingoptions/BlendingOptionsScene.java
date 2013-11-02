@@ -77,7 +77,7 @@ public class BlendingOptionsScene extends Scene {
 	@Override
 	public void onRegister() {
 		TextureAtlas squaresAtlas = new TexturePackerAtlas();
-		squaresAtlas.loadFromXML("textures/squares.xml", getGame().getActivity());
+		squaresAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(squaresAtlas);
 
 		square.getTransform().getPosition().set(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
@@ -86,7 +86,7 @@ public class BlendingOptionsScene extends Scene {
 		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("green_square_on.png"));
 
 		TextureAtlas backgroundAtlas = new TexturePackerAtlas();
-		backgroundAtlas.loadFromXML("textures/background.xml", getGame().getActivity());
+		backgroundAtlas.loadFromFile("textures/background.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(backgroundAtlas);
 
 		int tileSize = 40;

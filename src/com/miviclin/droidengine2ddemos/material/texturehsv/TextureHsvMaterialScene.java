@@ -41,7 +41,7 @@ public class TextureHsvMaterialScene extends Scene {
 	@Override
 	public void onRegister() {
 		TextureAtlas textureAtlas = new TexturePackerAtlas();
-		textureAtlas.loadFromXML("textures/squares.xml", getGame().getActivity());
+		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(textureAtlas);
 
 		Transform transform = new Transform(new Vector2(getGame().getGameViewWidth() / 2, 125), new Vector2(240, 240));
