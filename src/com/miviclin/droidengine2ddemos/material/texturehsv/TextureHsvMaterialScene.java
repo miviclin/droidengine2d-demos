@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Graphics;
-import com.miviclin.droidengine2d.graphics.material.TextureHSVMaterial;
+import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.scene.Scene;
@@ -17,7 +17,7 @@ import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class TextureHsvMaterialScene extends Scene {
 
-	private Rectangle<TextureHSVMaterial> rectangle;
+	private Rectangle<TextureHsvMaterial> rectangle;
 
 	public TextureHsvMaterialScene(Game game) {
 		super(game);
@@ -45,8 +45,8 @@ public class TextureHsvMaterialScene extends Scene {
 		getGame().getTextureManager().addTextureAtlas(textureAtlas);
 
 		Transform transform = new Transform(new Vector2(getGame().getGameViewWidth() / 2, 125), new Vector2(240, 240));
-		rectangle = new Rectangle<TextureHSVMaterial>(transform,
-				new TextureHSVMaterial(textureAtlas.getTextureRegion("green_square_on.png")));
+		rectangle = new Rectangle<TextureHsvMaterial>(transform,
+				new TextureHsvMaterial(textureAtlas.getTextureRegion("green_square_on.png")));
 
 		final TextView tvHue = (TextView) getGame().getActivity().findViewById(R.id.textview_hue);
 

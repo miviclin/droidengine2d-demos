@@ -8,6 +8,7 @@ public enum Demo {
 	RECTANGLES_ROTATION_ANCHOR_POINT(R.string.group_rectangles_rotation_anchor_point),
 	TEXT_CUSTOM_FONTS(R.string.group_text_custom_fonts),
 	MATERIAL_BLENDING_OPTIONS(R.string.group_materials_blending_options),
+	MATERIAL_TEXTURE(R.string.group_materials_texture),
 	MATERIAL_TEXTURE_HSV(R.string.group_materials_texture_hsv);
 
 	private int resId;
