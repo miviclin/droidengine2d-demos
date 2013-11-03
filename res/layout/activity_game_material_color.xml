@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textview_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="R: 0.0"
+            android:textColor="#FFF" />
+
+        <SeekBar
+            android:id="@+id/seekbar_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/textview_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="G: 0.0"
+            android:textColor="#FFF" />
+
+        <SeekBar
+            android:id="@+id/seekbar_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/textview_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="B: 0.0"
+            android:textColor="#FFF" />
+
+        <SeekBar
+            android:id="@+id/seekbar_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/textview_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="A: 0.0"
+            android:textColor="#FFF" />
+
+        <SeekBar
+            android:id="@+id/seekbar_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" />
+
+        <com.miviclin.droidengine2d.graphics.GLView
+            android:id="@+id/glview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true" />
+    </LinearLayout>
+
+</LinearLayout>

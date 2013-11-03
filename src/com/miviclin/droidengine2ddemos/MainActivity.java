@@ -16,6 +16,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.miviclin.droidengine2ddemos.material.blendingoptions.BlendingOptionsActivity;
+import com.miviclin.droidengine2ddemos.material.color.ColorMaterialActivity;
 import com.miviclin.droidengine2ddemos.material.texture.TextureMaterialActivity;
 import com.miviclin.droidengine2ddemos.material.texturehsv.TextureHsvMaterialActivity;
 import com.miviclin.droidengine2ddemos.rectangle.basic.RectanglesActivity;
@@ -37,11 +38,9 @@ public class MainActivity extends Activity {
 		expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
 			@Override
-			public boolean
-					onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPos, int childPos, long id) {
 				Intent intent = null;
-				Demo demo = listData.getChildren(groupPosition).get(childPosition);
+				Demo demo = listData.getChildren(groupPos).get(childPos);
 				switch (demo) {
 				case RECTANGLES_BASIC:
 					intent = new Intent(MainActivity.this, RectanglesActivity.class);
@@ -57,6 +56,9 @@ public class MainActivity extends Activity {
 					break;
 				case MATERIAL_BLENDING_OPTIONS:
 					intent = new Intent(MainActivity.this, BlendingOptionsActivity.class);
+					break;
+				case MATERIAL_COLOR:
+					intent = new Intent(MainActivity.this, ColorMaterialActivity.class);
 					break;
 				case MATERIAL_TEXTURE:
 					intent = new Intent(MainActivity.this, TextureMaterialActivity.class);
@@ -88,6 +90,7 @@ public class MainActivity extends Activity {
 
 		List<Demo> materialDemos = new ArrayList<Demo>();
 		materialDemos.add(Demo.MATERIAL_BLENDING_OPTIONS);
+		materialDemos.add(Demo.MATERIAL_COLOR);
 		materialDemos.add(Demo.MATERIAL_TEXTURE);
 		materialDemos.add(Demo.MATERIAL_TEXTURE_HSV);
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
