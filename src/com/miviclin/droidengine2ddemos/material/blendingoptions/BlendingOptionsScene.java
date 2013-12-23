@@ -83,7 +83,7 @@ public class BlendingOptionsScene extends Scene {
 		square.getTransform().getPosition().set(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
 		square.getTransform().getOrigin().set(120, 120);
 		square.getTransform().getScale().set(240, 240);
-		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("green_square_on.png"));
+		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("greensquare_on_shadow.png"));
 
 		TextureAtlas backgroundAtlas = new TexturePackerAtlas();
 		backgroundAtlas.loadFromFile("textures/background.xml", getGame().getActivity());

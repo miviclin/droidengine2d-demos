@@ -46,7 +46,7 @@ public class TextureHsvMaterialScene extends Scene {
 
 		Transform transform = new Transform(new Vector2(getGame().getGameViewWidth() / 2, 125), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureHsvMaterial>(transform,
-				new TextureHsvMaterial(textureAtlas.getTextureRegion("green_square_on.png")));
+				new TextureHsvMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
 
 		final TextView tvHue = (TextView) getGame().getActivity().findViewById(R.id.textview_hue);
 

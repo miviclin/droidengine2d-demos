@@ -37,7 +37,7 @@ public class TextureMaterialScene extends Scene {
 		float viewHeight = getGame().getGameViewHeight();
 		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureMaterial>(transform,
-				new TextureMaterial(textureAtlas.getTextureRegion("green_square_on.png")));
+				new TextureMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
 	}
 
 	@Override
