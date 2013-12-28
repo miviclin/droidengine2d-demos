@@ -15,15 +15,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.miviclin.droidengine2ddemos.material.blendingoptions.BlendingOptionsActivity;
-import com.miviclin.droidengine2ddemos.material.color.ColorMaterialActivity;
-import com.miviclin.droidengine2ddemos.material.texture.TextureMaterialActivity;
-import com.miviclin.droidengine2ddemos.material.texturehsv.TextureHsvMaterialActivity;
-import com.miviclin.droidengine2ddemos.rectangle.basic.RectanglesActivity;
-import com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint.AnchorPointRotationActivity;
-import com.miviclin.droidengine2ddemos.rectangle.rotation.basic.BasicRotationActivity;
-import com.miviclin.droidengine2ddemos.text.customfonts.CustomFontsActivity;
-
 public class MainActivity extends Activity {
 
 	@Override
@@ -31,51 +22,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		final ExpandableListData listData = loadExpandableListData();
-
-		ExpandableListView expListView = (ExpandableListView) findViewById(R.id.expandablelist_main);
-		expListView.setAdapter(new ExpandableListAdapter(this, listData));
-		expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v, int groupPos, int childPos, long id) {
-				Intent intent = null;
-				Demo demo = listData.getChildren(groupPos).get(childPos);
-				switch (demo) {
-				case RECTANGLES_BASIC:
-					intent = new Intent(MainActivity.this, RectanglesActivity.class);
-					break;
-				case RECTANGLES_ROTATION_BASIC:
-					intent = new Intent(MainActivity.this, BasicRotationActivity.class);
-					break;
-				case RECTANGLES_ROTATION_ANCHOR_POINT:
-					intent = new Intent(MainActivity.this, AnchorPointRotationActivity.class);
-					break;
-				case TEXT_CUSTOM_FONTS:
-					intent = new Intent(MainActivity.this, CustomFontsActivity.class);
-					break;
-				case MATERIAL_BLENDING_OPTIONS:
-					intent = new Intent(MainActivity.this, BlendingOptionsActivity.class);
-					break;
-				case MATERIAL_COLOR:
-					intent = new Intent(MainActivity.this, ColorMaterialActivity.class);
-					break;
-				case MATERIAL_TEXTURE:
-					intent = new Intent(MainActivity.this, TextureMaterialActivity.class);
-					break;
-				case MATERIAL_TEXTURE_HSV:
-					intent = new Intent(MainActivity.this, TextureHsvMaterialActivity.class);
-					break;
-				default:
-					break;
-				}
-				startActivity(intent);
-				return true;
-			}
-		});
+		ExpandableListData listData = initializeExpandableListData();
+		initializeExpandableListView(listData);
 	}
 
-	private ExpandableListData loadExpandableListData() {
+	private ExpandableListData initializeExpandableListData() {
 		ExpandableListData listData = new ExpandableListData();
 
 		List<Demo> rectanglesDemos = new ArrayList<Demo>();
@@ -96,6 +47,25 @@ public class MainActivity extends Activity {
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
 
 		return listData;
+	}
+
+	private void initializeExpandableListView(final ExpandableListData listData) {
+		ExpandableListView expListView = (ExpandableListView) findViewById(R.id.expandablelist_main);
+		expListView.setAdapter(new ExpandableListAdapter(this, listData));
+		expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPos, int childPos, long id) {
+				Demo clickedDemo = listData.getChildren(groupPos).get(childPos);
+				launchDemoActivity(clickedDemo);
+				return true;
+			}
+		});
+	}
+
+	private void launchDemoActivity(Demo demo) {
+		Intent intent = new Intent(MainActivity.this, demo.getDemoActivityClass());
+		startActivity(intent);
 	}
 
 	private static class ExpandableListAdapter extends BaseExpandableListAdapter {
