@@ -21,12 +21,12 @@ public class CustomFontsActivity extends EngineActivity {
 	}
 
 	@Override
-	public int getContentViewID() {
+	public int getContentViewId() {
 		return R.layout.activity_game_default;
 	}
 
 	@Override
-	public int getGLViewID() {
+	public int getGLViewId() {
 		return R.id.glview;
 	}
 

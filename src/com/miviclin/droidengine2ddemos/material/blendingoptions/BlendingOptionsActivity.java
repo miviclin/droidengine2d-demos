@@ -21,12 +21,12 @@ public class BlendingOptionsActivity extends EngineActivity {
 	}
 
 	@Override
-	public int getContentViewID() {
+	public int getContentViewId() {
 		return R.layout.activity_game_blending_options;
 	}
 
 	@Override
-	public int getGLViewID() {
+	public int getGLViewId() {
 		return R.id.glview;
 	}
 
