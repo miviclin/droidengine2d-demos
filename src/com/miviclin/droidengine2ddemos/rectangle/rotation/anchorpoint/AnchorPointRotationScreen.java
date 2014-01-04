@@ -4,19 +4,19 @@ import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
-import com.miviclin.droidengine2d.scene.Scene;
+import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class AnchorPointRotationScene extends Scene {
+public class AnchorPointRotationScreen extends Screen {
 
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle1;
 	private Rectangle<ColorMaterial> rectangle2;
 
-	public AnchorPointRotationScene(Game game) {
-		super(game);
+	public AnchorPointRotationScreen(float viewWidth, float viewHeight, Game game) {
+		super(viewWidth, viewHeight, game);
 	}
 
 	@Override
@@ -36,13 +36,13 @@ public class AnchorPointRotationScene extends Scene {
 	public void onRegister() {
 		backgroundColor = new Color(1, 1, 1);
 
-		Vector2 pos1 = new Vector2(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
+		Vector2 pos1 = new Vector2(getWidth() / 2, getHeight() / 2);
 		Vector2 scale1 = new Vector2(200, 200);
 		Vector2 orig1 = new Vector2(scale1.getX() / 2, scale1.getY() / 2);
 		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, scale1, orig1, 0),
 				new ColorMaterial(new Color(0, 0, 0)));
 
-		Vector2 pos2 = new Vector2(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
+		Vector2 pos2 = new Vector2(getWidth() / 2, getHeight() / 2);
 		Vector2 scale2 = new Vector2(200, 200);
 		Vector2 orig2 = new Vector2(0, 0);
 		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, scale2, orig2, 0),
@@ -66,7 +66,7 @@ public class AnchorPointRotationScene extends Scene {
 	}
 
 	@Override
-	public void dispose() {
+	public void onDispose() {
 	}
 
 }

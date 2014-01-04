@@ -12,8 +12,9 @@ public class BlendingOptionsGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_blending_options", new BlendingOptionsScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new BlendingOptionsScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
+
 }

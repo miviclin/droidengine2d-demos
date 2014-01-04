@@ -9,18 +9,18 @@ import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
-import com.miviclin.droidengine2d.scene.Scene;
+import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TextureHsvMaterialScene extends Scene {
+public class TextureHsvMaterialScreen extends Screen {
 
 	private Rectangle<TextureHsvMaterial> rectangle;
 
-	public TextureHsvMaterialScene(Game game) {
-		super(game);
+	public TextureHsvMaterialScreen(float viewWidth, float viewHeight, Game game) {
+		super(viewWidth, viewHeight, game);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class TextureHsvMaterialScene extends Scene {
 		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(textureAtlas);
 
-		Transform transform = new Transform(new Vector2(getGame().getGameViewWidth() / 2, 125), new Vector2(240, 240));
+		Transform transform = new Transform(new Vector2(getWidth() / 2, 125), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureHsvMaterial>(transform,
 				new TextureHsvMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
 
@@ -126,7 +126,7 @@ public class TextureHsvMaterialScene extends Scene {
 	}
 
 	@Override
-	public void dispose() {
+	public void onDispose() {
 	}
 
 }

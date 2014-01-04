@@ -12,8 +12,8 @@ public class TextureMaterialGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_texture_material", new TextureMaterialScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new TextureMaterialScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 

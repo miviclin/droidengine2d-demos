@@ -8,7 +8,7 @@ public enum DemosGroup {
 	TEXT(R.string.group_text),
 	ANIMATION(R.string.group_animation),
 	AUDIO(R.string.group_audio),
-	SCENES(R.string.group_scenes),
+	SCREENS(R.string.group_screen_management),
 	INPUT(R.string.group_input);
 
 	private int resId;

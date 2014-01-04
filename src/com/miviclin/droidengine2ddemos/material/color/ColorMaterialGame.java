@@ -12,8 +12,8 @@ public class ColorMaterialGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_color_material", new ColorMaterialScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new ColorMaterialScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 

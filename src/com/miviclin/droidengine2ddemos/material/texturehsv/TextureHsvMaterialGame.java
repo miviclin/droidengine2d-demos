@@ -12,8 +12,8 @@ public class TextureHsvMaterialGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_texture_hsv_material", new TextureHsvMaterialScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new TextureHsvMaterialScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 

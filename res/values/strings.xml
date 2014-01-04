@@ -37,8 +37,8 @@
     <!-- Audio -->
     <string name="group_audio">Audio</string>
 
-    <!-- Scenes -->
-    <string name="group_scenes">Scenes</string>
+    <!-- Screen management -->
+    <string name="group_screen_management">Screen management</string>
 
     <!-- User input -->
     <string name="group_input">User input</string>

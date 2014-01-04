@@ -12,8 +12,8 @@ public class CustomFontsGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_custom_fonts", new CustomFontsScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new CustomFontsScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 

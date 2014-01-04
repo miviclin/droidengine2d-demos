@@ -21,13 +21,13 @@ import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
-import com.miviclin.droidengine2d.scene.Scene;
+import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class BlendingOptionsScene extends Scene {
+public class BlendingOptionsScreen extends Screen {
 
 	private static final BlendingFactor DEFAULT_SOURCE_FACTOR = BlendingFactor.GL_SRC_ALPHA;
 	private static final BlendingFactor DEFAULT_DEST_FACTOR = BlendingFactor.GL_ONE_MINUS_SRC_ALPHA;
@@ -40,8 +40,8 @@ public class BlendingOptionsScene extends Scene {
 	private AlertDialog alertDialog;
 	private AtomicBoolean handlingException;
 
-	public BlendingOptionsScene(Game game) {
-		super(game);
+	public BlendingOptionsScreen(float width, float height, Game game) {
+		super(width, height, game);
 		this.blendingFactors = new LinkedHashMap<String, Integer>();
 		this.blendingEquations = new LinkedHashMap<String, Integer>();
 
@@ -80,7 +80,7 @@ public class BlendingOptionsScene extends Scene {
 		squaresAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(squaresAtlas);
 
-		square.getTransform().getPosition().set(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
+		square.getTransform().getPosition().set(getWidth() / 2, getHeight() / 2);
 		square.getTransform().getOrigin().set(120, 120);
 		square.getTransform().getScale().set(240, 240);
 		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("greensquare_on_shadow.png"));
@@ -90,8 +90,8 @@ public class BlendingOptionsScene extends Scene {
 		getGame().getTextureManager().addTextureAtlas(backgroundAtlas);
 
 		int tileSize = 40;
-		int numTilesX = getGame().getGameViewWidth() / tileSize + 1;
-		int numTilesY = getGame().getGameViewHeight() / tileSize + 1;
+		int numTilesX = (int) (getWidth() / tileSize + 1);
+		int numTilesY = (int) (getHeight() / tileSize + 1);
 		TextureRegion backgroundTile = backgroundAtlas.getTextureRegion("background_tile.png");
 		for (int i = 0; i < numTilesX; i++) {
 			for (int j = 0; j < numTilesY; j++) {
@@ -129,7 +129,7 @@ public class BlendingOptionsScene extends Scene {
 	}
 
 	@Override
-	public void dispose() {
+	public void onDispose() {
 	}
 
 	private void initializeBlendingOptionsMaps() {

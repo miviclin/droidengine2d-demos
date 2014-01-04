@@ -4,18 +4,18 @@ import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
-import com.miviclin.droidengine2d.scene.Scene;
+import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class BasicRotationScene extends Scene {
+public class BasicRotationScreen extends Screen {
 
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle;
 
-	public BasicRotationScene(Game game) {
-		super(game);
+	public BasicRotationScreen(float viewWidth, float viewHeight, Game game) {
+		super(viewWidth, viewHeight, game);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class BasicRotationScene extends Scene {
 	public void onRegister() {
 		backgroundColor = new Color(1, 1, 1);
 
-		Vector2 rectPos = new Vector2(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
+		Vector2 rectPos = new Vector2(getWidth() / 2, getHeight() / 2);
 		Vector2 rectScale = new Vector2(200, 200);
 		Transform transform = new Transform(rectPos, rectScale);
 		rectangle = new Rectangle<ColorMaterial>(transform, new ColorMaterial(new Color(0, 0, 0)));
@@ -56,7 +56,7 @@ public class BasicRotationScene extends Scene {
 	}
 
 	@Override
-	public void dispose() {
+	public void onDispose() {
 	}
 
 }

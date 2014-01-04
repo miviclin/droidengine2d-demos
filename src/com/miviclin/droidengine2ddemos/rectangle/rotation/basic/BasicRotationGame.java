@@ -12,8 +12,8 @@ public class BasicRotationGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_rotation", new BasicRotationScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new BasicRotationScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 

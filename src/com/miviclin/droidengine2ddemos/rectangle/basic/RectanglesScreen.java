@@ -4,20 +4,20 @@ import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
-import com.miviclin.droidengine2d.scene.Scene;
+import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class RectanglesScene extends Scene {
+public class RectanglesScreen extends Screen {
 
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle1;
 	private Rectangle<ColorMaterial> rectangle2;
 	private Rectangle<ColorMaterial> rectangle3;
 
-	public RectanglesScene(Game game) {
-		super(game);
+	public RectanglesScreen(float viewWidth, float viewHeight, Game game) {
+		super(viewWidth, viewHeight, game);
 	}
 
 	@Override
@@ -36,15 +36,15 @@ public class RectanglesScene extends Scene {
 	public void onRegister() {
 		backgroundColor = new Color(1, 1, 1);
 
-		Vector2 pos1 = new Vector2(getGame().getGameViewWidth() / 2, getGame().getGameViewHeight() / 2);
+		Vector2 pos1 = new Vector2(getWidth() / 2, getHeight() / 2);
 		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, new Vector2(200, 200)),
 				new ColorMaterial(new Color(0, 0, 0)));
 
-		Vector2 pos2 = new Vector2(200, getGame().getGameViewHeight() / 2);
+		Vector2 pos2 = new Vector2(200, getHeight() / 2);
 		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, new Vector2(100, 350)),
 				new ColorMaterial(new Color(0, 0, 0)));
 
-		Vector2 pos3 = new Vector2(getGame().getGameViewWidth() - 200, getGame().getGameViewHeight() / 2);
+		Vector2 pos3 = new Vector2(getWidth() - 200, getHeight() / 2);
 		rectangle3 = new Rectangle<ColorMaterial>(new Transform(pos3, new Vector2(100, 50)),
 				new ColorMaterial(new Color(0, 0, 0)));
 	}
@@ -66,7 +66,7 @@ public class RectanglesScene extends Scene {
 	}
 
 	@Override
-	public void dispose() {
+	public void onDispose() {
 	}
 
 }

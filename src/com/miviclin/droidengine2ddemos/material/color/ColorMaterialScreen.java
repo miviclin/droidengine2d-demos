@@ -8,18 +8,18 @@ import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
-import com.miviclin.droidengine2d.scene.Scene;
+import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class ColorMaterialScene extends Scene {
+public class ColorMaterialScreen extends Screen {
 
 	private Rectangle<ColorMaterial> rectangle;
 
-	public ColorMaterialScene(Game game) {
-		super(game);
+	public ColorMaterialScreen(float width, float height, Game game) {
+		super(width, height, game);
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class ColorMaterialScene extends Scene {
 
 	@Override
 	public void onRegister() {
-		float viewWidth = getGame().getGameViewWidth();
-		float viewHeight = getGame().getGameViewHeight();
+		float viewWidth = getWidth();
+		float viewHeight = getHeight();
 		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new Rectangle<ColorMaterial>(transform, new ColorMaterial(new Color(0.0f, 1.0f, 0.0f)));
 
@@ -147,7 +147,7 @@ public class ColorMaterialScene extends Scene {
 	}
 
 	@Override
-	public void dispose() {
+	public void onDispose() {
 	}
 
 }

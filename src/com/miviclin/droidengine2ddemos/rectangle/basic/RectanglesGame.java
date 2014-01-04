@@ -12,8 +12,8 @@ public class RectanglesGame extends Game {
 	}
 
 	@Override
-	public void initialize() {
-		getSceneManager().registerScene("demo_rotation", new RectanglesScene(this), true);
+	public void initialize(float viewWidth, float viewHeight) {
+		getScreenManager().registerScreen(0, new RectanglesScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 
