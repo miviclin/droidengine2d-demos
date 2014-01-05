@@ -7,6 +7,7 @@ import com.miviclin.droidengine2ddemos.material.blendingoptions.BlendingOptionsA
 import com.miviclin.droidengine2ddemos.material.color.ColorMaterialActivity;
 import com.miviclin.droidengine2ddemos.material.texture.TextureMaterialActivity;
 import com.miviclin.droidengine2ddemos.material.texturehsv.TextureHsvMaterialActivity;
+import com.miviclin.droidengine2ddemos.material.transparenttexture.TransparentTextureMaterialActivity;
 import com.miviclin.droidengine2ddemos.rectangle.basic.RectanglesActivity;
 import com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint.AnchorPointRotationActivity;
 import com.miviclin.droidengine2ddemos.rectangle.rotation.basic.BasicRotationActivity;
@@ -20,7 +21,8 @@ public enum Demo {
 	MATERIAL_BLENDING_OPTIONS(R.string.group_materials_blending_options, BlendingOptionsActivity.class),
 	MATERIAL_COLOR(R.string.group_materials_color, ColorMaterialActivity.class),
 	MATERIAL_TEXTURE(R.string.group_materials_texture, TextureMaterialActivity.class),
-	MATERIAL_TEXTURE_HSV(R.string.group_materials_texture_hsv, TextureHsvMaterialActivity.class);
+	MATERIAL_TEXTURE_HSV(R.string.group_materials_texture_hsv, TextureHsvMaterialActivity.class),
+	MATERIAL_TRANSPARENT_TEXTURE(R.string.group_materials_transparent_texture, TransparentTextureMaterialActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

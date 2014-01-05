@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
 		materialDemos.add(Demo.MATERIAL_COLOR);
 		materialDemos.add(Demo.MATERIAL_TEXTURE);
 		materialDemos.add(Demo.MATERIAL_TEXTURE_HSV);
+		materialDemos.add(Demo.MATERIAL_TRANSPARENT_TEXTURE);
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
 
 		return listData;
