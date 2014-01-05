@@ -25,6 +25,7 @@
     <string name="group_materials_blending_options">BlendingOptions</string>
     <string name="group_materials_color">ColorMaterial</string>
     <string name="group_materials_texture">TextureMaterial</string>
+    <string name="group_materials_texture_color">TextureColorMaterial</string>
     <string name="group_materials_texture_hsv">TextureHsvMaterial</string>
     <string name="group_materials_transparent_texture">TransparentTextureMaterial</string>
 

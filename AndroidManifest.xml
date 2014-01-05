@@ -75,6 +75,13 @@
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
         <activity
+            android:name="com.miviclin.droidengine2ddemos.material.texturecolor.TextureColorMaterialActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
+        <activity
             android:name="com.miviclin.droidengine2ddemos.material.texturehsv.TextureHsvMaterialActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
