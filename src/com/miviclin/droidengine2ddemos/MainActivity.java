@@ -48,6 +48,10 @@ public class MainActivity extends Activity {
 		materialDemos.add(Demo.MATERIAL_TRANSPARENT_TEXTURE);
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
 
+		List<Demo> inputDemos = new ArrayList<Demo>();
+		inputDemos.add(Demo.INPUT_TOUCH);
+		listData.addGroup(DemosGroup.INPUT, inputDemos);
+
 		return listData;
 	}
 

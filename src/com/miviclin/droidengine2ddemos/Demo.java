@@ -3,6 +3,7 @@ package com.miviclin.droidengine2ddemos;
 import android.content.Context;
 
 import com.miviclin.droidengine2d.EngineActivity;
+import com.miviclin.droidengine2ddemos.input.touch.TouchDemoActivity;
 import com.miviclin.droidengine2ddemos.material.blendingoptions.BlendingOptionsActivity;
 import com.miviclin.droidengine2ddemos.material.color.ColorMaterialActivity;
 import com.miviclin.droidengine2ddemos.material.texture.TextureMaterialActivity;
@@ -24,7 +25,8 @@ public enum Demo {
 	MATERIAL_TEXTURE(R.string.group_materials_texture, TextureMaterialActivity.class),
 	MATERIAL_TEXTURE_COLOR(R.string.group_materials_texture_color, TextureColorMaterialActivity.class),
 	MATERIAL_TEXTURE_HSV(R.string.group_materials_texture_hsv, TextureHsvMaterialActivity.class),
-	MATERIAL_TRANSPARENT_TEXTURE(R.string.group_materials_transparent_texture, TransparentTextureMaterialActivity.class);
+	MATERIAL_TRANSPARENT_TEXTURE(R.string.group_materials_transparent_texture, TransparentTextureMaterialActivity.class),
+	INPUT_TOUCH(R.string.group_input_touch, TouchDemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;
