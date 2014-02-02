@@ -1,7 +1,6 @@
 package com.miviclin.droidengine2ddemos.input.touch;
 
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.miviclin.droidengine2d.Game;
@@ -10,8 +9,7 @@ import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
-import com.miviclin.droidengine2d.input.KeyListener;
-import com.miviclin.droidengine2d.input.TouchListener;
+import com.miviclin.droidengine2d.input.TouchInputProcessor;
 import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
@@ -58,24 +56,15 @@ public class TouchDemoScreen extends Screen {
 
 		timeCounter = new TimeCounter();
 
-		getInputManager().getTouchController().setTouchListener(new TouchListener() {
+		getInputManager().getTouchInputController().setTouchInputProcessor(new TouchInputProcessor() {
 
 			@Override
-			public boolean onTouch(MotionEvent motionEvent) {
+			public void processMotionEvent(MotionEvent motionEvent) {
 				if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-					rectangle.getTransform().getPosition().set(motionEvent.getX(), motionEvent.getY());
+					rectangle.getTransform().getPosition().set(motionEvent.getX(), getHeight() - motionEvent.getY());
 					timeCounter.reset();
 					Log.d("touch", "touch " + motionEvent.getAction());
 				}
-				return true;
-			}
-		});
-
-		getInputManager().getKeyController().setKeyListener(new KeyListener() {
-
-			@Override
-			public boolean onKey(int keyCode, KeyEvent event) {
-				return true;
 			}
 		});
 	}
