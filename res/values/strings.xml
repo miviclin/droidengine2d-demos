@@ -45,6 +45,7 @@
     <!-- User input -->
     <string name="group_input">User input</string>
     <string name="group_input_touch">Touch input</string>
+    <string name="group_input_key">Key input</string>
 
     <!--  -->
     <!-- Demos -->

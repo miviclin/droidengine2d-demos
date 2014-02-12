@@ -102,6 +102,13 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.input.key.KeyInputDemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
     </application>
 
 </manifest>
