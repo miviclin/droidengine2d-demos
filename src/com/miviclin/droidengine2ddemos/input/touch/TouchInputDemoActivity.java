@@ -8,11 +8,11 @@ import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.GLView;
 import com.miviclin.droidengine2ddemos.R;
 
-public class TouchDemoActivity extends EngineActivity {
+public class TouchInputDemoActivity extends EngineActivity {
 
 	@Override
 	public Engine createEngine(GLView glView) {
-		Game game = new TouchDemoGame(glView, this);
+		Game game = new TouchInputDemoGame(glView, this);
 		Engine engine = new Engine.EngineBuilder(game)
 				.setMaxFPS(60)
 				.build();

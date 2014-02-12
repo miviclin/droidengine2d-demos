@@ -96,7 +96,7 @@
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
         <activity
-            android:name="com.miviclin.droidengine2ddemos.input.touch.TouchDemoActivity"
+            android:name="com.miviclin.droidengine2ddemos.input.touch.TouchInputDemoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"

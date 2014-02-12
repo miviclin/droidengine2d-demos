@@ -5,15 +5,15 @@ import android.app.Activity;
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.GLView;
 
-public class TouchDemoGame extends Game {
+public class TouchInputDemoGame extends Game {
 
-	public TouchDemoGame(GLView glView, Activity activity) {
+	public TouchInputDemoGame(GLView glView, Activity activity) {
 		super("", glView, activity);
 	}
 
 	@Override
 	public void initialize(float viewWidth, float viewHeight) {
-		getScreenManager().registerScreen(0, new TouchDemoScreen(viewWidth, viewHeight, this), true);
+		getScreenManager().registerScreen(0, new TouchInputDemoScreen(viewWidth, viewHeight, this), true);
 		System.gc();
 	}
 

@@ -15,12 +15,12 @@ import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TouchDemoScreen extends Screen {
+public class TouchInputDemoScreen extends Screen {
 
 	private Color backgroundColor;
 	private volatile Rectangle<TextureMaterial> rectangle;
 
-	public TouchDemoScreen(float viewWidth, float viewHeight, Game game) {
+	public TouchInputDemoScreen(float viewWidth, float viewHeight, Game game) {
 		super(viewWidth, viewHeight, game);
 	}
 
