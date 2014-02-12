@@ -9,7 +9,7 @@ import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
-import com.miviclin.droidengine2d.input.TouchInputProcessor;
+import com.miviclin.droidengine2d.input.MotionEventProcessor;
 import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
@@ -46,7 +46,7 @@ public class TouchDemoScreen extends Screen {
 		rectangle = new Rectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("circle-red.png")));
 
-		getInputManager().getTouchInputController().setTouchInputProcessor(new TouchInputProcessor() {
+		getInputManager().getTouchProcessor().setMotionEventProcessor(new MotionEventProcessor() {
 
 			@Override
 			public void processMotionEvent(MotionEvent motionEvent) {
