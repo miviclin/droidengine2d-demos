@@ -3,6 +3,7 @@ package com.miviclin.droidengine2ddemos;
 import android.content.Context;
 
 import com.miviclin.droidengine2d.EngineActivity;
+import com.miviclin.droidengine2ddemos.input.accelerometer.AccelerometerDemoActivity;
 import com.miviclin.droidengine2ddemos.input.key.KeyInputDemoActivity;
 import com.miviclin.droidengine2ddemos.input.touch.TouchInputDemoActivity;
 import com.miviclin.droidengine2ddemos.material.blendingoptions.BlendingOptionsActivity;
@@ -28,7 +29,8 @@ public enum Demo {
 	MATERIAL_TEXTURE_HSV(R.string.group_materials_texture_hsv, TextureHsvMaterialActivity.class),
 	MATERIAL_TRANSPARENT_TEXTURE(R.string.group_materials_transparent_texture, TransparentTextureMaterialActivity.class),
 	INPUT_TOUCH(R.string.group_input_touch, TouchInputDemoActivity.class),
-	INPUT_KEY(R.string.group_input_key, KeyInputDemoActivity.class);
+	INPUT_KEY(R.string.group_input_key, KeyInputDemoActivity.class),
+	INPUT_ACCELEROMETER(R.string.group_input_accelerometer, AccelerometerDemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

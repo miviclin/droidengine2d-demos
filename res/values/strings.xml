@@ -42,10 +42,11 @@
     <!-- Screen management -->
     <string name="group_screen_management">Screen management</string>
 
-    <!-- User input -->
-    <string name="group_input">User input</string>
+    <!-- Input -->
+    <string name="group_input">Input</string>
     <string name="group_input_touch">Touch input</string>
     <string name="group_input_key">Key input</string>
+    <string name="group_input_accelerometer">Accelerometer</string>
 
     <!--  -->
     <!-- Demos -->

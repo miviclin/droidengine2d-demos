@@ -51,6 +51,7 @@ public class MainActivity extends Activity {
 		List<Demo> inputDemos = new ArrayList<Demo>();
 		inputDemos.add(Demo.INPUT_TOUCH);
 		inputDemos.add(Demo.INPUT_KEY);
+		inputDemos.add(Demo.INPUT_ACCELEROMETER);
 		listData.addGroup(DemosGroup.INPUT, inputDemos);
 
 		return listData;

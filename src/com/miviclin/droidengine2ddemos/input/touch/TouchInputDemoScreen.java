@@ -18,7 +18,7 @@ import com.miviclin.droidengine2ddemos.util.Rectangle;
 public class TouchInputDemoScreen extends Screen {
 
 	private Color backgroundColor;
-	private volatile Rectangle<TextureMaterial> rectangle;
+	private Rectangle<TextureMaterial> rectangle;
 
 	public TouchInputDemoScreen(float viewWidth, float viewHeight, Game game) {
 		super(viewWidth, viewHeight, game);
