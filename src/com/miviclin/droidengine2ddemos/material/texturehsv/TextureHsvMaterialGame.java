@@ -13,7 +13,7 @@ public class TextureHsvMaterialGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new TextureHsvMaterialScreen(this), true);
+		getGameStateManager().registerGameState(0, new TextureHsvMaterialGameState(this), true);
 		System.gc();
 	}
 

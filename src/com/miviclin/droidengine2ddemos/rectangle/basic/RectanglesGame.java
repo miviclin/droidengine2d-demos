@@ -13,7 +13,7 @@ public class RectanglesGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new RectanglesScreen(this), true);
+		getGameStateManager().registerGameState(0, new RectanglesGameState(this), true);
 		System.gc();
 	}
 

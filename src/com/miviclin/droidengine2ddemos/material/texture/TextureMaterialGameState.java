@@ -1,20 +1,20 @@
 package com.miviclin.droidengine2ddemos.material.texture;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TextureMaterialScreen extends Screen {
+public class TextureMaterialGameState extends GameState {
 
 	private Rectangle<TextureMaterial> rectangle;
 
-	public TextureMaterialScreen(Game game) {
+	public TextureMaterialGameState(Game game) {
 		super(game);
 	}
 

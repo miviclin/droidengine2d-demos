@@ -3,6 +3,7 @@ package com.miviclin.droidengine2ddemos.input.touch;
 import android.view.MotionEvent;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
@@ -10,17 +11,16 @@ import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.input.MotionEventProcessor;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TouchInputDemoScreen extends Screen {
+public class TouchInputDemoGameState extends GameState {
 
 	private Color backgroundColor;
 	private Rectangle<TextureMaterial> rectangle;
 
-	public TouchInputDemoScreen(Game game) {
+	public TouchInputDemoGameState(Game game) {
 		super(game);
 	}
 

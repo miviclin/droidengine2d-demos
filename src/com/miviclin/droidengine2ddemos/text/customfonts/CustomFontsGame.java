@@ -13,7 +13,7 @@ public class CustomFontsGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new CustomFontsScreen(this), true);
+		getGameStateManager().registerGameState(0, new CustomFontsGameState(this), true);
 		System.gc();
 	}
 

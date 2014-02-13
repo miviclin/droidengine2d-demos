@@ -1,21 +1,21 @@
 package com.miviclin.droidengine2ddemos.input.accelerometer;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.input.sensor.Accelerometer;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.MovingRectangle;
 
-public class AccelerometerDemoScreen extends Screen {
+public class AccelerometerDemoGameState extends GameState {
 
 	private MovingRectangle<TextureMaterial> rectangle;
 
-	public AccelerometerDemoScreen(Game game) {
+	public AccelerometerDemoGameState(Game game) {
 		super(game);
 	}
 
@@ -25,7 +25,7 @@ public class AccelerometerDemoScreen extends Screen {
 		float accelerometerX = accelerometer.getValuesListener().getX();
 		float accelerometerY = accelerometer.getValuesListener().getY();
 		rectangle.move(-accelerometerX * 0.1f, -accelerometerY * 0.1f, delta);
-		handleRectangleCollisionsWithScreenBounds();
+		handleRectangleCollisionsWithGameStateBounds();
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class AccelerometerDemoScreen extends Screen {
 	public void onDispose() {
 	}
 
-	private void handleRectangleCollisionsWithScreenBounds() {
+	private void handleRectangleCollisionsWithGameStateBounds() {
 		Vector2 position = rectangle.getTransform().getPosition();
 		Vector2 scale = rectangle.getTransform().getScale();
 		float halfWidth = scale.getX() / 2.0f;

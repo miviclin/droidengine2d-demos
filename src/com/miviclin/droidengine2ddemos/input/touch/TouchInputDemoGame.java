@@ -13,7 +13,7 @@ public class TouchInputDemoGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new TouchInputDemoScreen(this), true);
+		getGameStateManager().registerGameState(0, new TouchInputDemoGameState(this), true);
 		System.gc();
 	}
 

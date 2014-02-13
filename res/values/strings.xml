@@ -40,7 +40,7 @@
     <string name="group_audio">Audio</string>
 
     <!-- Screen management -->
-    <string name="group_screen_management">Screen management</string>
+    <string name="group_gamestate_management">GameState management</string>
 
     <!-- Input -->
     <string name="group_input">Input</string>

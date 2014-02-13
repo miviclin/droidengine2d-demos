@@ -13,7 +13,7 @@ public class BasicRotationGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new BasicRotationScreen(this), true);
+		getGameStateManager().registerGameState(0, new BasicRotationGameState(this), true);
 		System.gc();
 	}
 

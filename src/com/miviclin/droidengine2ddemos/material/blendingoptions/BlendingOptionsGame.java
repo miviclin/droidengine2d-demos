@@ -13,7 +13,7 @@ public class BlendingOptionsGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new BlendingOptionsScreen(this), true);
+		getGameStateManager().registerGameState(0, new BlendingOptionsGameState(this), true);
 		System.gc();
 	}
 

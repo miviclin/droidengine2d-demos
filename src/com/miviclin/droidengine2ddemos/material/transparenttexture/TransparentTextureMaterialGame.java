@@ -13,7 +13,7 @@ public class TransparentTextureMaterialGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new TransparentTextureMaterialScreen(this), true);
+		getGameStateManager().registerGameState(0, new TransparentTextureMaterialGameState(this), true);
 		System.gc();
 	}
 

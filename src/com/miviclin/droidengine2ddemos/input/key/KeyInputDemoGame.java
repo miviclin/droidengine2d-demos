@@ -13,7 +13,7 @@ public class KeyInputDemoGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new KeyInputDemoScreen(this), true);
+		getGameStateManager().registerGameState(0, new KeyInputDemoGameState(this), true);
 		System.gc();
 	}
 

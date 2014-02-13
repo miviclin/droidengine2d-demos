@@ -15,19 +15,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.BlendingOptions;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class BlendingOptionsScreen extends Screen {
+public class BlendingOptionsGameState extends GameState {
 
 	private static final BlendingFactor DEFAULT_SOURCE_FACTOR = BlendingFactor.GL_SRC_ALPHA;
 	private static final BlendingFactor DEFAULT_DEST_FACTOR = BlendingFactor.GL_ONE_MINUS_SRC_ALPHA;
@@ -40,7 +40,7 @@ public class BlendingOptionsScreen extends Screen {
 	private AlertDialog alertDialog;
 	private AtomicBoolean handlingException;
 
-	public BlendingOptionsScreen(Game game) {
+	public BlendingOptionsGameState(Game game) {
 		super(game);
 		this.blendingFactors = new LinkedHashMap<String, Integer>();
 		this.blendingEquations = new LinkedHashMap<String, Integer>();

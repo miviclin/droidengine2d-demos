@@ -1,13 +1,13 @@
 package com.miviclin.droidengine2ddemos.text.customfonts;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.text.BitmapFont;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class CustomFontsScreen extends Screen {
+public class CustomFontsGameState extends GameState {
 
 	private Color backgroundColor;
 
@@ -22,7 +22,7 @@ public class CustomFontsScreen extends Screen {
 
 	private int textSizePx;
 
-	public CustomFontsScreen(Game game) {
+	public CustomFontsGameState(Game game) {
 		super(game);
 	}
 

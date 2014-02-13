@@ -5,20 +5,20 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class ColorMaterialScreen extends Screen {
+public class ColorMaterialGameState extends GameState {
 
 	private Rectangle<ColorMaterial> rectangle;
 
-	public ColorMaterialScreen(Game game) {
+	public ColorMaterialGameState(Game game) {
 		super(game);
 	}
 

@@ -1,20 +1,20 @@
 package com.miviclin.droidengine2ddemos.rectangle.rotation.basic;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class BasicRotationScreen extends Screen {
+public class BasicRotationGameState extends GameState {
 
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle;
 
-	public BasicRotationScreen(Game game) {
+	public BasicRotationGameState(Game game) {
 		super(game);
 	}
 

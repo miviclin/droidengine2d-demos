@@ -3,17 +3,17 @@ package com.miviclin.droidengine2ddemos.input.key;
 import android.view.KeyEvent;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.input.KeyEventInfo;
 import com.miviclin.droidengine2d.input.KeyEventProcessor;
-import com.miviclin.droidengine2d.screen.Screen;
 
-public class KeyInputDemoScreen extends Screen {
+public class KeyInputDemoGameState extends GameState {
 
 	private Color backgroundColor;
 
-	public KeyInputDemoScreen(Game game) {
+	public KeyInputDemoGameState(Game game) {
 		super(game);
 	}
 

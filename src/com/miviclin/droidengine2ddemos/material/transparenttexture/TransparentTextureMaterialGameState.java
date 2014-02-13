@@ -5,21 +5,21 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TransparentTextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TransparentTextureMaterialScreen extends Screen {
+public class TransparentTextureMaterialGameState extends GameState {
 
 	private Rectangle<TransparentTextureMaterial> rectangle;
 
-	public TransparentTextureMaterialScreen(Game game) {
+	public TransparentTextureMaterialGameState(Game game) {
 		super(game);
 	}
 

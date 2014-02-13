@@ -13,7 +13,7 @@ public class AccelerometerDemoGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new AccelerometerDemoScreen(this), true);
+		getGameStateManager().registerGameState(0, new AccelerometerDemoGameState(this), true);
 		System.gc();
 	}
 

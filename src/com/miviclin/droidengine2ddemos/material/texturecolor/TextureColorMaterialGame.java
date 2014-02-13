@@ -13,7 +13,7 @@ public class TextureColorMaterialGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new TextureColorMaterialScreen(this), true);
+		getGameStateManager().registerGameState(0, new TextureColorMaterialGameState(this), true);
 		System.gc();
 	}
 

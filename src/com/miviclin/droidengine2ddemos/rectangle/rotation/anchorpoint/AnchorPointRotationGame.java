@@ -13,7 +13,7 @@ public class AnchorPointRotationGame extends Game {
 
 	@Override
 	public void initialize() {
-		getScreenManager().registerScreen(0, new AnchorPointRotationScreen(this), true);
+		getGameStateManager().registerGameState(0, new AnchorPointRotationGameState(this), true);
 		System.gc();
 	}
 
