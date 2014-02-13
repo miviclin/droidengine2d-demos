@@ -8,7 +8,7 @@ import com.miviclin.droidengine2d.graphics.GLView;
 public class TextureHsvMaterialGame extends Game {
 
 	public TextureHsvMaterialGame(GLView glView, Activity activity) {
-		super("", glView, activity);
+		super(glView, activity);
 	}
 
 	@Override

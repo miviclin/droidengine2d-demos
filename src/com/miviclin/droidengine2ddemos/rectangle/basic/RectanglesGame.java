@@ -8,7 +8,7 @@ import com.miviclin.droidengine2d.graphics.GLView;
 public class RectanglesGame extends Game {
 
 	public RectanglesGame(GLView glView, Activity activity) {
-		super("", glView, activity);
+		super(glView, activity);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import com.miviclin.droidengine2d.graphics.GLView;
 public class BlendingOptionsGame extends Game {
 
 	public BlendingOptionsGame(GLView glView, Activity activity) {
-		super("", glView, activity);
+		super(glView, activity);
 	}
 
 	@Override
