@@ -18,8 +18,8 @@ public class ColorMaterialScreen extends Screen {
 
 	private Rectangle<ColorMaterial> rectangle;
 
-	public ColorMaterialScreen(float width, float height, Game game) {
-		super(width, height, game);
+	public ColorMaterialScreen(Game game) {
+		super(game);
 	}
 
 	@Override

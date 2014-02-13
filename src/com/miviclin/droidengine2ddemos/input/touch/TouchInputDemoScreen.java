@@ -20,8 +20,8 @@ public class TouchInputDemoScreen extends Screen {
 	private Color backgroundColor;
 	private Rectangle<TextureMaterial> rectangle;
 
-	public TouchInputDemoScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public TouchInputDemoScreen(Game game) {
+		super(game);
 	}
 
 	@Override

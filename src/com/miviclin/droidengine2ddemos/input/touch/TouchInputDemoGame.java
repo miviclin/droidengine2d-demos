@@ -12,8 +12,8 @@ public class TouchInputDemoGame extends Game {
 	}
 
 	@Override
-	public void initialize(float viewWidth, float viewHeight) {
-		getScreenManager().registerScreen(0, new TouchInputDemoScreen(viewWidth, viewHeight, this), true);
+	public void initialize() {
+		getScreenManager().registerScreen(0, new TouchInputDemoScreen(this), true);
 		System.gc();
 	}
 

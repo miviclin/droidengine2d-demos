@@ -14,8 +14,8 @@ public class BasicRotationScreen extends Screen {
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle;
 
-	public BasicRotationScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public BasicRotationScreen(Game game) {
+		super(game);
 	}
 
 	@Override

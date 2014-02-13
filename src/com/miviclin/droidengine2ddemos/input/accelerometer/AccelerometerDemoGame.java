@@ -12,8 +12,8 @@ public class AccelerometerDemoGame extends Game {
 	}
 
 	@Override
-	public void initialize(float viewWidth, float viewHeight) {
-		getScreenManager().registerScreen(0, new AccelerometerDemoScreen(viewWidth, viewHeight, this), true);
+	public void initialize() {
+		getScreenManager().registerScreen(0, new AccelerometerDemoScreen(this), true);
 		System.gc();
 	}
 

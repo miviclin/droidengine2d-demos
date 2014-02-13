@@ -40,8 +40,8 @@ public class BlendingOptionsScreen extends Screen {
 	private AlertDialog alertDialog;
 	private AtomicBoolean handlingException;
 
-	public BlendingOptionsScreen(float width, float height, Game game) {
-		super(width, height, game);
+	public BlendingOptionsScreen(Game game) {
+		super(game);
 		this.blendingFactors = new LinkedHashMap<String, Integer>();
 		this.blendingEquations = new LinkedHashMap<String, Integer>();
 

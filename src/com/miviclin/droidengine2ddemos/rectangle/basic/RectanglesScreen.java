@@ -16,8 +16,8 @@ public class RectanglesScreen extends Screen {
 	private Rectangle<ColorMaterial> rectangle2;
 	private Rectangle<ColorMaterial> rectangle3;
 
-	public RectanglesScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public RectanglesScreen(Game game) {
+		super(game);
 	}
 
 	@Override

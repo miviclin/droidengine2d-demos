@@ -19,8 +19,8 @@ public class TransparentTextureMaterialScreen extends Screen {
 
 	private Rectangle<TransparentTextureMaterial> rectangle;
 
-	public TransparentTextureMaterialScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public TransparentTextureMaterialScreen(Game game) {
+		super(game);
 	}
 
 	@Override

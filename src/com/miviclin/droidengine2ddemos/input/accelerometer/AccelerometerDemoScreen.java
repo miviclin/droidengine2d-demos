@@ -15,8 +15,8 @@ public class AccelerometerDemoScreen extends Screen {
 
 	private MovingRectangle<TextureMaterial> rectangle;
 
-	public AccelerometerDemoScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public AccelerometerDemoScreen(Game game) {
+		super(game);
 	}
 
 	@Override

@@ -14,8 +14,8 @@ public class TextureMaterialScreen extends Screen {
 
 	private Rectangle<TextureMaterial> rectangle;
 
-	public TextureMaterialScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public TextureMaterialScreen(Game game) {
+		super(game);
 	}
 
 	@Override

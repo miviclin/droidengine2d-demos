@@ -22,8 +22,8 @@ public class CustomFontsScreen extends Screen {
 
 	private int textSizePx;
 
-	public CustomFontsScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public CustomFontsScreen(Game game) {
+		super(game);
 	}
 
 	@Override

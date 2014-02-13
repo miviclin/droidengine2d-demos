@@ -13,8 +13,8 @@ public class KeyInputDemoScreen extends Screen {
 
 	private Color backgroundColor;
 
-	public KeyInputDemoScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public KeyInputDemoScreen(Game game) {
+		super(game);
 	}
 
 	@Override

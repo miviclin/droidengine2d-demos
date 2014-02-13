@@ -19,8 +19,8 @@ public class TextureHsvMaterialScreen extends Screen {
 
 	private Rectangle<TextureHsvMaterial> rectangle;
 
-	public TextureHsvMaterialScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public TextureHsvMaterialScreen(Game game) {
+		super(game);
 	}
 
 	@Override

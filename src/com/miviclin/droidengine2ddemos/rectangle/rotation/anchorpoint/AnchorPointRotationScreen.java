@@ -15,8 +15,8 @@ public class AnchorPointRotationScreen extends Screen {
 	private Rectangle<ColorMaterial> rectangle1;
 	private Rectangle<ColorMaterial> rectangle2;
 
-	public AnchorPointRotationScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public AnchorPointRotationScreen(Game game) {
+		super(game);
 	}
 
 	@Override
