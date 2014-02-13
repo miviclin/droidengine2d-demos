@@ -31,8 +31,7 @@ public class KeyInputDemoScreen extends Screen {
 		final Color backgroundColorDefault = new Color(0.5f, 0.5f, 0.5f);
 		final Color onKeyDownBackgroundColor = new Color(1.0f, 0.0f, 0.0f);
 
-		backgroundColor = new Color(0.0f, 0.0f, 0.0f);
-		backgroundColor.set(backgroundColorDefault);
+		backgroundColor = new Color(backgroundColorDefault);
 
 		getInputManager().getKeyProcessor().setKeyEventProcessor(new KeyEventProcessor() {
 
