@@ -80,7 +80,9 @@ public class BlendingOptionsGameState extends GameState {
 		squaresAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(squaresAtlas);
 
-		square.getTransform().getPosition().set(getWidth() / 2, getHeight() / 2);
+		float viewWidth = getGame().getViewWidth();
+		float viewHeight = getGame().getViewHeight();
+		square.getTransform().getPosition().set(viewWidth / 2, viewHeight / 2);
 		square.getTransform().getOrigin().set(120, 120);
 		square.getTransform().getScale().set(240, 240);
 		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("greensquare_on_shadow.png"));
@@ -90,8 +92,8 @@ public class BlendingOptionsGameState extends GameState {
 		getGame().getTextureManager().addTextureAtlas(backgroundAtlas);
 
 		int tileSize = 40;
-		int numTilesX = (int) (getWidth() / tileSize + 1);
-		int numTilesY = (int) (getHeight() / tileSize + 1);
+		int numTilesX = (int) (viewWidth / tileSize + 1);
+		int numTilesY = (int) (viewHeight / tileSize + 1);
 		TextureRegion backgroundTile = backgroundAtlas.getTextureRegion("background_tile.png");
 		for (int i = 0; i < numTilesX; i++) {
 			for (int j = 0; j < numTilesY; j++) {

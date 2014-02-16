@@ -33,8 +33,8 @@ public class TextureMaterialGameState extends GameState {
 		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(textureAtlas);
 
-		float viewWidth = getWidth();
-		float viewHeight = getHeight();
+		float viewWidth = getGame().getViewWidth();
+		float viewHeight = getGame().getViewHeight();
 		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));

@@ -25,7 +25,10 @@ public class AccelerometerDemoGameState extends GameState {
 		float accelerometerX = accelerometer.getValuesListener().getX();
 		float accelerometerY = accelerometer.getValuesListener().getY();
 		rectangle.move(-accelerometerX * 0.1f, -accelerometerY * 0.1f, delta);
-		handleRectangleCollisionsWithGameStateBounds();
+
+		float viewWidth = getGame().getViewWidth();
+		float viewHeight = getGame().getViewHeight();
+		handleRectangleCollisionsWithViewBounds(viewWidth, viewHeight);
 	}
 
 	@Override
@@ -39,8 +42,8 @@ public class AccelerometerDemoGameState extends GameState {
 		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(textureAtlas);
 
-		float viewWidth = getWidth();
-		float viewHeight = getHeight();
+		float viewWidth = getGame().getViewWidth();
+		float viewHeight = getGame().getViewHeight();
 		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new MovingRectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
@@ -74,20 +77,20 @@ public class AccelerometerDemoGameState extends GameState {
 	public void onDispose() {
 	}
 
-	private void handleRectangleCollisionsWithGameStateBounds() {
+	private void handleRectangleCollisionsWithViewBounds(float viewWidth, float viewHeight) {
 		Vector2 position = rectangle.getTransform().getPosition();
 		Vector2 scale = rectangle.getTransform().getScale();
 		float halfWidth = scale.getX() / 2.0f;
 		if ((position.getX() - halfWidth) < 0) {
 			position.setX(halfWidth);
-		} else if (getWidth() < (position.getX() + halfWidth)) {
-			position.setX(getWidth() - halfWidth);
+		} else if (viewWidth < (position.getX() + halfWidth)) {
+			position.setX(viewWidth - halfWidth);
 		}
 		float halfHeight = scale.getY() / 2.0f;
 		if ((position.getY() - halfHeight) < 0) {
 			position.setY(halfHeight);
-		} else if (getHeight() < (position.getY() + halfHeight)) {
-			position.setY(getHeight() - halfHeight);
+		} else if (viewHeight < (position.getY() + halfHeight)) {
+			position.setY(viewHeight - halfHeight);
 		}
 	}
 

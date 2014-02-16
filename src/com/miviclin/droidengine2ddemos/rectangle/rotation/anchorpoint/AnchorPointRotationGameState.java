@@ -36,13 +36,16 @@ public class AnchorPointRotationGameState extends GameState {
 	public void onRegister() {
 		backgroundColor = new Color(1, 1, 1);
 
-		Vector2 pos1 = new Vector2(getWidth() / 2, getHeight() / 2);
+		float viewWidth = getGame().getViewWidth();
+		float viewHeight = getGame().getViewHeight();
+
+		Vector2 pos1 = new Vector2(viewWidth / 2, viewHeight / 2);
 		Vector2 scale1 = new Vector2(200, 200);
 		Vector2 orig1 = new Vector2(scale1.getX() / 2, scale1.getY() / 2);
 		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, scale1, orig1, 0),
 				new ColorMaterial(new Color(0, 0, 0)));
 
-		Vector2 pos2 = new Vector2(getWidth() / 2, getHeight() / 2);
+		Vector2 pos2 = new Vector2(viewWidth / 2, viewHeight / 2);
 		Vector2 scale2 = new Vector2(200, 200);
 		Vector2 orig2 = new Vector2(0, 0);
 		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, scale2, orig2, 0),

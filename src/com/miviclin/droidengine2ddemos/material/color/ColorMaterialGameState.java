@@ -42,8 +42,8 @@ public class ColorMaterialGameState extends GameState {
 
 	@Override
 	public void onRegister() {
-		float viewWidth = getWidth();
-		float viewHeight = getHeight();
+		float viewWidth = getGame().getViewWidth();
+		float viewHeight = getGame().getViewHeight();
 		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new Rectangle<ColorMaterial>(transform, new ColorMaterial(new Color(0.0f, 1.0f, 0.0f)));
 

@@ -42,7 +42,9 @@ public class TouchInputDemoGameState extends GameState {
 		textureAtlas.loadFromFile("textures/circles.xml", getGame().getActivity());
 		getGame().getTextureManager().addTextureAtlas(textureAtlas);
 
-		Transform transform = new Transform(new Vector2(getWidth() / 2, getHeight() / 2), new Vector2(240, 240));
+		final float viewWidth = getGame().getViewWidth();
+		final float viewHeight = getGame().getViewHeight();
+		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("circle-red.png")));
 
@@ -59,7 +61,7 @@ public class TouchInputDemoGameState extends GameState {
 					textureRegion = textureAtlas.getTextureRegion("circle-blue.png");
 				}
 				rectangle.getMaterial().setTextureRegion(textureRegion);
-				rectangle.getTransform().getPosition().set(motionEvent.getX(), getHeight() - motionEvent.getY());
+				rectangle.getTransform().getPosition().set(motionEvent.getX(), viewHeight - motionEvent.getY());
 			}
 		});
 	}
