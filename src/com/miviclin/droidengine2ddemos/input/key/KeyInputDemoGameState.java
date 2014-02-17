@@ -33,7 +33,7 @@ public class KeyInputDemoGameState extends GameState {
 
 		backgroundColor = new Color(backgroundColorDefault);
 
-		getInputManager().getKeyProcessor().setKeyEventProcessor(new KeyEventProcessor() {
+		getGameStateInputManager().getKeyProcessor().setKeyEventProcessor(new KeyEventProcessor() {
 
 			@Override
 			public void processKeyEvent(KeyEventInfo event) {

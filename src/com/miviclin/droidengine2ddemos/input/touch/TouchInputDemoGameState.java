@@ -48,7 +48,7 @@ public class TouchInputDemoGameState extends GameState {
 		rectangle = new Rectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("circle-red.png")));
 
-		getInputManager().getTouchProcessor().setMotionEventProcessor(new MotionEventProcessor() {
+		getGameStateInputManager().getTouchProcessor().setMotionEventProcessor(new MotionEventProcessor() {
 
 			@Override
 			public void processMotionEvent(MotionEvent motionEvent) {

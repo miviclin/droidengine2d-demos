@@ -21,7 +21,7 @@ public class AccelerometerDemoGameState extends GameState {
 
 	@Override
 	public void update(float delta) {
-		Accelerometer accelerometer = getInputManager().getAccelerometer();
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		float accelerometerX = accelerometer.getValuesListener().getX();
 		float accelerometerY = accelerometer.getValuesListener().getY();
 		rectangle.move(-accelerometerX * 0.1f, -accelerometerY * 0.1f, delta);
@@ -48,7 +48,7 @@ public class AccelerometerDemoGameState extends GameState {
 		rectangle = new MovingRectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
 
-		Accelerometer accelerometer = getInputManager().getAccelerometer();
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.getValuesListener().useCoordinateSystemOfDisplay();
 		accelerometer.startListening();
 	}
@@ -63,13 +63,13 @@ public class AccelerometerDemoGameState extends GameState {
 
 	@Override
 	public void onPause() {
-		Accelerometer accelerometer = getInputManager().getAccelerometer();
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.stopListening();
 	}
 
 	@Override
 	public void onResume() {
-		Accelerometer accelerometer = getInputManager().getAccelerometer();
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.startListening();
 	}
 
