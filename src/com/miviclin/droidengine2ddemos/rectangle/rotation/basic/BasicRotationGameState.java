@@ -33,8 +33,8 @@ public class BasicRotationGameState extends GameState {
 	public void onRegister() {
 		backgroundColor = new Color(1, 1, 1);
 
-		float viewWidth = getGame().getViewWidth();
-		float viewHeight = getGame().getViewHeight();
+		float viewWidth = getCamera().getViewportWidth();
+		float viewHeight = getCamera().getViewportHeight();
 		Vector2 rectPos = new Vector2(viewWidth / 2, viewHeight / 2);
 		Vector2 rectScale = new Vector2(200, 200);
 		Transform transform = new Transform(rectPos, rectScale);

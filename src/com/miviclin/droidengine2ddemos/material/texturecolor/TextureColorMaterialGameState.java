@@ -26,10 +26,10 @@ public class TextureColorMaterialGameState extends GameState {
 
 	@Override
 	public void update(float delta) {
-		SeekBar sbRed = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_red);
-		SeekBar sbGreen = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_green);
-		SeekBar sbBlue = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_blue);
-		SeekBar sbAlpha = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_alpha);
+		SeekBar sbRed = (SeekBar) getActivity().findViewById(R.id.seekbar_red);
+		SeekBar sbGreen = (SeekBar) getActivity().findViewById(R.id.seekbar_green);
+		SeekBar sbBlue = (SeekBar) getActivity().findViewById(R.id.seekbar_blue);
+		SeekBar sbAlpha = (SeekBar) getActivity().findViewById(R.id.seekbar_alpha);
 		float r = sbRed.getProgress() / 255.0f;
 		float g = sbGreen.getProgress() / 255.0f;
 		float b = sbBlue.getProgress() / 255.0f;
@@ -45,17 +45,18 @@ public class TextureColorMaterialGameState extends GameState {
 	@Override
 	public void onRegister() {
 		TextureAtlas textureAtlas = new TexturePackerAtlas();
-		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
-		getGame().getTextureManager().addTextureAtlas(textureAtlas);
+		textureAtlas.loadFromFile("textures/squares.xml", getActivity());
+		getTextureManager().addTextureAtlas(textureAtlas);
 
-		Transform transform = new Transform(new Vector2(getGame().getViewWidth() / 2, 125), new Vector2(240, 240));
+		float viewWidth = getCamera().getViewportWidth();
+		Transform transform = new Transform(new Vector2(viewWidth / 2, 125), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureColorMaterial>(transform,
 				new TextureColorMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png"),
 						new Color(1.0f, 1.0f, 1.0f, 1.0f)));
 
-		final TextView tvRed = (TextView) getGame().getActivity().findViewById(R.id.textview_red);
+		final TextView tvRed = (TextView) getActivity().findViewById(R.id.textview_red);
 
-		SeekBar sbRed = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_red);
+		SeekBar sbRed = (SeekBar) getActivity().findViewById(R.id.seekbar_red);
 		sbRed.setMax(255);
 		sbRed.setProgress(255);
 		sbRed.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -74,9 +75,9 @@ public class TextureColorMaterialGameState extends GameState {
 			}
 		});
 
-		final TextView tvGreen = (TextView) getGame().getActivity().findViewById(R.id.textview_green);
+		final TextView tvGreen = (TextView) getActivity().findViewById(R.id.textview_green);
 
-		SeekBar sbGreen = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_green);
+		SeekBar sbGreen = (SeekBar) getActivity().findViewById(R.id.seekbar_green);
 		sbGreen.setMax(255);
 		sbGreen.setProgress(255);
 		sbGreen.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -95,9 +96,9 @@ public class TextureColorMaterialGameState extends GameState {
 			}
 		});
 
-		final TextView tvBlue = (TextView) getGame().getActivity().findViewById(R.id.textview_blue);
+		final TextView tvBlue = (TextView) getActivity().findViewById(R.id.textview_blue);
 
-		SeekBar sbBlue = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_blue);
+		SeekBar sbBlue = (SeekBar) getActivity().findViewById(R.id.seekbar_blue);
 		sbBlue.setMax(255);
 		sbBlue.setProgress(255);
 		sbBlue.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -116,9 +117,9 @@ public class TextureColorMaterialGameState extends GameState {
 			}
 		});
 
-		final TextView tvAlpha = (TextView) getGame().getActivity().findViewById(R.id.textview_alpha);
+		final TextView tvAlpha = (TextView) getActivity().findViewById(R.id.textview_alpha);
 
-		SeekBar sbAlpha = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_alpha);
+		SeekBar sbAlpha = (SeekBar) getActivity().findViewById(R.id.seekbar_alpha);
 		sbAlpha.setMax(255);
 		sbAlpha.setProgress(255);
 		sbAlpha.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {

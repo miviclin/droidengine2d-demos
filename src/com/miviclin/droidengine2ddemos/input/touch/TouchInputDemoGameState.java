@@ -39,11 +39,11 @@ public class TouchInputDemoGameState extends GameState {
 		backgroundColor = new Color(0.5f, 0.5f, 0.5f);
 
 		final TextureAtlas textureAtlas = new TexturePackerAtlas();
-		textureAtlas.loadFromFile("textures/circles.xml", getGame().getActivity());
-		getGame().getTextureManager().addTextureAtlas(textureAtlas);
+		textureAtlas.loadFromFile("textures/circles.xml", getActivity());
+		getTextureManager().addTextureAtlas(textureAtlas);
 
-		final float viewWidth = getGame().getViewWidth();
-		final float viewHeight = getGame().getViewHeight();
+		final float viewWidth = getCamera().getViewportWidth();
+		final float viewHeight = getCamera().getViewportHeight();
 		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureMaterial>(transform,
 				new TextureMaterial(textureAtlas.getTextureRegion("circle-red.png")));

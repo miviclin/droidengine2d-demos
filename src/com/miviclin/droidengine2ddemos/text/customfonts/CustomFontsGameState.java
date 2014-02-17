@@ -45,16 +45,16 @@ public class CustomFontsGameState extends GameState {
 		backgroundColor = new Color(0.5f, 0.5f, 0.5f);
 
 		fontArial = new BitmapFont();
-		fontArial.loadFromFile("fonts/arial.fnt", getGame().getActivity());
-		getGame().getTextureManager().addFontTextures(fontArial);
+		fontArial.loadFromFile("fonts/arial.fnt", getActivity());
+		getTextureManager().addFontTextures(fontArial);
 
 		fontRosewood = new BitmapFont();
-		fontRosewood.loadFromFile("fonts/rosewood.fnt", getGame().getActivity());
-		getGame().getTextureManager().addFontTextures(fontRosewood);
+		fontRosewood.loadFromFile("fonts/rosewood.fnt", getActivity());
+		getTextureManager().addFontTextures(fontRosewood);
 
 		font04b03 = new BitmapFont();
-		font04b03.loadFromFile("fonts/04b03.fnt", getGame().getActivity());
-		getGame().getTextureManager().addFontTextures(font04b03);
+		font04b03.loadFromFile("fonts/04b03.fnt", getActivity());
+		getTextureManager().addFontTextures(font04b03);
 
 		textSizePx = 50;
 

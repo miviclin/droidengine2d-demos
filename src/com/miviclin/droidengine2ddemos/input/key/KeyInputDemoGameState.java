@@ -38,7 +38,7 @@ public class KeyInputDemoGameState extends GameState {
 			@Override
 			public void processKeyEvent(KeyEventInfo event) {
 				if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-					getGame().getActivity().finish();
+					getActivity().finish();
 					return;
 				}
 				if (event.getAction() == KeyEvent.ACTION_DOWN) {

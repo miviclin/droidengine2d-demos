@@ -2,10 +2,10 @@ package com.miviclin.droidengine2ddemos.text.customfonts;
 
 import android.app.Activity;
 
-import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.AbstractGame;
 import com.miviclin.droidengine2d.graphics.GLView;
 
-public class CustomFontsGame extends Game {
+public class CustomFontsGame extends AbstractGame {
 
 	public CustomFontsGame(GLView glView, Activity activity) {
 		super(glView, activity);
@@ -14,7 +14,6 @@ public class CustomFontsGame extends Game {
 	@Override
 	public void initialize() {
 		getGameStateManager().registerGameState(0, new CustomFontsGameState(this), true);
-		System.gc();
 	}
 
 }

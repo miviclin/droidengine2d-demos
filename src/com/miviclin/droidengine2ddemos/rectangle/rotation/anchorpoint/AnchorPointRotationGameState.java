@@ -36,8 +36,8 @@ public class AnchorPointRotationGameState extends GameState {
 	public void onRegister() {
 		backgroundColor = new Color(1, 1, 1);
 
-		float viewWidth = getGame().getViewWidth();
-		float viewHeight = getGame().getViewHeight();
+		float viewWidth = getCamera().getViewportWidth();
+		float viewHeight = getCamera().getViewportHeight();
 
 		Vector2 pos1 = new Vector2(viewWidth / 2, viewHeight / 2);
 		Vector2 scale1 = new Vector2(200, 200);

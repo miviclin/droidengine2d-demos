@@ -25,7 +25,7 @@ public class TransparentTextureMaterialGameState extends GameState {
 
 	@Override
 	public void update(float delta) {
-		SeekBar sbOpacity = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_opacity);
+		SeekBar sbOpacity = (SeekBar) getActivity().findViewById(R.id.seekbar_opacity);
 		rectangle.getMaterial().setOpacity(sbOpacity.getProgress() / 100.0f);
 	}
 
@@ -37,16 +37,17 @@ public class TransparentTextureMaterialGameState extends GameState {
 	@Override
 	public void onRegister() {
 		TextureAtlas textureAtlas = new TexturePackerAtlas();
-		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
-		getGame().getTextureManager().addTextureAtlas(textureAtlas);
+		textureAtlas.loadFromFile("textures/squares.xml", getActivity());
+		getTextureManager().addTextureAtlas(textureAtlas);
 
-		Transform transform = new Transform(new Vector2(getGame().getViewWidth() / 2, 125), new Vector2(240, 240));
+		float viewWidth = getCamera().getViewportWidth();
+		Transform transform = new Transform(new Vector2(viewWidth / 2, 125), new Vector2(240, 240));
 		rectangle = new Rectangle<TransparentTextureMaterial>(transform,
 				new TransparentTextureMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
 
-		final TextView tvOpacity = (TextView) getGame().getActivity().findViewById(R.id.textview_opacity);
+		final TextView tvOpacity = (TextView) getActivity().findViewById(R.id.textview_opacity);
 
-		SeekBar sbBrightness = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_opacity);
+		SeekBar sbBrightness = (SeekBar) getActivity().findViewById(R.id.seekbar_opacity);
 		sbBrightness.setProgress(100);
 		sbBrightness.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
