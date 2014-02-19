@@ -54,6 +54,10 @@ public class MainActivity extends Activity {
 		inputDemos.add(Demo.INPUT_ACCELEROMETER);
 		listData.addGroup(DemosGroup.INPUT, inputDemos);
 
+		List<Demo> gameStateManagementDemos = new ArrayList<Demo>();
+		gameStateManagementDemos.add(Demo.GAMESTATE_SWITCHING);
+		listData.addGroup(DemosGroup.GAMESTATES, gameStateManagementDemos);
+
 		return listData;
 	}
 
