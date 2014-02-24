@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:6608a9452b2ef5e8e1c4092684ac74a7:74cc84d8da6c692a95ac0d10f0164a44:5dcc2a128d7f4afb9fd785bbfae84aa0$ -->
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:162442df1f93b15ee2be69c171f5cdfb$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -13,27 +13,31 @@ oW => sprite's original width (only available if trimmed)
 oH => sprite's original height (only available if trimmed)
 r => 'y' only set if sprite is rotated
 -->
-<TextureAtlas imagePath="buttons-atlas.png" width="2048" height="512">
-    <sprite n="btn-large-about-normal.png" x="2" y="2" w="360" h="120"/>
-    <sprite n="btn-large-about-selected.png" x="364" y="2" w="360" h="120"/>
-    <sprite n="btn-large-acerca-de-normal.png" x="726" y="2" w="360" h="120"/>
-    <sprite n="btn-large-acerca-de-selected.png" x="1088" y="2" w="360" h="120"/>
-    <sprite n="btn-large-back-normal.png" x="1450" y="2" w="360" h="120"/>
-    <sprite n="btn-large-back-selected.png" x="2" y="124" w="360" h="120"/>
-    <sprite n="btn-large-exit-normal.png" x="364" y="124" w="360" h="120"/>
-    <sprite n="btn-large-exit-selected.png" x="726" y="124" w="360" h="120"/>
-    <sprite n="btn-large-levels-normal.png" x="1088" y="124" w="360" h="120"/>
-    <sprite n="btn-large-levels-selected.png" x="1450" y="124" w="360" h="120"/>
-    <sprite n="btn-large-niveles-normal.png" x="2" y="246" w="360" h="120"/>
-    <sprite n="btn-large-niveles-selected.png" x="364" y="246" w="360" h="120"/>
-    <sprite n="btn-large-salir-normal.png" x="726" y="246" w="360" h="120"/>
-    <sprite n="btn-large-salir-selected.png" x="1088" y="246" w="360" h="120"/>
-    <sprite n="btn-large-volver-normal.png" x="1450" y="246" w="360" h="120"/>
-    <sprite n="btn-large-volver-selected.png" x="2" y="368" w="360" h="120"/>
-    <sprite n="btn-small-1-normal.png" x="364" y="368" w="120" h="120"/>
-    <sprite n="btn-small-1-selected.png" x="486" y="368" w="120" h="120"/>
-    <sprite n="btn-small-2-normal.png" x="608" y="368" w="120" h="120"/>
-    <sprite n="btn-small-2-selected.png" x="730" y="368" w="120" h="120"/>
-    <sprite n="btn-small-3-normal.png" x="852" y="368" w="120" h="120"/>
-    <sprite n="btn-small-3-selected.png" x="974" y="368" w="120" h="120"/>
+<TextureAtlas imagePath="buttons-atlas.png" width="1024" height="2048">
+    <sprite n="btn-arrow-normal.png" x="2" y="2" w="120" h="120"/>
+    <sprite n="btn-arrow-selected.png" x="124" y="2" w="120" h="120"/>
+    <sprite n="btn-large-about-normal.png" x="246" y="2" w="360" h="120"/>
+    <sprite n="btn-large-about-selected.png" x="608" y="2" w="360" h="120"/>
+    <sprite n="btn-large-acerca-de-normal.png" x="2" y="124" w="360" h="120"/>
+    <sprite n="btn-large-acerca-de-selected.png" x="364" y="124" w="360" h="120"/>
+    <sprite n="btn-large-back-normal.png" x="2" y="246" w="360" h="120"/>
+    <sprite n="btn-large-back-selected.png" x="364" y="246" w="360" h="120"/>
+    <sprite n="btn-large-exit-normal.png" x="2" y="368" w="360" h="120"/>
+    <sprite n="btn-large-exit-selected.png" x="364" y="368" w="360" h="120"/>
+    <sprite n="btn-large-levels-normal.png" x="2" y="490" w="360" h="120"/>
+    <sprite n="btn-large-levels-selected.png" x="364" y="490" w="360" h="120"/>
+    <sprite n="btn-large-niveles-normal.png" x="2" y="612" w="360" h="120"/>
+    <sprite n="btn-large-niveles-selected.png" x="364" y="612" w="360" h="120"/>
+    <sprite n="btn-large-normal.png" x="2" y="734" w="360" h="120"/>
+    <sprite n="btn-large-salir-normal.png" x="364" y="734" w="360" h="120"/>
+    <sprite n="btn-large-salir-selected.png" x="2" y="856" w="360" h="120"/>
+    <sprite n="btn-large-selected.png" x="364" y="856" w="360" h="120"/>
+    <sprite n="btn-large-volver-normal.png" x="2" y="978" w="360" h="120"/>
+    <sprite n="btn-large-volver-selected.png" x="364" y="978" w="360" h="120"/>
+    <sprite n="btn-small-1-normal.png" x="726" y="978" w="120" h="120"/>
+    <sprite n="btn-small-1-selected.png" x="848" y="978" w="120" h="120"/>
+    <sprite n="btn-small-2-normal.png" x="2" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-2-selected.png" x="124" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-3-normal.png" x="246" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-3-selected.png" x="368" y="1100" w="120" h="120"/>
 </TextureAtlas>
