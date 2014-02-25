@@ -16,6 +16,7 @@ public class GameStateStackingDemoGame extends AbstractGame {
 		getGameStateManager().registerGameState(State.MAIN_MENU.getId(), new MainMenu(this));
 		getGameStateManager().registerGameState(State.LEVEL_SELECT_MENU.getId(), new LevelSelectMenu(this));
 		getGameStateManager().registerGameState(State.LEVEL_1.getId(), new Level(this));
+		getGameStateManager().registerGameState(State.DIALOG.getId(), new DialogGameState(this));
 
 		getGameStateManager().pushActiveGameState(State.MAIN_MENU.getId());
 	}

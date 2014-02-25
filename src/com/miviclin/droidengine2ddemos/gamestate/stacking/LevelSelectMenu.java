@@ -58,7 +58,7 @@ public class LevelSelectMenu extends BaseGameState {
 
 			@Override
 			public void onButtonReleased(Button button) {
-				getGameStateManager().switchActiveGameState(State.LEVEL_1.getId());
+				getGameStateManager().pushActiveGameState(State.DIALOG.getId());
 			}
 		});
 

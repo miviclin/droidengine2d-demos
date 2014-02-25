@@ -3,7 +3,8 @@ package com.miviclin.droidengine2ddemos.gamestate.stacking;
 public enum State {
 	MAIN_MENU(0),
 	LEVEL_SELECT_MENU(1),
-	LEVEL_1(2);
+	LEVEL_1(2),
+	DIALOG(3);
 
 	private int id;
 
