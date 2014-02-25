@@ -56,6 +56,7 @@ public class MainActivity extends Activity {
 
 		List<Demo> gameStateManagementDemos = new ArrayList<Demo>();
 		gameStateManagementDemos.add(Demo.GAMESTATE_SWITCHING);
+		gameStateManagementDemos.add(Demo.GAMESTATE_STACKING);
 		listData.addGroup(DemosGroup.GAMESTATES, gameStateManagementDemos);
 
 		return listData;

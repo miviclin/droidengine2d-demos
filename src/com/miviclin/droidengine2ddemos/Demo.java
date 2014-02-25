@@ -3,6 +3,7 @@ package com.miviclin.droidengine2ddemos;
 import android.content.Context;
 
 import com.miviclin.droidengine2d.EngineActivity;
+import com.miviclin.droidengine2ddemos.gamestate.stacking.GameStateStackingDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.switching.GameStateSwitchingDemoActivity;
 import com.miviclin.droidengine2ddemos.input.accelerometer.AccelerometerDemoActivity;
 import com.miviclin.droidengine2ddemos.input.key.KeyInputDemoActivity;
@@ -32,7 +33,8 @@ public enum Demo {
 	INPUT_TOUCH(R.string.group_input_touch, TouchInputDemoActivity.class),
 	INPUT_KEY(R.string.group_input_key, KeyInputDemoActivity.class),
 	INPUT_ACCELEROMETER(R.string.group_input_accelerometer, AccelerometerDemoActivity.class),
-	GAMESTATE_SWITCHING(R.string.group_gamestate_management_switching, GameStateSwitchingDemoActivity.class);
+	GAMESTATE_SWITCHING(R.string.group_gamestate_management_switching, GameStateSwitchingDemoActivity.class),
+	GAMESTATE_STACKING(R.string.group_gamestate_management_stacking, GameStateStackingDemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

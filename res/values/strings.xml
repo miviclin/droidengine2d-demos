@@ -48,6 +48,7 @@
     <!-- Game state management -->
     <string name="group_gamestate_management">Game state management</string>
     <string name="group_gamestate_management_switching">Game state switching</string>
+    <string name="group_gamestate_management_stacking">Game state stacking</string>
 
     <!--  -->
     <!-- Demos -->
