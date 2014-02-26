@@ -9,10 +9,11 @@ import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
+import com.miviclin.droidengine2ddemos.gamestate.GameStateBase;
 import com.miviclin.droidengine2ddemos.util.Button;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class DialogGameState extends BaseGameState {
+public class DialogGameState extends GameStateBase {
 
 	private Rectangle<ColorMaterial> background;
 	private BackButtonDialog dialog;

@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import com.miviclin.droidengine2d.AbstractGame;
 import com.miviclin.droidengine2d.graphics.GLView;
+import com.miviclin.droidengine2ddemos.gamestate.GameStates;
+import com.miviclin.droidengine2ddemos.gamestate.MainMenu;
 
 public class GameStateStackingDemoGame extends AbstractGame {
 
@@ -13,12 +15,11 @@ public class GameStateStackingDemoGame extends AbstractGame {
 
 	@Override
 	public void initialize() {
-		getGameStateManager().registerGameState(State.MAIN_MENU.getId(), new MainMenu(this));
-		getGameStateManager().registerGameState(State.LEVEL_SELECT_MENU.getId(), new LevelSelectMenu(this));
-		getGameStateManager().registerGameState(State.LEVEL_1.getId(), new Level(this));
-		getGameStateManager().registerGameState(State.DIALOG.getId(), new DialogGameState(this));
+		getGameStateManager().registerGameState(GameStates.MAIN_MENU, new MainMenu(this));
+		getGameStateManager().registerGameState(GameStates.LEVEL_SELECT_MENU, new LevelSelectMenu(this));
+		getGameStateManager().registerGameState(GameStates.BACK_BUTTON_DIALOG, new DialogGameState(this));
 
-		getGameStateManager().pushActiveGameState(State.MAIN_MENU.getId());
+		getGameStateManager().pushActiveGameState(GameStates.MAIN_MENU);
 	}
 
 }

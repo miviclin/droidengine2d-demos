@@ -1,4 +1,4 @@
-package com.miviclin.droidengine2ddemos.gamestate.stacking;
+package com.miviclin.droidengine2ddemos.gamestate;
 
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.Graphics;
@@ -9,18 +9,18 @@ import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Button;
 
-public class Level extends BaseGameState {
+public class MainMenu extends GameStateBase {
 
-	private Button btnBack;
+	private Button btnLevelSelect;
 
-	public Level(Game game) {
+	public MainMenu(Game game) {
 		super(game);
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		g.setBackgroundColor(getBackgroundColor());
-		g.drawRect(btnBack.getMaterial(), btnBack.getTransform());
+		g.drawRect(btnLevelSelect.getMaterial(), btnLevelSelect.getTransform());
 	}
 
 	@Override
@@ -30,27 +30,25 @@ public class Level extends BaseGameState {
 		textureAtlas.loadFromFile("textures/buttons-atlas.xml", getActivity());
 		getTextureManager().addTextureAtlas(textureAtlas);
 
-		getBackgroundColor().setRGB(1.0f, 0.0f, 0.0f);
-
-		setupBtnBack();
+		setupBtnLevelSelect();
 	}
 
-	private void setupBtnBack() {
+	private void setupBtnLevelSelect() {
 		float viewWidth = getCamera().getViewportWidth();
+		float viewHeight = getCamera().getViewportHeight();
 
-		TextureRegion buttonPressedTexture = getTextureManager().getTextureRegion("btn-large-back-selected.png");
-		TextureRegion buttonReleasedTexture = getTextureManager().getTextureRegion("btn-large-back-normal.png");
+		TextureRegion buttonPressedTexture = getTextureManager().getTextureRegion("btn-large-levels-selected.png");
+		TextureRegion buttonReleasedTexture = getTextureManager().getTextureRegion("btn-large-levels-normal.png");
+		Vector2 buttonPosition = new Vector2(viewWidth / 2, viewHeight / 2);
 		float ratio = buttonReleasedTexture.getWidth() / buttonReleasedTexture.getHeight();
 		float margin = 20.0f;
 		float buttonWidth = viewWidth - margin;
 		float buttonHeight = buttonWidth / ratio;
 		Vector2 buttonScale = new Vector2(buttonWidth, buttonHeight);
-		float buttonY = (buttonHeight / 2) + (margin / 2);
-		Vector2 buttonPosition = new Vector2(viewWidth / 2, buttonY);
 		Transform buttonTransform = new Transform(buttonPosition, buttonScale);
 
-		btnBack = new Button(buttonTransform, buttonPressedTexture, buttonReleasedTexture);
-		btnBack.addOnClickListener(new Button.OnClickListener() {
+		btnLevelSelect = new Button(buttonTransform, buttonPressedTexture, buttonReleasedTexture);
+		btnLevelSelect.addOnClickListener(new Button.OnClickListener() {
 
 			@Override
 			public void onButtonPressed(Button button) {
@@ -58,11 +56,11 @@ public class Level extends BaseGameState {
 
 			@Override
 			public void onButtonReleased(Button button) {
-				getGameStateManager().switchActiveGameState(State.LEVEL_SELECT_MENU.getId());
+				getGameStateManager().switchActiveGameState(GameStates.LEVEL_SELECT_MENU);
 			}
 		});
 
-		addButton(btnBack);
+		addButton(btnLevelSelect);
 	}
 
 }

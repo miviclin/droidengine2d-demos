@@ -1,4 +1,4 @@
-package com.miviclin.droidengine2ddemos.gamestate.stacking;
+package com.miviclin.droidengine2ddemos.gamestate;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,12 @@ import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.input.MotionEventProcessor;
 import com.miviclin.droidengine2ddemos.util.Button;
 
-public class BaseGameState extends GameState {
+public class GameStateBase extends GameState {
 
 	private ArrayList<Button> buttons;
 	private Color backgroundColor;
 
-	public BaseGameState(Game game) {
+	public GameStateBase(Game game) {
 		super(game);
 		this.buttons = new ArrayList<Button>();
 		this.backgroundColor = new Color(0.0f, 0.0f, 0.0f);

@@ -84,6 +84,16 @@ public class Button extends Rectangle<TextureMaterial> {
 		return state;
 	}
 
+	public void setButtonPressedTexture(TextureRegion buttonPressedTexture) {
+		this.buttonPressedTexture = buttonPressedTexture;
+		getMaterial().setTextureRegion(buttonPressedTexture);
+	}
+
+	public void setButtonReleasedTexture(TextureRegion buttonReleasedTexture) {
+		this.buttonReleasedTexture = buttonReleasedTexture;
+		getMaterial().setTextureRegion(buttonReleasedTexture);
+	}
+
 	public interface OnClickListener {
 
 		public void onButtonPressed(Button button);
