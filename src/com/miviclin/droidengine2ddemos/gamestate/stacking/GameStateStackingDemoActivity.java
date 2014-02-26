@@ -1,4 +1,4 @@
-package com.miviclin.droidengine2ddemos.input.touch;
+package com.miviclin.droidengine2ddemos.gamestate.stacking;
 
 import android.content.res.Configuration;
 
@@ -7,11 +7,11 @@ import com.miviclin.droidengine2d.EngineActivity;
 import com.miviclin.droidengine2d.graphics.GLView;
 import com.miviclin.droidengine2ddemos.R;
 
-public class TouchInputDemoActivity extends EngineActivity {
+public class GameStateStackingDemoActivity extends EngineActivity {
 
 	@Override
 	public Engine createEngine(GLView glView) {
-		TouchInputDemoGame game = new TouchInputDemoGame(glView, this);
+		GameStateStackingDemoGame game = new GameStateStackingDemoGame(glView, this);
 		Engine engine = new Engine.EngineBuilder(game)
 				.setMaxFPS(60)
 				.build();
@@ -31,7 +31,7 @@ public class TouchInputDemoActivity extends EngineActivity {
 
 	@Override
 	public int getOrientation() {
-		return Configuration.ORIENTATION_LANDSCAPE;
+		return Configuration.ORIENTATION_PORTRAIT;
 	}
 
 }

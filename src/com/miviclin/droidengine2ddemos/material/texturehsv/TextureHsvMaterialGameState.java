@@ -5,29 +5,29 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TextureHsvMaterialScreen extends Screen {
+public class TextureHsvMaterialGameState extends GameState {
 
 	private Rectangle<TextureHsvMaterial> rectangle;
 
-	public TextureHsvMaterialScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public TextureHsvMaterialGameState(Game game) {
+		super(game);
 	}
 
 	@Override
 	public void update(float delta) {
-		SeekBar sbHue = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_hue);
-		SeekBar sbSaturation = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_saturation);
-		SeekBar sbBrightness = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_brightness);
+		SeekBar sbHue = (SeekBar) getActivity().findViewById(R.id.seekbar_hue);
+		SeekBar sbSaturation = (SeekBar) getActivity().findViewById(R.id.seekbar_saturation);
+		SeekBar sbBrightness = (SeekBar) getActivity().findViewById(R.id.seekbar_brightness);
 		rectangle.getMaterial().setHOffset(sbHue.getProgress());
 		rectangle.getMaterial().setSMulti(sbSaturation.getProgress() / 100.0f);
 		rectangle.getMaterial().setVMulti(sbBrightness.getProgress() / 100.0f);
@@ -41,16 +41,17 @@ public class TextureHsvMaterialScreen extends Screen {
 	@Override
 	public void onRegister() {
 		TextureAtlas textureAtlas = new TexturePackerAtlas();
-		textureAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
-		getGame().getTextureManager().addTextureAtlas(textureAtlas);
+		textureAtlas.loadFromFile("textures/squares.xml", getActivity());
+		getTextureManager().addTextureAtlas(textureAtlas);
 
-		Transform transform = new Transform(new Vector2(getWidth() / 2, 125), new Vector2(240, 240));
+		float viewWidth = getCamera().getViewportWidth();
+		Transform transform = new Transform(new Vector2(viewWidth / 2, 125), new Vector2(240, 240));
 		rectangle = new Rectangle<TextureHsvMaterial>(transform,
 				new TextureHsvMaterial(textureAtlas.getTextureRegion("greensquare_on_shadow.png")));
 
-		final TextView tvHue = (TextView) getGame().getActivity().findViewById(R.id.textview_hue);
+		final TextView tvHue = (TextView) getActivity().findViewById(R.id.textview_hue);
 
-		SeekBar sbHue = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_hue);
+		SeekBar sbHue = (SeekBar) getActivity().findViewById(R.id.seekbar_hue);
 		sbHue.setMax(360);
 		sbHue.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -68,9 +69,9 @@ public class TextureHsvMaterialScreen extends Screen {
 			}
 		});
 
-		final TextView tvSaturation = (TextView) getGame().getActivity().findViewById(R.id.textview_saturation);
+		final TextView tvSaturation = (TextView) getActivity().findViewById(R.id.textview_saturation);
 
-		SeekBar sbSaturation = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_saturation);
+		SeekBar sbSaturation = (SeekBar) getActivity().findViewById(R.id.seekbar_saturation);
 		sbSaturation.setProgress(100);
 		sbSaturation.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -88,9 +89,9 @@ public class TextureHsvMaterialScreen extends Screen {
 			}
 		});
 
-		final TextView tvBrightness = (TextView) getGame().getActivity().findViewById(R.id.textview_brightness);
+		final TextView tvBrightness = (TextView) getActivity().findViewById(R.id.textview_brightness);
 
-		SeekBar sbBrightness = (SeekBar) getGame().getActivity().findViewById(R.id.seekbar_brightness);
+		SeekBar sbBrightness = (SeekBar) getActivity().findViewById(R.id.seekbar_brightness);
 		sbBrightness.setProgress(100);
 		sbBrightness.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 

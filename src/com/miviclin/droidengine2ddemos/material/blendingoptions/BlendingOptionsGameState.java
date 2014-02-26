@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -15,19 +14,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.BlendingOptions;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class BlendingOptionsScreen extends Screen {
+public class BlendingOptionsGameState extends GameState {
 
 	private static final BlendingFactor DEFAULT_SOURCE_FACTOR = BlendingFactor.GL_SRC_ALPHA;
 	private static final BlendingFactor DEFAULT_DEST_FACTOR = BlendingFactor.GL_ONE_MINUS_SRC_ALPHA;
@@ -40,8 +39,8 @@ public class BlendingOptionsScreen extends Screen {
 	private AlertDialog alertDialog;
 	private AtomicBoolean handlingException;
 
-	public BlendingOptionsScreen(float width, float height, Game game) {
-		super(width, height, game);
+	public BlendingOptionsGameState(Game game) {
+		super(game);
 		this.blendingFactors = new LinkedHashMap<String, Integer>();
 		this.blendingEquations = new LinkedHashMap<String, Integer>();
 
@@ -70,28 +69,29 @@ public class BlendingOptionsScreen extends Screen {
 		} catch (Exception e) {
 			handlingException.set(true);
 			handleBlendingException();
-			Log.d("blending_exception", "exception handled");
 		}
 	}
 
 	@Override
 	public void onRegister() {
 		TextureAtlas squaresAtlas = new TexturePackerAtlas();
-		squaresAtlas.loadFromFile("textures/squares.xml", getGame().getActivity());
-		getGame().getTextureManager().addTextureAtlas(squaresAtlas);
+		squaresAtlas.loadFromFile("textures/squares.xml", getActivity());
+		getTextureManager().addTextureAtlas(squaresAtlas);
 
-		square.getTransform().getPosition().set(getWidth() / 2, getHeight() / 2);
+		float viewWidth = getCamera().getViewportWidth();
+		float viewHeight = getCamera().getViewportHeight();
+		square.getTransform().getPosition().set(viewWidth / 2, viewHeight / 2);
 		square.getTransform().getOrigin().set(120, 120);
 		square.getTransform().getScale().set(240, 240);
 		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("greensquare_on_shadow.png"));
 
 		TextureAtlas backgroundAtlas = new TexturePackerAtlas();
-		backgroundAtlas.loadFromFile("textures/background.xml", getGame().getActivity());
-		getGame().getTextureManager().addTextureAtlas(backgroundAtlas);
+		backgroundAtlas.loadFromFile("textures/background.xml", getActivity());
+		getTextureManager().addTextureAtlas(backgroundAtlas);
 
 		int tileSize = 40;
-		int numTilesX = (int) (getWidth() / tileSize + 1);
-		int numTilesY = (int) (getHeight() / tileSize + 1);
+		int numTilesX = (int) (viewWidth / tileSize + 1);
+		int numTilesY = (int) (viewHeight / tileSize + 1);
 		TextureRegion backgroundTile = backgroundAtlas.getTextureRegion("background_tile.png");
 		for (int i = 0; i < numTilesX; i++) {
 			for (int j = 0; j < numTilesY; j++) {
@@ -163,20 +163,20 @@ public class BlendingOptionsScreen extends Screen {
 	}
 
 	private void initializeSpinners() {
-		getGame().getActivity().runOnUiThread(new Runnable() {
+		getActivity().runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
 				final BlendingOptions squareBlendingOptions = square.getMaterial().getBlendingOptions();
 
 				CharSequence[] blendingFactorsNames = new String[blendingFactors.keySet().size()];
-				ArrayAdapter<CharSequence> factorsAdapter = new ArrayAdapter<CharSequence>(getGame().getActivity(),
+				ArrayAdapter<CharSequence> factorsAdapter = new ArrayAdapter<CharSequence>(getActivity(),
 						android.R.layout.simple_spinner_item, blendingFactors.keySet().toArray(blendingFactorsNames));
 
 				factorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 				// Source factors
-				Spinner spinnerSource = (Spinner) getGame().getActivity().findViewById(R.id.spinner_source);
+				Spinner spinnerSource = (Spinner) getActivity().findViewById(R.id.spinner_source);
 				spinnerSource.setAdapter(factorsAdapter);
 				spinnerSource.setSelection(getFactorIndex(DEFAULT_SOURCE_FACTOR));
 				squareBlendingOptions.setSourceFactor(DEFAULT_SOURCE_FACTOR.getValue());
@@ -196,7 +196,7 @@ public class BlendingOptionsScreen extends Screen {
 				});
 
 				// Destination factors
-				Spinner spinnerDest = (Spinner) getGame().getActivity().findViewById(R.id.spinner_destination);
+				Spinner spinnerDest = (Spinner) getActivity().findViewById(R.id.spinner_destination);
 				spinnerDest.setAdapter(factorsAdapter);
 				spinnerDest.setSelection(getFactorIndex(DEFAULT_DEST_FACTOR));
 				squareBlendingOptions.setDestinationFactor(DEFAULT_DEST_FACTOR.getValue());
@@ -217,13 +217,13 @@ public class BlendingOptionsScreen extends Screen {
 
 				// Blending equations
 				CharSequence[] blendingEquationsNames = new String[blendingEquations.keySet().size()];
-				ArrayAdapter<CharSequence> equationsAdapter = new ArrayAdapter<CharSequence>(getGame().getActivity(),
+				ArrayAdapter<CharSequence> equationsAdapter = new ArrayAdapter<CharSequence>(getActivity(),
 						android.R.layout.simple_spinner_item,
 						blendingEquations.keySet().toArray(blendingEquationsNames));
 
 				equationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-				Spinner spinnerEquation = (Spinner) getGame().getActivity().findViewById(R.id.spinner_equation);
+				Spinner spinnerEquation = (Spinner) getActivity().findViewById(R.id.spinner_equation);
 				spinnerEquation.setAdapter(equationsAdapter);
 				spinnerEquation.setSelection(getEquationIndex(DEFAULT_EQUATION));
 				squareBlendingOptions.setBlendEquationMode(DEFAULT_EQUATION.getValue());
@@ -246,7 +246,7 @@ public class BlendingOptionsScreen extends Screen {
 	}
 
 	private void initializeAlertDialog() {
-		getGame().getActivity().runOnUiThread(new Runnable() {
+		getActivity().runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
@@ -256,7 +256,7 @@ public class BlendingOptionsScreen extends Screen {
 	}
 
 	private AlertDialog createAlertDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(getGame().getActivity());
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setMessage(R.string.blending_options_alert_msg)
 				.setTitle(R.string.blending_options_alert_title)
 				.setCancelable(false)
@@ -271,7 +271,7 @@ public class BlendingOptionsScreen extends Screen {
 	}
 
 	private void showAlertDialog() {
-		getGame().getActivity().runOnUiThread(new Runnable() {
+		getActivity().runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
@@ -284,7 +284,7 @@ public class BlendingOptionsScreen extends Screen {
 	}
 
 	private void dismissAlertDialog() {
-		getGame().getActivity().runOnUiThread(new Runnable() {
+		getActivity().runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
@@ -295,21 +295,21 @@ public class BlendingOptionsScreen extends Screen {
 	}
 
 	private void handleBlendingException() {
-		getGame().getActivity().runOnUiThread(new Runnable() {
+		getActivity().runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
 				BlendingOptions squareBlendingOptions = square.getMaterial().getBlendingOptions();
 
-				Spinner spinnerSource = (Spinner) getGame().getActivity().findViewById(R.id.spinner_source);
+				Spinner spinnerSource = (Spinner) getActivity().findViewById(R.id.spinner_source);
 				spinnerSource.setSelection(getFactorIndex(DEFAULT_SOURCE_FACTOR));
 				squareBlendingOptions.setSourceFactor(DEFAULT_SOURCE_FACTOR.getValue());
 
-				Spinner spinnerDest = (Spinner) getGame().getActivity().findViewById(R.id.spinner_destination);
+				Spinner spinnerDest = (Spinner) getActivity().findViewById(R.id.spinner_destination);
 				spinnerDest.setSelection(getFactorIndex(DEFAULT_DEST_FACTOR));
 				squareBlendingOptions.setDestinationFactor(DEFAULT_DEST_FACTOR.getValue());
 
-				Spinner spinnerEquation = (Spinner) getGame().getActivity().findViewById(R.id.spinner_equation);
+				Spinner spinnerEquation = (Spinner) getActivity().findViewById(R.id.spinner_equation);
 				spinnerEquation.setSelection(getEquationIndex(DEFAULT_EQUATION));
 				squareBlendingOptions.setBlendEquationMode(DEFAULT_EQUATION.getValue());
 

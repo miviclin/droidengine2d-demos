@@ -1,13 +1,13 @@
 package com.miviclin.droidengine2ddemos.text.customfonts;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.gamestate.GameState;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.text.BitmapFont;
-import com.miviclin.droidengine2d.screen.Screen;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class CustomFontsScreen extends Screen {
+public class CustomFontsGameState extends GameState {
 
 	private Color backgroundColor;
 
@@ -22,8 +22,8 @@ public class CustomFontsScreen extends Screen {
 
 	private int textSizePx;
 
-	public CustomFontsScreen(float viewWidth, float viewHeight, Game game) {
-		super(viewWidth, viewHeight, game);
+	public CustomFontsGameState(Game game) {
+		super(game);
 	}
 
 	@Override
@@ -45,16 +45,16 @@ public class CustomFontsScreen extends Screen {
 		backgroundColor = new Color(0.5f, 0.5f, 0.5f);
 
 		fontArial = new BitmapFont();
-		fontArial.loadFromFile("fonts/arial.fnt", getGame().getActivity());
-		getGame().getTextureManager().addFontTextures(fontArial);
+		fontArial.loadFromFile("fonts/arial.fnt", getActivity());
+		getTextureManager().addFontTextures(fontArial);
 
 		fontRosewood = new BitmapFont();
-		fontRosewood.loadFromFile("fonts/rosewood.fnt", getGame().getActivity());
-		getGame().getTextureManager().addFontTextures(fontRosewood);
+		fontRosewood.loadFromFile("fonts/rosewood.fnt", getActivity());
+		getTextureManager().addFontTextures(fontRosewood);
 
 		font04b03 = new BitmapFont();
-		font04b03.loadFromFile("fonts/04b03.fnt", getGame().getActivity());
-		getGame().getTextureManager().addFontTextures(font04b03);
+		font04b03.loadFromFile("fonts/04b03.fnt", getActivity());
+		getTextureManager().addFontTextures(font04b03);
 
 		textSizePx = 50;
 

@@ -21,4 +21,18 @@ public class Rectangle<M extends Material> {
 	public M getMaterial() {
 		return material;
 	}
+
+	public boolean contains(float x, float y) {
+		float width = transform.getScale().getX();
+		float height = transform.getScale().getY();
+		float halfWidth = width / 2;
+		float halfHeight = height / 2;
+		float left = transform.getPosition().getX() - halfWidth;
+		float bottom = transform.getPosition().getY() - halfHeight;
+		float right = left + width;
+		float top = bottom + height;
+		boolean containsX = (left <= x) && (x <= right);
+		boolean containsY = (bottom <= y) && (y <= top);
+		return (containsX && containsY);
+	}
 }

@@ -4,7 +4,6 @@ import android.content.res.Configuration;
 
 import com.miviclin.droidengine2d.Engine;
 import com.miviclin.droidengine2d.EngineActivity;
-import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.graphics.GLView;
 import com.miviclin.droidengine2ddemos.R;
 
@@ -12,7 +11,7 @@ public class BasicRotationActivity extends EngineActivity {
 
 	@Override
 	public Engine createEngine(GLView glView) {
-		Game game = new BasicRotationGame(glView, this);
+		BasicRotationGame game = new BasicRotationGame(glView, this);
 		Engine engine = new Engine.EngineBuilder(game)
 				.setMaxFPS(60)
 				.build();
