@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.BlendingOptions;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
@@ -26,7 +26,7 @@ import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class BlendingOptionsGameState extends GameState {
+public class BlendingOptionsGameState extends GameStateAdapter {
 
 	private static final BlendingFactor DEFAULT_SOURCE_FACTOR = BlendingFactor.GL_SRC_ALPHA;
 	private static final BlendingFactor DEFAULT_DEST_FACTOR = BlendingFactor.GL_ONE_MINUS_SRC_ALPHA;
@@ -49,10 +49,6 @@ public class BlendingOptionsGameState extends GameState {
 
 		this.backgroundTiles = new ArrayList<Rectangle<TextureMaterial>>();
 		this.handlingException = new AtomicBoolean();
-	}
-
-	@Override
-	public void update(float delta) {
 	}
 
 	@Override
@@ -107,14 +103,6 @@ public class BlendingOptionsGameState extends GameState {
 	}
 
 	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
 	public void onPause() {
 		if (alertDialog != null) {
 			dismissAlertDialog();
@@ -126,10 +114,6 @@ public class BlendingOptionsGameState extends GameState {
 		if (alertDialog == null) {
 			initializeAlertDialog();
 		}
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 	private void initializeBlendingOptionsMaps() {

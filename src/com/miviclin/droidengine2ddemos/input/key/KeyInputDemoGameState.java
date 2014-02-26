@@ -3,22 +3,18 @@ package com.miviclin.droidengine2ddemos.input.key;
 import android.view.KeyEvent;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.input.KeyEventInfo;
 import com.miviclin.droidengine2d.input.KeyEventProcessor;
 
-public class KeyInputDemoGameState extends GameState {
+public class KeyInputDemoGameState extends GameStateAdapter {
 
 	private Color backgroundColor;
 
 	public KeyInputDemoGameState(Game game) {
 		super(game);
-	}
-
-	@Override
-	public void update(float delta) {
 	}
 
 	@Override
@@ -48,26 +44,6 @@ public class KeyInputDemoGameState extends GameState {
 				}
 			}
 		});
-	}
-
-	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
-	public void onPause() {
-	}
-
-	@Override
-	public void onResume() {
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 }

@@ -3,7 +3,7 @@ package com.miviclin.droidengine2ddemos.input.touch;
 import android.view.MotionEvent;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureMaterial;
@@ -15,17 +15,13 @@ import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class TouchInputDemoGameState extends GameState {
+public class TouchInputDemoGameState extends GameStateAdapter {
 
 	private Color backgroundColor;
 	private Rectangle<TextureMaterial> rectangle;
 
 	public TouchInputDemoGameState(Game game) {
 		super(game);
-	}
-
-	@Override
-	public void update(float delta) {
 	}
 
 	@Override
@@ -64,26 +60,6 @@ public class TouchInputDemoGameState extends GameState {
 				rectangle.getTransform().getPosition().set(motionEvent.getX(), viewHeight - motionEvent.getY());
 			}
 		});
-	}
-
-	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
-	public void onPause() {
-	}
-
-	@Override
-	public void onResume() {
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 }

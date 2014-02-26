@@ -5,7 +5,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
@@ -14,7 +14,7 @@ import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class ColorMaterialGameState extends GameState {
+public class ColorMaterialGameState extends GameStateAdapter {
 
 	private Rectangle<ColorMaterial> rectangle;
 
@@ -128,26 +128,6 @@ public class ColorMaterialGameState extends GameState {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 			}
 		});
-	}
-
-	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
-	public void onPause() {
-	}
-
-	@Override
-	public void onResume() {
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 }

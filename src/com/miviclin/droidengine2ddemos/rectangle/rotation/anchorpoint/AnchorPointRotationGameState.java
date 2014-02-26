@@ -1,7 +1,7 @@
 package com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
@@ -9,7 +9,7 @@ import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class AnchorPointRotationGameState extends GameState {
+public class AnchorPointRotationGameState extends GameStateAdapter {
 
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle1;
@@ -50,26 +50,6 @@ public class AnchorPointRotationGameState extends GameState {
 		Vector2 orig2 = new Vector2(0, 0);
 		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, scale2, orig2, 0),
 				new ColorMaterial(new Color(1, 0, 0)));
-	}
-
-	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
-	public void onPause() {
-	}
-
-	@Override
-	public void onResume() {
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 }

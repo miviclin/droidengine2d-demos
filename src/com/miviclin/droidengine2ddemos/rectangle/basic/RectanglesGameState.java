@@ -1,7 +1,7 @@
 package com.miviclin.droidengine2ddemos.rectangle.basic;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.ColorMaterial;
@@ -9,7 +9,7 @@ import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
-public class RectanglesGameState extends GameState {
+public class RectanglesGameState extends GameStateAdapter {
 
 	private Color backgroundColor;
 	private Rectangle<ColorMaterial> rectangle1;
@@ -18,10 +18,6 @@ public class RectanglesGameState extends GameState {
 
 	public RectanglesGameState(Game game) {
 		super(game);
-	}
-
-	@Override
-	public void update(float delta) {
 	}
 
 	@Override
@@ -50,26 +46,6 @@ public class RectanglesGameState extends GameState {
 		Vector2 pos3 = new Vector2(viewWidth - 200, viewHeight / 2);
 		rectangle3 = new Rectangle<ColorMaterial>(new Transform(pos3, new Vector2(100, 50)),
 				new ColorMaterial(new Color(0, 0, 0)));
-	}
-
-	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
-	public void onPause() {
-	}
-
-	@Override
-	public void onResume() {
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 }

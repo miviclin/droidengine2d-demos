@@ -1,13 +1,13 @@
 package com.miviclin.droidengine2ddemos.text.customfonts;
 
 import com.miviclin.droidengine2d.Game;
-import com.miviclin.droidengine2d.gamestate.GameState;
+import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.text.BitmapFont;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class CustomFontsGameState extends GameState {
+public class CustomFontsGameState extends GameStateAdapter {
 
 	private Color backgroundColor;
 
@@ -24,11 +24,6 @@ public class CustomFontsGameState extends GameState {
 
 	public CustomFontsGameState(Game game) {
 		super(game);
-	}
-
-	@Override
-	public void update(float delta) {
-
 	}
 
 	@Override
@@ -73,26 +68,6 @@ public class CustomFontsGameState extends GameState {
 		text04b03Position = new Vector2(100, 350);
 		text04b03Color = new Color(0, 0, 0);
 		text04b03 = "Testing 04b03";
-	}
-
-	@Override
-	public void onActivation() {
-	}
-
-	@Override
-	public void onDeactivation() {
-	}
-
-	@Override
-	public void onPause() {
-	}
-
-	@Override
-	public void onResume() {
-	}
-
-	@Override
-	public void onDispose() {
 	}
 
 }
