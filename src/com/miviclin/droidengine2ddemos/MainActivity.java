@@ -35,6 +35,10 @@ public class MainActivity extends Activity {
 		rectanglesDemos.add(Demo.RECTANGLES_ROTATION_ANCHOR_POINT);
 		listData.addGroup(DemosGroup.RECTANGLES, rectanglesDemos);
 
+		List<Demo> textureRegionDemos = new ArrayList<Demo>();
+		textureRegionDemos.add(Demo.TEXTURE_REGION_FLIPPING);
+		listData.addGroup(DemosGroup.TEXTURE_REGIONS, textureRegionDemos);
+
 		List<Demo> textDemos = new ArrayList<Demo>();
 		textDemos.add(Demo.TEXT_CUSTOM_FONTS);
 		listData.addGroup(DemosGroup.TEXT, textDemos);
@@ -55,9 +59,9 @@ public class MainActivity extends Activity {
 		listData.addGroup(DemosGroup.INPUT, inputDemos);
 
 		List<Demo> gameStateManagementDemos = new ArrayList<Demo>();
-		gameStateManagementDemos.add(Demo.GAMESTATE_SWITCHING);
-		gameStateManagementDemos.add(Demo.GAMESTATE_STACKING);
-		listData.addGroup(DemosGroup.GAMESTATES, gameStateManagementDemos);
+		gameStateManagementDemos.add(Demo.GAME_STATE_SWITCHING);
+		gameStateManagementDemos.add(Demo.GAME_STATE_STACKING);
+		listData.addGroup(DemosGroup.GAME_STATES, gameStateManagementDemos);
 
 		return listData;
 	}

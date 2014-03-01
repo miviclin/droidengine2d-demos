@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:7e2461a7d9b1542f9941f0555a041c74$ -->
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:beb668c0263e966348a1b768396ba007:fe03f9f66215c10815d90904f764104f:5dcc2a128d7f4afb9fd785bbfae84aa0$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -15,30 +15,32 @@ r => 'y' only set if sprite is rotated
 -->
 <TextureAtlas imagePath="buttons-atlas.png" width="1024" height="2048">
     <sprite n="btn-arrow-normal.png" x="2" y="2" w="120" h="120"/>
-    <sprite n="btn-arrow-selected.png" x="124" y="2" w="120" h="120"/>
-    <sprite n="btn-large-about-normal.png" x="246" y="2" w="360" h="120"/>
-    <sprite n="btn-large-about-selected.png" x="608" y="2" w="360" h="120"/>
-    <sprite n="btn-large-acerca-de-normal.png" x="2" y="124" w="360" h="120"/>
-    <sprite n="btn-large-acerca-de-selected.png" x="364" y="124" w="360" h="120"/>
-    <sprite n="btn-large-back-normal.png" x="2" y="246" w="360" h="120"/>
-    <sprite n="btn-large-back-selected.png" x="364" y="246" w="360" h="120"/>
-    <sprite n="btn-large-exit-normal.png" x="2" y="368" w="360" h="120"/>
-    <sprite n="btn-large-exit-selected.png" x="364" y="368" w="360" h="120"/>
-    <sprite n="btn-large-levels-normal.png" x="2" y="490" w="360" h="120"/>
-    <sprite n="btn-large-levels-selected.png" x="364" y="490" w="360" h="120"/>
-    <sprite n="btn-large-niveles-normal.png" x="2" y="612" w="360" h="120"/>
-    <sprite n="btn-large-niveles-selected.png" x="364" y="612" w="360" h="120"/>
-    <sprite n="btn-large-normal.png" x="2" y="734" w="360" h="120"/>
-    <sprite n="btn-large-salir-normal.png" x="364" y="734" w="360" h="120"/>
-    <sprite n="btn-large-salir-selected.png" x="2" y="856" w="360" h="120"/>
-    <sprite n="btn-large-selected.png" x="364" y="856" w="360" h="120"/>
-    <sprite n="btn-large-volver-normal.png" x="2" y="978" w="360" h="120"/>
-    <sprite n="btn-large-volver-selected.png" x="364" y="978" w="360" h="120"/>
-    <sprite n="btn-small-1-normal.png" x="726" y="978" w="120" h="120"/>
-    <sprite n="btn-small-1-selected.png" x="848" y="978" w="120" h="120"/>
-    <sprite n="btn-small-2-normal.png" x="2" y="1100" w="120" h="120"/>
-    <sprite n="btn-small-2-selected.png" x="124" y="1100" w="120" h="120"/>
-    <sprite n="btn-small-3-normal.png" x="246" y="1100" w="120" h="120"/>
-    <sprite n="btn-small-3-selected.png" x="368" y="1100" w="120" h="120"/>
-    <sprite n="btn-small-disabled.png" x="490" y="1100" w="120" h="120"/>
+    <sprite n="btn-arrow-rotated-normal.png" x="124" y="2" w="120" h="120"/>
+    <sprite n="btn-arrow-rotated-selected.png" x="246" y="2" w="120" h="120"/>
+    <sprite n="btn-arrow-selected.png" x="368" y="2" w="120" h="120"/>
+    <sprite n="btn-large-about-normal.png" x="490" y="2" w="360" h="120"/>
+    <sprite n="btn-large-about-selected.png" x="2" y="124" w="360" h="120"/>
+    <sprite n="btn-large-acerca-de-normal.png" x="364" y="124" w="360" h="120"/>
+    <sprite n="btn-large-acerca-de-selected.png" x="2" y="246" w="360" h="120"/>
+    <sprite n="btn-large-back-normal.png" x="364" y="246" w="360" h="120"/>
+    <sprite n="btn-large-back-selected.png" x="2" y="368" w="360" h="120"/>
+    <sprite n="btn-large-exit-normal.png" x="364" y="368" w="360" h="120"/>
+    <sprite n="btn-large-exit-selected.png" x="2" y="490" w="360" h="120"/>
+    <sprite n="btn-large-levels-normal.png" x="364" y="490" w="360" h="120"/>
+    <sprite n="btn-large-levels-selected.png" x="2" y="612" w="360" h="120"/>
+    <sprite n="btn-large-niveles-normal.png" x="364" y="612" w="360" h="120"/>
+    <sprite n="btn-large-niveles-selected.png" x="2" y="734" w="360" h="120"/>
+    <sprite n="btn-large-normal.png" x="364" y="734" w="360" h="120"/>
+    <sprite n="btn-large-salir-normal.png" x="2" y="856" w="360" h="120"/>
+    <sprite n="btn-large-salir-selected.png" x="364" y="856" w="360" h="120"/>
+    <sprite n="btn-large-selected.png" x="2" y="978" w="360" h="120"/>
+    <sprite n="btn-large-volver-normal.png" x="364" y="978" w="360" h="120"/>
+    <sprite n="btn-large-volver-selected.png" x="2" y="1100" w="360" h="120"/>
+    <sprite n="btn-small-1-normal.png" x="364" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-1-selected.png" x="486" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-2-normal.png" x="608" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-2-selected.png" x="730" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-3-normal.png" x="852" y="1100" w="120" h="120"/>
+    <sprite n="btn-small-3-selected.png" x="2" y="1222" w="120" h="120"/>
+    <sprite n="btn-small-disabled.png" x="124" y="1222" w="120" h="120"/>
 </TextureAtlas>

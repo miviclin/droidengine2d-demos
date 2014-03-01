@@ -18,11 +18,13 @@ import com.miviclin.droidengine2ddemos.rectangle.basic.RectanglesActivity;
 import com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint.AnchorPointRotationActivity;
 import com.miviclin.droidengine2ddemos.rectangle.rotation.basic.BasicRotationActivity;
 import com.miviclin.droidengine2ddemos.text.customfonts.CustomFontsActivity;
+import com.miviclin.droidengine2ddemos.textureregion.TextureRegionFlippingDemoActivity;
 
 public enum Demo {
 	RECTANGLES_BASIC(R.string.group_rectangles_basic, RectanglesActivity.class),
 	RECTANGLES_ROTATION_BASIC(R.string.group_rectangles_rotation_basic, BasicRotationActivity.class),
 	RECTANGLES_ROTATION_ANCHOR_POINT(R.string.group_rectangles_rotation_anchor_point, AnchorPointRotationActivity.class),
+	TEXTURE_REGION_FLIPPING(R.string.group_texture_regions_flip_texture_region, TextureRegionFlippingDemoActivity.class),
 	TEXT_CUSTOM_FONTS(R.string.group_text_custom_fonts, CustomFontsActivity.class),
 	MATERIAL_BLENDING_OPTIONS(R.string.group_materials_blending_options, BlendingOptionsActivity.class),
 	MATERIAL_COLOR(R.string.group_materials_color, ColorMaterialActivity.class),
@@ -33,8 +35,8 @@ public enum Demo {
 	INPUT_TOUCH(R.string.group_input_touch, TouchInputDemoActivity.class),
 	INPUT_KEY(R.string.group_input_key, KeyInputDemoActivity.class),
 	INPUT_ACCELEROMETER(R.string.group_input_accelerometer, AccelerometerDemoActivity.class),
-	GAMESTATE_SWITCHING(R.string.group_gamestate_management_switching, GameStateSwitchingDemoActivity.class),
-	GAMESTATE_STACKING(R.string.group_gamestate_management_stacking, GameStateStackingDemoActivity.class);
+	GAME_STATE_SWITCHING(R.string.group_gamestate_management_switching, GameStateSwitchingDemoActivity.class),
+	GAME_STATE_STACKING(R.string.group_gamestate_management_stacking, GameStateStackingDemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

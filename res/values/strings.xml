@@ -16,9 +16,9 @@
 
     <!-- Rectangles -->
     <string name="group_rectangles">Rectangles</string>
-    <string name="group_rectangles_basic">Drawing rectangles</string>
-    <string name="group_rectangles_rotation_basic">Drawing rotated rectangles</string>
-    <string name="group_rectangles_rotation_anchor_point">Drawing rotated rectangles (custom anchor point)</string>
+    <string name="group_rectangles_basic">Draw rectangles</string>
+    <string name="group_rectangles_rotation_basic">Draw rotated rectangles</string>
+    <string name="group_rectangles_rotation_anchor_point">Draw rotated rectangles (custom anchor point)</string>
 
     <!-- Materials -->
     <string name="group_materials">Materials</string>
@@ -28,6 +28,10 @@
     <string name="group_materials_texture_color">TextureColorMaterial</string>
     <string name="group_materials_texture_hsv">TextureHsvMaterial</string>
     <string name="group_materials_transparent_texture">TransparentTextureMaterial</string>
+    
+    <!-- TextureRegions -->
+    <string name="group_texture_regions">TextureRegions</string>
+    <string name="group_texture_regions_flip_texture_region">Flip TextureRegion</string>
 
     <!-- Text -->
     <string name="group_text">Text</string>
