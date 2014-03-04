@@ -52,6 +52,10 @@ public class MainActivity extends Activity {
 		materialDemos.add(Demo.MATERIAL_TRANSPARENT_TEXTURE);
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
 
+		List<Demo> audioDemos = new ArrayList<Demo>();
+		audioDemos.add(Demo.AUDIO_MUSIC_PLAYBACK);
+		listData.addGroup(DemosGroup.AUDIO, audioDemos);
+
 		List<Demo> inputDemos = new ArrayList<Demo>();
 		inputDemos.add(Demo.INPUT_TOUCH);
 		inputDemos.add(Demo.INPUT_KEY);

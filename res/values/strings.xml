@@ -28,7 +28,7 @@
     <string name="group_materials_texture_color">TextureColorMaterial</string>
     <string name="group_materials_texture_hsv">TextureHsvMaterial</string>
     <string name="group_materials_transparent_texture">TransparentTextureMaterial</string>
-    
+
     <!-- TextureRegions -->
     <string name="group_texture_regions">TextureRegions</string>
     <string name="group_texture_regions_flip_texture_region">Flip TextureRegion</string>
@@ -42,6 +42,7 @@
 
     <!-- Audio -->
     <string name="group_audio">Audio</string>
+    <string name="group_audio_music_playback">Music playback</string>
 
     <!-- Input -->
     <string name="group_input">Input</string>
