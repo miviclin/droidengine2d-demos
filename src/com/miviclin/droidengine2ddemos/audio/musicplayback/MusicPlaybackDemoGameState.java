@@ -26,8 +26,8 @@ public class MusicPlaybackDemoGameState extends GameStateBase {
 
 	private Button btnPlay;
 	private Button btnPause;
-	private Button rectFlippedVertically;
-	private Button rectFlippedBoth;
+	private Button btnVolumeUp;
+	private Button btnVolumeDown;
 
 	public MusicPlaybackDemoGameState(Game game) {
 		super(game);
@@ -37,8 +37,8 @@ public class MusicPlaybackDemoGameState extends GameStateBase {
 	public void draw(Graphics g) {
 		g.drawRect(btnPlay.getMaterial(), btnPlay.getTransform());
 		g.drawRect(btnPause.getMaterial(), btnPause.getTransform());
-		g.drawRect(rectFlippedVertically.getMaterial(), rectFlippedVertically.getTransform());
-		g.drawRect(rectFlippedBoth.getMaterial(), rectFlippedBoth.getTransform());
+		g.drawRect(btnVolumeUp.getMaterial(), btnVolumeUp.getTransform());
+		g.drawRect(btnVolumeDown.getMaterial(), btnVolumeDown.getTransform());
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class MusicPlaybackDemoGameState extends GameStateBase {
 		float volumeUpButtonX = separationX;
 		float volumeUpButtonY = separationY;
 		Vector2 volumeUpButtonPosition = new Vector2(volumeUpButtonX, volumeUpButtonY);
-		rectFlippedVertically = createButton(volumeUpButtonPosition, buttonScale, trVolumeUpSelected, trVolumeUpNormal,
+		btnVolumeUp = createButton(volumeUpButtonPosition, buttonScale, trVolumeUpSelected, trVolumeUpNormal,
 				MusicAction.TURN_VOLUME_UP);
 
 		TextureRegion trVolumeDownNormal = textureAtlas.getTextureRegion("btn-music-volume-down-normal.png");
@@ -86,7 +86,7 @@ public class MusicPlaybackDemoGameState extends GameStateBase {
 		float volumeDownButtonX = viewWidth - separationX;
 		float volumeDownButtonY = separationY;
 		Vector2 volumeDownButtonPosition = new Vector2(volumeDownButtonX, volumeDownButtonY);
-		rectFlippedBoth = createButton(volumeDownButtonPosition, buttonScale, trVolumeDownSelected, trVolumeDownNormal,
+		btnVolumeDown = createButton(volumeDownButtonPosition, buttonScale, trVolumeDownSelected, trVolumeDownNormal,
 				MusicAction.TURN_VOLUME_DOWN);
 	}
 
