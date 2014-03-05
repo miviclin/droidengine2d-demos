@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.miviclin.droidengine2d.EngineActivity;
 import com.miviclin.droidengine2ddemos.audio.musicplayback.MusicPlaybackDemoActivity;
+import com.miviclin.droidengine2ddemos.audio.soundplayback.SoundPlaybackDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.stacking.GameStateStackingDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.switching.GameStateSwitchingDemoActivity;
 import com.miviclin.droidengine2ddemos.input.accelerometer.AccelerometerDemoActivity;
@@ -38,7 +39,8 @@ public enum Demo {
 	INPUT_ACCELEROMETER(R.string.group_input_accelerometer, AccelerometerDemoActivity.class),
 	GAME_STATE_SWITCHING(R.string.group_gamestate_management_switching, GameStateSwitchingDemoActivity.class),
 	GAME_STATE_STACKING(R.string.group_gamestate_management_stacking, GameStateStackingDemoActivity.class),
-	AUDIO_MUSIC_PLAYBACK(R.string.group_audio_music_playback, MusicPlaybackDemoActivity.class);
+	AUDIO_MUSIC_PLAYBACK(R.string.group_audio_music_playback, MusicPlaybackDemoActivity.class),
+	AUDIO_SOUND_PLAYBACK(R.string.group_audio_sound_playback, SoundPlaybackDemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

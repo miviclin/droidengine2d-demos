@@ -43,6 +43,7 @@
     <!-- Audio -->
     <string name="group_audio">Audio</string>
     <string name="group_audio_music_playback">Music playback</string>
+    <string name="group_audio_sound_playback">Sound playback</string>
 
     <!-- Input -->
     <string name="group_input">Input</string>

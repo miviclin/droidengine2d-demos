@@ -54,6 +54,7 @@ public class MainActivity extends Activity {
 
 		List<Demo> audioDemos = new ArrayList<Demo>();
 		audioDemos.add(Demo.AUDIO_MUSIC_PLAYBACK);
+		audioDemos.add(Demo.AUDIO_SOUND_PLAYBACK);
 		listData.addGroup(DemosGroup.AUDIO, audioDemos);
 
 		List<Demo> inputDemos = new ArrayList<Demo>();
