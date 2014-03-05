@@ -135,13 +135,11 @@ public class MusicPlaybackDemoGameState extends GameStateBase {
 			musicPlayer.pause();
 			break;
 		case TURN_VOLUME_UP:
-			// volume = Math.min(musicManager.getVolume() + VOLUME_INCREMENT, MusicManager.MAX_VOLUME);
-			volume = Math.min(musicPlayer.getVolume() + VOLUME_INCREMENT, 1);
+			volume = Math.min(musicPlayer.getVolume() + VOLUME_INCREMENT, MusicPlayer.MAX_VOLUME);
 			musicPlayer.setVolume(volume);
 			break;
 		case TURN_VOLUME_DOWN:
-			// volume = Math.max(musicManager.getVolume() - VOLUME_INCREMENT, MusicManager.MIN_VOLUME);
-			volume = Math.max(musicPlayer.getVolume() - VOLUME_INCREMENT, 0);
+			volume = Math.max(musicPlayer.getVolume() - VOLUME_INCREMENT, MusicPlayer.MIN_VOLUME);
 			musicPlayer.setVolume(volume);
 			break;
 		default:
