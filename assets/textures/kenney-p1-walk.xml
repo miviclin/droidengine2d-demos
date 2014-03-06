@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:2dd71699349022eb9368de007005f390:f894fce90fc6a07cb1561cc3f8d5b74b:e0acc92a27d560d77ec784ec00139c1f$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="kenney-p1-walk.png" width="256" height="512">
+    <sprite n="p1_walk01.png" x="2" y="2" w="72" h="97"/>
+    <sprite n="p1_walk02.png" x="76" y="2" w="72" h="97"/>
+    <sprite n="p1_walk03.png" x="150" y="2" w="72" h="97"/>
+    <sprite n="p1_walk04.png" x="2" y="101" w="72" h="97"/>
+    <sprite n="p1_walk05.png" x="76" y="101" w="72" h="97"/>
+    <sprite n="p1_walk06.png" x="150" y="101" w="72" h="97"/>
+    <sprite n="p1_walk07.png" x="2" y="200" w="72" h="97"/>
+    <sprite n="p1_walk08.png" x="76" y="200" w="72" h="97"/>
+    <sprite n="p1_walk09.png" x="150" y="200" w="72" h="97"/>
+    <sprite n="p1_walk10.png" x="2" y="299" w="72" h="97"/>
+    <sprite n="p1_walk11.png" x="76" y="299" w="72" h="97"/>
+</TextureAtlas>

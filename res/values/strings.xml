@@ -39,6 +39,8 @@
 
     <!-- Animation -->
     <string name="group_animation">Animation</string>
+    <string name="group_animation_loop_mode_enabled">Loop mode enabled</string>
+    <string name="group_animation_loop_mode_disabled">Loop mode disabled</string>
 
     <!-- Audio -->
     <string name="group_audio">Audio</string>

@@ -151,6 +151,20 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.animation.loopmodeenabled.AnimationLoopEnabledDemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.animation.loopmodedisabled.AnimationLoopDisabledDemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
     </application>
 
 </manifest>

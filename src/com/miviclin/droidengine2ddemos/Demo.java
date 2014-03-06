@@ -3,6 +3,8 @@ package com.miviclin.droidengine2ddemos;
 import android.content.Context;
 
 import com.miviclin.droidengine2d.EngineActivity;
+import com.miviclin.droidengine2ddemos.animation.loopmodedisabled.AnimationLoopDisabledDemoActivity;
+import com.miviclin.droidengine2ddemos.animation.loopmodeenabled.AnimationLoopEnabledDemoActivity;
 import com.miviclin.droidengine2ddemos.audio.musicplayback.MusicPlaybackDemoActivity;
 import com.miviclin.droidengine2ddemos.audio.soundplayback.SoundPlaybackDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.stacking.GameStateStackingDemoActivity;
@@ -40,7 +42,9 @@ public enum Demo {
 	GAME_STATE_SWITCHING(R.string.group_gamestate_management_switching, GameStateSwitchingDemoActivity.class),
 	GAME_STATE_STACKING(R.string.group_gamestate_management_stacking, GameStateStackingDemoActivity.class),
 	AUDIO_MUSIC_PLAYBACK(R.string.group_audio_music_playback, MusicPlaybackDemoActivity.class),
-	AUDIO_SOUND_PLAYBACK(R.string.group_audio_sound_playback, SoundPlaybackDemoActivity.class);
+	AUDIO_SOUND_PLAYBACK(R.string.group_audio_sound_playback, SoundPlaybackDemoActivity.class),
+	ANIMATION_LOOP_MODE_ENABLED(R.string.group_animation_loop_mode_enabled, AnimationLoopEnabledDemoActivity.class),
+	ANIMATION_LOOP_MODE_DISABLED(R.string.group_animation_loop_mode_disabled, AnimationLoopDisabledDemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

@@ -39,6 +39,11 @@ public class MainActivity extends Activity {
 		textureRegionDemos.add(Demo.TEXTURE_REGION_FLIPPING);
 		listData.addGroup(DemosGroup.TEXTURE_REGIONS, textureRegionDemos);
 
+		List<Demo> animationDemos = new ArrayList<Demo>();
+		animationDemos.add(Demo.ANIMATION_LOOP_MODE_ENABLED);
+		animationDemos.add(Demo.ANIMATION_LOOP_MODE_DISABLED);
+		listData.addGroup(DemosGroup.ANIMATION, animationDemos);
+
 		List<Demo> textDemos = new ArrayList<Demo>();
 		textDemos.add(Demo.TEXT_CUSTOM_FONTS);
 		listData.addGroup(DemosGroup.TEXT, textDemos);
