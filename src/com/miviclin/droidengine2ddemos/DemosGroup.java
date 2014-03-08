@@ -10,7 +10,8 @@ public enum DemosGroup {
 	ANIMATION(R.string.group_animation),
 	AUDIO(R.string.group_audio),
 	GAME_STATES(R.string.group_gamestate_management),
-	INPUT(R.string.group_input);
+	INPUT(R.string.group_input),
+	BATCH_RENDERING(R.string.group_batch_rendering);
 
 	private int resId;
 

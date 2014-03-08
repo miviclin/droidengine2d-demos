@@ -165,6 +165,34 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.batchrendering.singlematerial.SingleMaterialBatchRenderingDemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase1DemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase2DemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase3DemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
     </application>
 
 </manifest>

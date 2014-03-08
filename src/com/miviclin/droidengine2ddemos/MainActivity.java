@@ -57,6 +57,13 @@ public class MainActivity extends Activity {
 		materialDemos.add(Demo.MATERIAL_TRANSPARENT_TEXTURE);
 		listData.addGroup(DemosGroup.MATERIALS, materialDemos);
 
+		List<Demo> batchRenderingDemos = new ArrayList<Demo>();
+		batchRenderingDemos.add(Demo.BATCH_RENDERING_SINGLE_MATERIAL);
+		batchRenderingDemos.add(Demo.BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_1);
+		batchRenderingDemos.add(Demo.BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_2);
+		batchRenderingDemos.add(Demo.BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_3);
+		listData.addGroup(DemosGroup.BATCH_RENDERING, batchRenderingDemos);
+
 		List<Demo> audioDemos = new ArrayList<Demo>();
 		audioDemos.add(Demo.AUDIO_MUSIC_PLAYBACK);
 		audioDemos.add(Demo.AUDIO_SOUND_PLAYBACK);

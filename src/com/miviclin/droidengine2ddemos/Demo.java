@@ -7,6 +7,10 @@ import com.miviclin.droidengine2ddemos.animation.loopmodedisabled.AnimationLoopD
 import com.miviclin.droidengine2ddemos.animation.loopmodeenabled.AnimationLoopEnabledDemoActivity;
 import com.miviclin.droidengine2ddemos.audio.musicplayback.MusicPlaybackDemoActivity;
 import com.miviclin.droidengine2ddemos.audio.soundplayback.SoundPlaybackDemoActivity;
+import com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase1DemoActivity;
+import com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase2DemoActivity;
+import com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase3DemoActivity;
+import com.miviclin.droidengine2ddemos.batchrendering.singlematerial.SingleMaterialBatchRenderingDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.stacking.GameStateStackingDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.switching.GameStateSwitchingDemoActivity;
 import com.miviclin.droidengine2ddemos.input.accelerometer.AccelerometerDemoActivity;
@@ -44,7 +48,15 @@ public enum Demo {
 	AUDIO_MUSIC_PLAYBACK(R.string.group_audio_music_playback, MusicPlaybackDemoActivity.class),
 	AUDIO_SOUND_PLAYBACK(R.string.group_audio_sound_playback, SoundPlaybackDemoActivity.class),
 	ANIMATION_LOOP_MODE_ENABLED(R.string.group_animation_loop_mode_enabled, AnimationLoopEnabledDemoActivity.class),
-	ANIMATION_LOOP_MODE_DISABLED(R.string.group_animation_loop_mode_disabled, AnimationLoopDisabledDemoActivity.class);
+	ANIMATION_LOOP_MODE_DISABLED(R.string.group_animation_loop_mode_disabled, AnimationLoopDisabledDemoActivity.class),
+	BATCH_RENDERING_SINGLE_MATERIAL(R.string.group_batch_rendering_single_material,
+			SingleMaterialBatchRenderingDemoActivity.class),
+	BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_1(R.string.group_batch_rendering_multiple_materials_case_1,
+			MultipleMaterialsBatchRenderingCase1DemoActivity.class),
+	BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_2(R.string.group_batch_rendering_multiple_materials_case_2,
+			MultipleMaterialsBatchRenderingCase2DemoActivity.class),
+	BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_3(R.string.group_batch_rendering_multiple_materials_case_3,
+			MultipleMaterialsBatchRenderingCase3DemoActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

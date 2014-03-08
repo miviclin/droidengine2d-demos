@@ -58,6 +58,13 @@
     <string name="group_gamestate_management_switching">Game state switching</string>
     <string name="group_gamestate_management_stacking">Game state stacking</string>
 
+    <!-- Batch rendering -->
+    <string name="group_batch_rendering">Batch rendering</string>
+    <string name="group_batch_rendering_single_material">Single material</string>
+    <string name="group_batch_rendering_multiple_materials_case_1">Multiple materials (case 1)</string>
+    <string name="group_batch_rendering_multiple_materials_case_2">Multiple materials (case 2)</string>
+    <string name="group_batch_rendering_multiple_materials_case_3">Multiple materials (case 3)</string>
+
     <!--  -->
     <!-- Demos -->
     <!--  -->
