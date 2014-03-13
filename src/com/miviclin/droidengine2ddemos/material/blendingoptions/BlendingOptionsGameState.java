@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -200,31 +201,38 @@ public class BlendingOptionsGameState extends GameStateAdapter {
 				});
 
 				// Blending equations
-				CharSequence[] blendingEquationsNames = new String[blendingEquations.keySet().size()];
-				ArrayAdapter<CharSequence> equationsAdapter = new ArrayAdapter<CharSequence>(getActivity(),
-						android.R.layout.simple_spinner_item,
-						blendingEquations.keySet().toArray(blendingEquationsNames));
-
-				equationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 				Spinner spinnerEquation = (Spinner) getActivity().findViewById(R.id.spinner_equation);
-				spinnerEquation.setAdapter(equationsAdapter);
-				spinnerEquation.setSelection(getEquationIndex(DEFAULT_EQUATION));
-				squareBlendingOptions.setBlendEquationMode(DEFAULT_EQUATION.getValue());
 
-				spinnerEquation.setOnItemSelectedListener(new OnItemSelectedListener() {
+				// Allow changing the blending equation only if the version of the device is ice cream sandwich or
+				// newer.
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+					CharSequence[] blendingEquationsNames = new String[blendingEquations.keySet().size()];
+					ArrayAdapter<CharSequence> equationsAdapter = new ArrayAdapter<CharSequence>(getActivity(),
+							android.R.layout.simple_spinner_item,
+							blendingEquations.keySet().toArray(blendingEquationsNames));
 
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-						Object selectedItem = parent.getItemAtPosition(position);
-						int equation = blendingEquations.get(selectedItem.toString()).intValue();
-						squareBlendingOptions.setBlendEquationMode(equation);
-					}
+					equationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-					@Override
-					public void onNothingSelected(AdapterView<?> parent) {
-					}
-				});
+					spinnerEquation.setAdapter(equationsAdapter);
+					spinnerEquation.setSelection(getEquationIndex(DEFAULT_EQUATION));
+					squareBlendingOptions.setBlendEquationMode(DEFAULT_EQUATION.getValue());
+
+					spinnerEquation.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+						@Override
+						public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+							Object selectedItem = parent.getItemAtPosition(position);
+							int equation = blendingEquations.get(selectedItem.toString()).intValue();
+							squareBlendingOptions.setBlendEquationMode(equation);
+						}
+
+						@Override
+						public void onNothingSelected(AdapterView<?> parent) {
+						}
+					});
+				} else {
+					spinnerEquation.setEnabled(false);
+				}
 			}
 		});
 	}
