@@ -1,0 +1,7 @@
+DroidEngine2D-Demos
+Copyright 2013-2014 Miguel Vicente Linares
+Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+Kenney's Art
+No copyright
+Creative Commons Zero License (http://creativecommons.org/publicdomain/zero/1.0/)
