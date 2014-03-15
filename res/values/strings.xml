@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  -->
+    <!-- General -->
+    <!--  -->
+
     <string name="app_name">DroidEngine2D Demos</string>
     <string name="action_settings">Settings</string>
+    <string name="ok">OK</string>
 
+    <!--  -->
     <!-- Groups -->
+    <!--  -->
 
 
     <!-- Rectangles -->
     <string name="group_rectangles">Rectangles</string>
-    <string name="group_rectangles_basic">Drawing rectangles</string>
-    <string name="group_rectangles_rotation_basic">Drawing rotated rectangles</string>
-    <string name="group_rectangles_rotation_anchor_point">Drawing rotated rectangles (custom anchor point)</string>
+    <string name="group_rectangles_basic">Draw rectangles</string>
+    <string name="group_rectangles_rotation_basic">Draw rotated rectangles</string>
+    <string name="group_rectangles_rotation_anchor_point">Draw rotated rectangles (custom anchor point)</string>
 
     <!-- Materials -->
     <string name="group_materials">Materials</string>
-    <string name="group_materials_texture_hsv">TextureHSVMaterial</string>
+    <string name="group_materials_blending_options">BlendingOptions</string>
+    <string name="group_materials_color">ColorMaterial</string>
+    <string name="group_materials_texture">TextureMaterial</string>
+    <string name="group_materials_texture_color">TextureColorMaterial</string>
+    <string name="group_materials_texture_hsv">TextureHsvMaterial</string>
+    <string name="group_materials_transparent_texture">TransparentTextureMaterial</string>
+
+    <!-- TextureRegions -->
+    <string name="group_texture_regions">TextureRegions</string>
+    <string name="group_texture_regions_flip_texture_region">Flip TextureRegion</string>
 
     <!-- Text -->
     <string name="group_text">Text</string>
@@ -23,14 +39,39 @@
 
     <!-- Animation -->
     <string name="group_animation">Animation</string>
+    <string name="group_animation_loop_mode_enabled">Loop mode enabled</string>
+    <string name="group_animation_loop_mode_disabled">Loop mode disabled</string>
 
     <!-- Audio -->
     <string name="group_audio">Audio</string>
+    <string name="group_audio_music_playback">Music playback</string>
+    <string name="group_audio_sound_playback">Sound playback</string>
 
-    <!-- Scenes -->
-    <string name="group_scenes">Scenes</string>
+    <!-- Input -->
+    <string name="group_input">Input</string>
+    <string name="group_input_touch">Touch input</string>
+    <string name="group_input_key">Key input</string>
+    <string name="group_input_accelerometer">Accelerometer</string>
 
-    <!-- User input -->
-    <string name="group_input">User input</string>
+    <!-- Game state management -->
+    <string name="group_gamestate_management">Game state management</string>
+    <string name="group_gamestate_management_switching">Game state switching</string>
+    <string name="group_gamestate_management_stacking">Game state stacking</string>
+
+    <!-- Batch rendering -->
+    <string name="group_batch_rendering">Batch rendering</string>
+    <string name="group_batch_rendering_single_material">Single material</string>
+    <string name="group_batch_rendering_multiple_materials_case_1">Multiple materials (case 1)</string>
+    <string name="group_batch_rendering_multiple_materials_case_2">Multiple materials (case 2)</string>
+    <string name="group_batch_rendering_multiple_materials_case_3">Multiple materials (case 3)</string>
+
+    <!--  -->
+    <!-- Demos -->
+    <!--  -->
+
+
+    <!-- Blending Options -->
+    <string name="blending_options_alert_title">Warning!</string>
+    <string name="blending_options_alert_msg">The specified blending options are not supported by the current driver.</string>
 
 </resources>

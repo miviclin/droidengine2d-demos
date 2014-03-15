@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:ef66afe210c1c2889efadbcae2723305$ -->
+<!-- $TexturePacker:SmartUpdate:2fdbe55c5f3b840a632759df4f9f7e0a$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -13,9 +13,9 @@ oW => sprite's original width (only available if trimmed)
 oH => sprite's original height (only available if trimmed)
 r => 'y' only set if sprite is rotated
 -->
-<TextureAtlas imagePath="squares.png" width="512" height="512">
-    <sprite n="green_square_off.png" x="0" y="0" w="256" h="256"/>
-    <sprite n="green_square_on.png" x="256" y="0" w="256" h="256"/>
-    <sprite n="red_square_off.png" x="0" y="256" w="256" h="256"/>
-    <sprite n="red_square_on.png" x="256" y="256" w="256" h="256"/>
+<TextureAtlas imagePath="squares.png" width="1024" height="1024">
+    <sprite n="greensquare_off_shadow.png" x="2" y="2" w="270" h="270"/>
+    <sprite n="greensquare_on_shadow.png" x="274" y="2" w="270" h="270"/>
+    <sprite n="greensquare_on_shadow_blur2.png" x="546" y="2" w="270" h="270"/>
+    <sprite n="greensquare_on_shadow_blur7.png" x="2" y="274" w="270" h="270"/>
 </TextureAtlas>

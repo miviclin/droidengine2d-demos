@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:c0cf211c9eb904f2f727206808e5dc2a:16b6ad1351a175f91e75d32498f583b5:312aebe1408b6fd7609be22f39d1f28a$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="circles.png" width="256" height="512">
+    <sprite n="circle-blue.png" x="2" y="2" w="222" h="222"/>
+    <sprite n="circle-red.png" x="2" y="226" w="222" h="222"/>
+</TextureAtlas>
