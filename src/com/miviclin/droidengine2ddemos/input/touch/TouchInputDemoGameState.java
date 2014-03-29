@@ -27,6 +27,7 @@ import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.input.MotionEventProcessor;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
+import com.miviclin.droidengine2ddemos.util.MathUtils;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class TouchInputDemoGameState extends GameStateAdapter {
@@ -52,11 +53,17 @@ public class TouchInputDemoGameState extends GameStateAdapter {
 		textureAtlas.loadFromFile("textures/circles.xml", getActivity());
 		getTextureManager().addTextureAtlas(textureAtlas);
 
+		TextureRegion textureRegion = textureAtlas.getTextureRegion("circle-red.png");
+
 		final float viewWidth = getCamera().getViewportWidth();
 		final float viewHeight = getCamera().getViewportHeight();
-		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
-		rectangle = new Rectangle<TextureMaterial>(transform,
-				new TextureMaterial(textureAtlas.getTextureRegion("circle-red.png")));
+
+		float circleRadius = MathUtils.clamp(viewWidth / 2, 100, textureRegion.getWidth() * 2);
+
+		Vector2 circlePosition = new Vector2(viewWidth / 2, viewHeight / 2);
+		Vector2 circleScale = new Vector2(circleRadius, circleRadius);
+		Transform transform = new Transform(circlePosition, circleScale);
+		rectangle = new Rectangle<TextureMaterial>(transform, new TextureMaterial(textureRegion));
 
 		getGameStateInputManager().getTouchProcessor().setMotionEventProcessor(new MotionEventProcessor() {
 

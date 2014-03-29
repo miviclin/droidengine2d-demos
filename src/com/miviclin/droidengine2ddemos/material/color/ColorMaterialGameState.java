@@ -58,7 +58,12 @@ public class ColorMaterialGameState extends GameStateAdapter {
 	public void onRegister() {
 		float viewWidth = getCamera().getViewportWidth();
 		float viewHeight = getCamera().getViewportHeight();
-		Transform transform = new Transform(new Vector2(viewWidth / 2, viewHeight / 2), new Vector2(240, 240));
+		
+		float rectSize = Math.min(viewWidth, viewHeight) / 2;
+		
+		Vector2 rectPosition = new Vector2(viewWidth / 2, viewHeight / 2);
+		Vector2 rectScale =  new Vector2(rectSize, rectSize);
+		Transform transform = new Transform(rectPosition, rectScale);
 		rectangle = new Rectangle<ColorMaterial>(transform, new ColorMaterial(new Color(0.0f, 1.0f, 0.0f)));
 
 		final TextView tvRed = (TextView) getActivity().findViewById(R.id.textview_red);
