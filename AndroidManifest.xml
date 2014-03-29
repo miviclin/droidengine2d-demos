@@ -29,21 +29,21 @@
             android:name="com.miviclin.droidengine2ddemos.rectangle.basic.RectanglesActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
         <activity
             android:name="com.miviclin.droidengine2ddemos.rectangle.rotation.basic.BasicRotationActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
         <activity
             android:name="com.miviclin.droidengine2ddemos.rectangle.rotation.anchorpoint.AnchorPointRotationActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
         <activity

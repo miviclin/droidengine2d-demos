@@ -49,17 +49,23 @@ public class RectanglesGameState extends GameStateAdapter {
 		float viewWidth = getCamera().getViewportWidth();
 		float viewHeight = getCamera().getViewportHeight();
 
+		float rectSize = viewWidth / 2.5f;
+		float margin = rectSize / 4.0f;
+
+		Vector2 scale1 = new Vector2(rectSize, rectSize);
 		Vector2 pos1 = new Vector2(viewWidth / 2, viewHeight / 2);
-		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, new Vector2(200, 200)),
-				new ColorMaterial(new Color(0, 0, 0)));
+		Color color1 = new Color(0, 1, 0);
+		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, scale1), new ColorMaterial(color1));
 
-		Vector2 pos2 = new Vector2(200, viewHeight / 2);
-		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, new Vector2(100, 350)),
-				new ColorMaterial(new Color(0, 0, 0)));
+		Vector2 scale2 = new Vector2(rectSize, rectSize);
+		Vector2 pos2 = new Vector2(pos1.getX(), pos1.getY() + (scale1.getY() / 2) + (scale2.getY() / 2) + margin);
+		Color color2 = new Color(1, 0, 0);
+		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, scale2), new ColorMaterial(color2));
 
-		Vector2 pos3 = new Vector2(viewWidth - 200, viewHeight / 2);
-		rectangle3 = new Rectangle<ColorMaterial>(new Transform(pos3, new Vector2(100, 50)),
-				new ColorMaterial(new Color(0, 0, 0)));
+		Vector2 scale3 = new Vector2(rectSize, rectSize);
+		Vector2 pos3 = new Vector2(pos1.getX(), pos1.getY() - (scale1.getY() / 2) - (scale3.getY() / 2) - margin);
+		Color color3 = new Color(0, 0, 1);
+		rectangle3 = new Rectangle<ColorMaterial>(new Transform(pos3, scale3), new ColorMaterial(color3));
 	}
 
 }

@@ -49,8 +49,11 @@ public class BasicRotationGameState extends GameStateAdapter {
 
 		float viewWidth = getCamera().getViewportWidth();
 		float viewHeight = getCamera().getViewportHeight();
+		
+		float rectSize = viewWidth / 2.5f;
+		
 		Vector2 rectPos = new Vector2(viewWidth / 2, viewHeight / 2);
-		Vector2 rectScale = new Vector2(200, 200);
+		Vector2 rectScale = new Vector2(rectSize, rectSize);
 		Transform transform = new Transform(rectPos, rectScale);
 		rectangle = new Rectangle<ColorMaterial>(transform, new ColorMaterial(new Color(0, 0, 0)));
 	}

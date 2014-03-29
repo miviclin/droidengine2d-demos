@@ -52,15 +52,17 @@ public class AnchorPointRotationGameState extends GameStateAdapter {
 
 		float viewWidth = getCamera().getViewportWidth();
 		float viewHeight = getCamera().getViewportHeight();
+		
+		float rectSize = viewWidth / 2.5f;
 
 		Vector2 pos1 = new Vector2(viewWidth / 2, viewHeight / 2);
-		Vector2 scale1 = new Vector2(200, 200);
+		Vector2 scale1 = new Vector2(rectSize, rectSize);
 		Vector2 orig1 = new Vector2(scale1.getX() / 2, scale1.getY() / 2);
 		rectangle1 = new Rectangle<ColorMaterial>(new Transform(pos1, scale1, orig1, 0),
 				new ColorMaterial(new Color(0, 0, 0)));
 
 		Vector2 pos2 = new Vector2(viewWidth / 2, viewHeight / 2);
-		Vector2 scale2 = new Vector2(200, 200);
+		Vector2 scale2 = new Vector2(rectSize, rectSize);
 		Vector2 orig2 = new Vector2(0, 0);
 		rectangle2 = new Rectangle<ColorMaterial>(new Transform(pos2, scale2, orig2, 0),
 				new ColorMaterial(new Color(1, 0, 0)));
