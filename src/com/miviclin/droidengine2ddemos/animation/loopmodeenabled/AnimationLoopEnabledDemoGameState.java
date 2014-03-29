@@ -25,6 +25,7 @@ import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
+import com.miviclin.droidengine2ddemos.util.MathUtils;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class AnimationLoopEnabledDemoGameState extends GameStateAdapter {
@@ -73,7 +74,7 @@ public class AnimationLoopEnabledDemoGameState extends GameStateAdapter {
 
 		TextureRegion textureRegion = animation.getCurrentFrame().getTextureRegion();
 		float ratio = textureRegion.getWidth() / textureRegion.getHeight();
-		float rectangleWidth = viewWidth / 3.0f;
+		float rectangleWidth = MathUtils.clamp(viewWidth / 3.0f, 100, textureRegion.getWidth() * 2);
 		float rectangleHeight = rectangleWidth / ratio;
 		Vector2 rectScale = new Vector2(rectangleWidth, rectangleHeight);
 
