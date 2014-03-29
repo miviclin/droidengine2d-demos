@@ -34,7 +34,7 @@ public class CustomFontsGameState extends GameStateAdapter {
 	private Color textArialColor, textRosewoodColor1, textRosewoodColor2, text04b03Color;
 	private String textArial, textRosewood, text04b03;
 
-	private int textSizePx;
+	private float textSizePx;
 
 	public CustomFontsGameState(Game game) {
 		super(game);
@@ -53,6 +53,9 @@ public class CustomFontsGameState extends GameStateAdapter {
 	public void onRegister() {
 		backgroundColor = new Color(0.5f, 0.5f, 0.5f);
 
+		final float viewWidth = getCamera().getViewportWidth();
+		final float viewHeight = getCamera().getViewportHeight();
+
 		fontArial = new BitmapFont();
 		fontArial.loadFromFile("fonts/arial.fnt", getActivity());
 		getTextureManager().addFontTextures(fontArial);
@@ -65,13 +68,13 @@ public class CustomFontsGameState extends GameStateAdapter {
 		font04b03.loadFromFile("fonts/04b03.fnt", getActivity());
 		getTextureManager().addFontTextures(font04b03);
 
-		textSizePx = 50;
+		textSizePx = viewHeight / 9.5f;
 
-		textArialPosition = new Vector2(100, 150);
+		textArialPosition = new Vector2(viewWidth / 8.0f, viewHeight / 3.0f);
 		textArialColor = new Color(1, 1, 1);
 		textArial = "Testing Arial";
 
-		textRosewoodPosition = new Vector2(100, 250);
+		textRosewoodPosition = new Vector2(viewWidth / 8.0f, viewHeight / 2.0f);
 		textRosewoodColor1 = new Color(0.7f, 0.7f, 0.7f);
 		textRosewoodColor2 = new Color(0, 1, 1);
 		textRosewood = "Testing Rosewood";
@@ -79,7 +82,7 @@ public class CustomFontsGameState extends GameStateAdapter {
 		rotationPoint = new Vector2(textRosewoodPosition.getX() + lineWidth / 2,
 				textRosewoodPosition.getY() + fontRosewood.measureLineHeight(textSizePx) / 2);
 
-		text04b03Position = new Vector2(100, 350);
+		text04b03Position = new Vector2(viewWidth / 8.0f, viewHeight - (viewHeight / 3.0f));
 		text04b03Color = new Color(0, 0, 0);
 		text04b03 = "Testing 04b03";
 	}

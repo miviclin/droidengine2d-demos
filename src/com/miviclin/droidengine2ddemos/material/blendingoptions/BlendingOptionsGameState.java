@@ -39,6 +39,7 @@ import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 import com.miviclin.droidengine2ddemos.R;
+import com.miviclin.droidengine2ddemos.util.MathUtils;
 import com.miviclin.droidengine2ddemos.util.Rectangle;
 
 public class BlendingOptionsGameState extends GameStateAdapter {
@@ -88,13 +89,22 @@ public class BlendingOptionsGameState extends GameStateAdapter {
 		TextureAtlas squaresAtlas = new TexturePackerAtlas();
 		squaresAtlas.loadFromFile("textures/squares.xml", getActivity());
 		getTextureManager().addTextureAtlas(squaresAtlas);
+		
+		TextureRegion textureRegion = squaresAtlas.getTextureRegion("greensquare_on_shadow.png");
 
 		float viewWidth = getCamera().getViewportWidth();
 		float viewHeight = getCamera().getViewportHeight();
-		square.getTransform().getPosition().set(viewWidth / 2, viewHeight / 2);
-		square.getTransform().getOrigin().set(120, 120);
-		square.getTransform().getScale().set(240, 240);
-		square.getMaterial().setTextureRegion(squaresAtlas.getTextureRegion("greensquare_on_shadow.png"));
+		
+		float rectSize = MathUtils.clamp(Math.min(viewWidth, viewHeight) / 2, 100, textureRegion.getWidth() * 2);
+		
+		Vector2 rectPosition = new Vector2(viewWidth / 2, viewHeight / 2);
+		Vector2 rectOrigin =  new Vector2(rectSize / 2, rectSize / 2);
+		Vector2 rectScale =  new Vector2(rectSize, rectSize);
+		
+		square.getTransform().getPosition().set(rectPosition);
+		square.getTransform().getOrigin().set(rectOrigin);
+		square.getTransform().getScale().set(rectScale);
+		square.getMaterial().setTextureRegion(textureRegion);
 
 		TextureAtlas backgroundAtlas = new TexturePackerAtlas();
 		backgroundAtlas.loadFromFile("textures/background.xml", getActivity());

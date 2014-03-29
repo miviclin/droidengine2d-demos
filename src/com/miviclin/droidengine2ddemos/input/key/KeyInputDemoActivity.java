@@ -45,7 +45,7 @@ public class KeyInputDemoActivity extends EngineActivity {
 
 	@Override
 	public int getOrientation() {
-		return Configuration.ORIENTATION_LANDSCAPE;
+		return Configuration.ORIENTATION_PORTRAIT;
 	}
 
 }
