@@ -49,4 +49,32 @@ public class Rectangle<M extends Material> {
 		boolean containsY = (bottom <= y) && (y <= top);
 		return (containsX && containsY);
 	}
+
+	public boolean intersects(Rectangle<?> rectangle) {
+		float width = transform.getScale().getX();
+		float height = transform.getScale().getY();
+		float halfWidth = width / 2;
+		float halfHeight = height / 2;
+		float left = transform.getPosition().getX() - halfWidth;
+		float bottom = transform.getPosition().getY() - halfHeight;
+		float right = left + width;
+		float top = bottom + height;
+
+		float otherWidth = transform.getScale().getX();
+		float otherHeight = transform.getScale().getY();
+		float otherHalfWidth = otherWidth / 2;
+		float otherHalfHeight = otherHeight / 2;
+		float otherLeft = transform.getPosition().getX() - otherHalfWidth;
+		float otherBottom = transform.getPosition().getY() - otherHalfHeight;
+		float otherRight = otherLeft + otherWidth;
+		float otherTop = otherBottom + otherHeight;
+
+		boolean intersectsX = ((otherLeft <= right) && (otherLeft >= left)) ||
+				((otherRight >= left) && (otherRight <= right));
+
+		boolean intersectsY = ((otherBottom <= top) && (otherBottom >= bottom)) ||
+				((otherTop >= bottom) && (otherTop <= top));
+
+		return (intersectsX && intersectsY);
+	}
 }
