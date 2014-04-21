@@ -21,19 +21,47 @@ import com.miviclin.droidengine2d.util.math.Vector2;
 
 public class Ball extends GameObject<TextureHsvMaterial> {
 
-	public Ball(Vector2 position, float radius,
+	private Vector2 velocity;
+
+	public Ball(Vector2 position, float radius, float speed,
 			TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial) {
 
 		super(new Transform(position, new Vector2(radius * 2, radius * 2)), defaultMaterial, onCollisionMaterial);
-	}
 
-	@Override
-	public void update(float delta) {
+		int random = (int) (Math.random() * 2);
+		int initialDirectionX = (random == 0) ? -1 : 1;
+		int initialDirectionY = 1;
+		velocity = new Vector2(initialDirectionX, initialDirectionY);
+		velocity.setLength(speed);
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		g.drawRect(getDefaultMaterial(), getTransform());
+	}
+
+	public float calculateNextPositionX(float delta) {
+		return getTransform().getPosition().getX() + (velocity.getX() * delta);
+	}
+
+	public float calculateNextPositionY(float delta) {
+		return getTransform().getPosition().getY() + (velocity.getY() * delta);
+	}
+
+	public void reverseDirectionX() {
+		velocity.multiply(-1, 1);
+	}
+
+	public void reverseDirectionY() {
+		velocity.multiply(1, -1);
+	}
+
+	public Vector2 getPosition() {
+		return getTransform().getPosition();
+	}
+
+	public float getRadius() {
+		return getTransform().getScale().getX() / 2.0f;
 	}
 
 }

@@ -30,8 +30,6 @@ public abstract class GameObject<M extends Material> {
 		this.onCollisionMaterial = onCollisionMaterial;
 	}
 
-	public abstract void update(float delta);
-
 	public abstract void draw(Graphics g);
 
 	protected Transform getTransform() {

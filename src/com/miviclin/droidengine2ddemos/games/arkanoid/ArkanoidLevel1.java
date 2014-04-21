@@ -36,11 +36,7 @@ public class ArkanoidLevel1 extends GameStateAdapter {
 
 	@Override
 	public void update(float delta) {
-		for (int i = 0; i < blocks.size(); i++) {
-			blocks.get(i).update(delta);
-		}
-		player.update(delta);
-		ball.update(delta);
+		updateBallPosition(delta);
 	}
 
 	@Override
@@ -131,6 +127,7 @@ public class ArkanoidLevel1 extends GameStateAdapter {
 		final float playerScaleY = player.getTransform().getScale().getY();
 
 		final float ballRadius = playerScaleX / 8.0f;
+		final float ballSpeed = 0.5f;
 
 		final float bottomMargin = 5.0f;
 
@@ -144,7 +141,34 @@ public class ArkanoidLevel1 extends GameStateAdapter {
 		TextureRegion ballTextureRegionCollided = getTextureManager().getTextureRegion("btn-small-circle-selected.png");
 		TextureHsvMaterial onCollisionMaterial = new TextureHsvMaterial(ballTextureRegionCollided);
 
-		return new Ball(ballPosition, ballRadius, defaultMaterial, onCollisionMaterial);
+		return new Ball(ballPosition, ballRadius, ballSpeed, defaultMaterial, onCollisionMaterial);
+	}
+
+	private void updateBallPosition(float delta) {
+		final float viewWidth = getCamera().getViewportWidth();
+		final float viewHeight = getCamera().getViewportHeight();
+
+		Vector2 ballPosition = ball.getPosition();
+		float newBallPositionX = ball.calculateNextPositionX(delta);
+		float newBallPositionY = ball.calculateNextPositionY(delta);
+
+		if (newBallPositionX + ball.getRadius() > viewWidth) {
+			newBallPositionX = viewWidth - ball.getRadius();
+			ball.reverseDirectionX();
+		} else if (newBallPositionX - ball.getRadius() < 0) {
+			newBallPositionX = ball.getRadius();
+			ball.reverseDirectionX();
+		}
+
+		if (newBallPositionY + ball.getRadius() > viewHeight) {
+			newBallPositionY = viewHeight - ball.getRadius();
+			ball.reverseDirectionY();
+		} else if (newBallPositionY - ball.getRadius() < 0) {
+			newBallPositionY = ball.getRadius();
+			ball.reverseDirectionY();
+		}
+
+		ballPosition.set(newBallPositionX, newBallPositionY);
 	}
 
 }

@@ -28,10 +28,6 @@ public class Player extends GameObject<TextureHsvMaterial> {
 	}
 
 	@Override
-	public void update(float delta) {
-	}
-
-	@Override
 	public void draw(Graphics g) {
 		g.drawRect(getDefaultMaterial(), getTransform());
 	}
