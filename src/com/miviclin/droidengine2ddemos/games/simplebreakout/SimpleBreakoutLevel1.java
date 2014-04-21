@@ -143,14 +143,18 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 	}
 
 	private void updateBallPosition(float delta) {
-		final float viewWidth = getCamera().getViewportWidth();
-		final float viewHeight = getCamera().getViewportHeight();
-
-		Vector2 ballPosition = ball.getPosition();
 		float newBallPositionX = ball.calculateNextPositionX(delta);
 		float newBallPositionY = ball.calculateNextPositionY(delta);
 
-		// Check collision with the left or right sides of the board
+		checkCollisionWithSidesOfBoard(newBallPositionX, newBallPositionY);
+		checkCollisionWithBlockAtBottom(newBallPositionX, newBallPositionY);
+		checkCollisionWithPlayer(newBallPositionX, newBallPositionY);
+		checkCollisionWithBottomOfBoard(newBallPositionX, newBallPositionY);
+	}
+
+	private void checkCollisionWithSidesOfBoard(float newBallPositionX, float newBallPositionY) {
+		final float viewWidth = getCamera().getViewportWidth();
+
 		if (newBallPositionX + ball.getRadius() > viewWidth) {
 			newBallPositionX = viewWidth - ball.getRadius();
 			ball.reverseDirectionX();
@@ -159,16 +163,10 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			ball.reverseDirectionX();
 		}
 
-		// Check collision with the top or bottom sides of the board
-		if (newBallPositionY + ball.getRadius() > viewHeight) {
-			newBallPositionY = viewHeight - ball.getRadius();
-			ball.reverseDirectionY();
-		} else if (newBallPositionY - ball.getRadius() < 0) {
-			newBallPositionY = ball.getRadius();
-			ball.reverseDirectionY();
-		}
+		ball.getPosition().set(newBallPositionX, newBallPositionY);
+	}
 
-		// Check collision with the block at the bottom
+	private void checkCollisionWithBlockAtBottom(float newBallPositionX, float newBallPositionY) {
 		if (blocks.size() > 0) {
 			Block blockAtBottom = blocks.get(blocks.size() - 1);
 			if (newBallPositionY + ball.getRadius() > blockAtBottom.getPosition().getY()) {
@@ -177,6 +175,52 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			}
 		}
 
-		ballPosition.set(newBallPositionX, newBallPositionY);
+		ball.getPosition().set(newBallPositionX, newBallPositionY);
+	}
+
+	private void checkCollisionWithPlayer(float newBallPositionX, float newBallPositionY) {
+		final float playerPositionX = player.getTransform().getPosition().getX();
+		final float playerPositionY = player.getTransform().getPosition().getY();
+		final float playerScaleX = player.getTransform().getScale().getX();
+		final float playerScaleY = player.getTransform().getScale().getY();
+
+		final float playerLeft = playerPositionX - (playerScaleX / 2.0f);
+		final float playerRight = playerPositionX + (playerScaleX / 2.0f);
+		final float playerTop = playerPositionY + (playerScaleY / 2.0f);
+
+		float overlapY = playerTop - (newBallPositionY - ball.getRadius());
+
+		if (overlapY > 0.0f) {
+			float overlapLeftX = (newBallPositionX + ball.getRadius()) - playerLeft;
+			float overlapRightX = playerRight - (newBallPositionX - ball.getRadius());
+
+			if ((overlapLeftX > 0.0f) && (overlapRightX > 0.0f)) {
+				float minOverlapX = Math.min(overlapLeftX, overlapRightX);
+				boolean compensateX = Math.min(minOverlapX, overlapY) == minOverlapX;
+				if (compensateX) {
+					if (minOverlapX == overlapLeftX) {
+						newBallPositionX = playerLeft - ball.getRadius();
+						ball.reverseDirectionX();
+					} else {
+						newBallPositionX = playerRight + ball.getRadius();
+						ball.reverseDirectionX();
+					}
+				} else {
+					newBallPositionY = playerTop + ball.getRadius();
+					ball.reverseDirectionY();
+				}
+			}
+		}
+
+		ball.getPosition().set(newBallPositionX, newBallPositionY);
+	}
+
+	private void checkCollisionWithBottomOfBoard(float newBallPositionX, float newBallPositionY) {
+		if (newBallPositionY + ball.getRadius() < 0) {
+			newBallPositionY = ball.getRadius();
+			ball.reverseDirectionY();
+		}
+
+		ball.getPosition().set(newBallPositionX, newBallPositionY);
 	}
 }

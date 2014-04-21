@@ -44,5 +44,9 @@ public class Block extends GameObject<TextureHsvMaterial> {
 	public Vector2 getPosition() {
 		return getTransform().getPosition();
 	}
+	
+	public void onBallCollision() {
+		lastCollisionTime = System.currentTimeMillis();
+	}
 
 }
