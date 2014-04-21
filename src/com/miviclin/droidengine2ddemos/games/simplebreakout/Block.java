@@ -17,6 +17,7 @@ package com.miviclin.droidengine2ddemos.games.simplebreakout;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
 import com.miviclin.droidengine2d.util.Transform;
+import com.miviclin.droidengine2d.util.math.Vector2;
 
 public class Block extends GameObject<TextureHsvMaterial> {
 
@@ -38,6 +39,10 @@ public class Block extends GameObject<TextureHsvMaterial> {
 
 	public int getPoints() {
 		return points;
+	}
+
+	public Vector2 getPosition() {
+		return getTransform().getPosition();
 	}
 
 }

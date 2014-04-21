@@ -150,6 +150,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		float newBallPositionX = ball.calculateNextPositionX(delta);
 		float newBallPositionY = ball.calculateNextPositionY(delta);
 
+		// Check collision with the left or right sides of the board
 		if (newBallPositionX + ball.getRadius() > viewWidth) {
 			newBallPositionX = viewWidth - ball.getRadius();
 			ball.reverseDirectionX();
@@ -158,6 +159,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			ball.reverseDirectionX();
 		}
 
+		// Check collision with the top or bottom sides of the board
 		if (newBallPositionY + ball.getRadius() > viewHeight) {
 			newBallPositionY = viewHeight - ball.getRadius();
 			ball.reverseDirectionY();
@@ -166,7 +168,15 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			ball.reverseDirectionY();
 		}
 
+		// Check collision with the block at the bottom
+		if (blocks.size() > 0) {
+			Block blockAtBottom = blocks.get(blocks.size() - 1);
+			if (newBallPositionY + ball.getRadius() > blockAtBottom.getPosition().getY()) {
+				newBallPositionY = blockAtBottom.getPosition().getY() - ball.getRadius();
+				ball.reverseDirectionY();
+			}
+		}
+
 		ballPosition.set(newBallPositionX, newBallPositionY);
 	}
-
 }
