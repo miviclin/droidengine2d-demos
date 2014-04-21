@@ -94,6 +94,10 @@ public class MainActivity extends Activity {
 		gameStateManagementDemos.add(Demo.GAME_STATE_STACKING);
 		listData.addGroup(DemosGroup.GAME_STATES, gameStateManagementDemos);
 
+		List<Demo> gamesDemos = new ArrayList<Demo>();
+		gamesDemos.add(Demo.GAME_ARKANOID);
+		listData.addGroup(DemosGroup.GAMES, gamesDemos);
+
 		return listData;
 	}
 

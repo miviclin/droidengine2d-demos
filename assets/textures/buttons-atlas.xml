@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:00aae07be4fe1ab6e04935529955a163$ -->
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:9b3d5b1b27b6f20b035ceed1294304ac:128006bfc8ca5435e6fce632e2ff0c34:5dcc2a128d7f4afb9fd785bbfae84aa0$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -50,5 +50,7 @@ r => 'y' only set if sprite is rotated
     <sprite n="btn-small-2-selected.png" x="734" y="1222" w="120" h="120"/>
     <sprite n="btn-small-3-normal.png" x="856" y="1222" w="120" h="120"/>
     <sprite n="btn-small-3-selected.png" x="2" y="1344" w="120" h="120"/>
-    <sprite n="btn-small-disabled.png" x="124" y="1344" w="120" h="120"/>
+    <sprite n="btn-small-circle-normal.png" x="124" y="1344" w="120" h="120"/>
+    <sprite n="btn-small-circle-selected.png" x="246" y="1344" w="120" h="120"/>
+    <sprite n="btn-small-disabled.png" x="368" y="1344" w="120" h="120"/>
 </TextureAtlas>
