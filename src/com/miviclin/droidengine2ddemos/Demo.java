@@ -25,7 +25,7 @@ import com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.Multiple
 import com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase2DemoActivity;
 import com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase3DemoActivity;
 import com.miviclin.droidengine2ddemos.batchrendering.singlematerial.SingleMaterialBatchRenderingDemoActivity;
-import com.miviclin.droidengine2ddemos.games.arkanoid.ArkanoidActivity;
+import com.miviclin.droidengine2ddemos.games.simplebreakout.SimpleBreakoutActivity;
 import com.miviclin.droidengine2ddemos.gamestate.stacking.GameStateStackingDemoActivity;
 import com.miviclin.droidengine2ddemos.gamestate.switching.GameStateSwitchingDemoActivity;
 import com.miviclin.droidengine2ddemos.input.accelerometer.AccelerometerDemoActivity;
@@ -72,7 +72,7 @@ public enum Demo {
 			MultipleMaterialsBatchRenderingCase2DemoActivity.class),
 	BATCH_RENDERING_MULTIPLE_MATERIALS_CASE_3(R.string.group_batch_rendering_multiple_materials_case_3,
 			MultipleMaterialsBatchRenderingCase3DemoActivity.class),
-	GAME_ARKANOID(R.string.group_games_arkanoid, ArkanoidActivity.class);
+	GAME_SIMPLE_BREAKOUT(R.string.group_games_simple_breakout, SimpleBreakoutActivity.class);
 
 	private int resId;
 	private Class<? extends EngineActivity> demoActivityClass;

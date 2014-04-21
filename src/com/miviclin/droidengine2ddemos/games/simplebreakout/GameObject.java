@@ -12,35 +12,36 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.Graphics;
-import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
+import com.miviclin.droidengine2d.graphics.material.Material;
 import com.miviclin.droidengine2d.util.Transform;
 
-public class Player extends GameObject<TextureHsvMaterial> {
+public abstract class GameObject<M extends Material> {
 
-	private int score;
+	private Transform transform;
+	private M defaultMaterial;
+	private M onCollisionMaterial;
 
-	public Player(Transform transform, TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial) {
-		super(transform, defaultMaterial, onCollisionMaterial);
-		this.score = 0;
+	public GameObject(Transform transform, M defaultMaterial, M onCollisionMaterial) {
+		this.transform = transform;
+		this.defaultMaterial = defaultMaterial;
+		this.onCollisionMaterial = onCollisionMaterial;
 	}
 
-	@Override
-	public void draw(Graphics g) {
-		g.drawRect(getDefaultMaterial(), getTransform());
+	public abstract void draw(Graphics g);
+
+	protected Transform getTransform() {
+		return transform;
 	}
 
-	public int getScore() {
-		return score;
+	protected M getDefaultMaterial() {
+		return defaultMaterial;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	protected M getOnCollisionMaterial() {
+		return onCollisionMaterial;
 	}
 
-	public void addPointsToScore(int points) {
-		this.score += points;
-	}
 }

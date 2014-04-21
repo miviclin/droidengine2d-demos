@@ -12,7 +12,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import android.app.Activity;
 
@@ -21,9 +21,9 @@ import com.miviclin.droidengine2d.graphics.GLView;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
 
-public class ArkanoidGame extends AbstractGame {
+public class SimpleBreakoutGame extends AbstractGame {
 
-	public ArkanoidGame(GLView glView, Activity activity) {
+	public SimpleBreakoutGame(GLView glView, Activity activity) {
 		super(glView, activity);
 	}
 
@@ -33,9 +33,9 @@ public class ArkanoidGame extends AbstractGame {
 		buttonsTextureAtlas.loadFromFile("textures/buttons-atlas.xml", getActivity());
 		getTextureManager().addTextureAtlas(buttonsTextureAtlas);
 
-		getGameStateManager().registerGameState(ArkanoidGameStates.LEVEL_1, new ArkanoidLevel1(this));
+		getGameStateManager().registerGameState(SimpleBreakoutGameStates.LEVEL_1, new SimpleBreakoutLevel1(this));
 
-		getGameStateManager().pushActiveGameState(ArkanoidGameStates.LEVEL_1);
+		getGameStateManager().pushActiveGameState(SimpleBreakoutGameStates.LEVEL_1);
 	}
 
 }

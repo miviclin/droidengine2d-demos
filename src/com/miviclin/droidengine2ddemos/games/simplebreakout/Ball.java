@@ -12,7 +12,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;

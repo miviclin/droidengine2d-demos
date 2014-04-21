@@ -67,7 +67,7 @@
 
     <!-- Games -->
     <string name="group_games">Games</string>
-    <string name="group_games_arkanoid">Arkanoid</string>
+    <string name="group_games_simple_breakout">Simple Breakout</string>
 
     <!--  -->
     <!-- Demos -->

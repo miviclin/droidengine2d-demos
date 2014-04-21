@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 		listData.addGroup(DemosGroup.GAME_STATES, gameStateManagementDemos);
 
 		List<Demo> gamesDemos = new ArrayList<Demo>();
-		gamesDemos.add(Demo.GAME_ARKANOID);
+		gamesDemos.add(Demo.GAME_SIMPLE_BREAKOUT);
 		listData.addGroup(DemosGroup.GAMES, gamesDemos);
 
 		return listData;

@@ -12,7 +12,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import java.util.ArrayList;
 
@@ -24,13 +24,13 @@ import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class ArkanoidLevel1 extends GameStateAdapter {
+public class SimpleBreakoutLevel1 extends GameStateAdapter {
 
 	private ArrayList<Block> blocks;
 	private Player player;
 	private Ball ball;
 
-	public ArkanoidLevel1(Game game) {
+	public SimpleBreakoutLevel1(Game game) {
 		super(game);
 	}
 

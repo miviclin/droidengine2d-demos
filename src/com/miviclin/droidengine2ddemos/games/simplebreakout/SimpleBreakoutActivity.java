@@ -12,7 +12,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import android.content.res.Configuration;
 
@@ -21,11 +21,11 @@ import com.miviclin.droidengine2d.EngineActivity;
 import com.miviclin.droidengine2d.graphics.GLView;
 import com.miviclin.droidengine2ddemos.R;
 
-public class ArkanoidActivity extends EngineActivity {
+public class SimpleBreakoutActivity extends EngineActivity {
 
 	@Override
 	public Engine createEngine(GLView glView) {
-		ArkanoidGame game = new ArkanoidGame(glView, this);
+		SimpleBreakoutGame game = new SimpleBreakoutGame(glView, this);
 		Engine engine = new Engine.EngineBuilder(game)
 				.setMaxFPS(60)
 				.build();

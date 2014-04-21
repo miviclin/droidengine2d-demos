@@ -12,23 +12,19 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
 import com.miviclin.droidengine2d.util.Transform;
 
-public class Block extends GameObject<TextureHsvMaterial> {
+public class Player extends GameObject<TextureHsvMaterial> {
 
-	private int points;
-	private long lastCollisionTime;
+	private int score;
 
-	public Block(Transform transform, TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial,
-			int points) {
-
+	public Player(Transform transform, TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial) {
 		super(transform, defaultMaterial, onCollisionMaterial);
-		this.points = points;
-		this.lastCollisionTime = 0;
+		this.score = 0;
 	}
 
 	@Override
@@ -36,8 +32,15 @@ public class Block extends GameObject<TextureHsvMaterial> {
 		g.drawRect(getDefaultMaterial(), getTransform());
 	}
 
-	public int getPoints() {
-		return points;
+	public int getScore() {
+		return score;
 	}
 
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public void addPointsToScore(int points) {
+		this.score += points;
+	}
 }

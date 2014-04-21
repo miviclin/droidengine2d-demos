@@ -12,13 +12,13 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.miviclin.droidengine2ddemos.games.arkanoid;
+package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
-public class ArkanoidGameStates {
+public class SimpleBreakoutGameStates {
 
 	public static final int LEVEL_1 = 0;
 
-	private ArkanoidGameStates() {
+	private SimpleBreakoutGameStates() {
 		super();
 	}
 

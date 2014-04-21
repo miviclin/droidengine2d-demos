@@ -194,7 +194,7 @@
             android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
         </activity>
         <activity
-            android:name="com.miviclin.droidengine2ddemos.games.arkanoid.ArkanoidActivity"
+            android:name="com.miviclin.droidengine2ddemos.games.simplebreakout.SimpleBreakoutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
