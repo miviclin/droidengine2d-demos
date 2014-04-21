@@ -50,12 +50,12 @@ public class ArkanoidLevel1 extends GameStateAdapter {
 
 	@Override
 	public void onRegister() {
-		blocks = createBlocks(3, 3);
+		blocks = createBlocks(5);
 		player = createPlayer();
 		ball = createBall(player);
 	}
 
-	private ArrayList<Block> createBlocks(int numRows, int numColumns) {
+	private ArrayList<Block> createBlocks(int numRows) {
 		ArrayList<Block> blocks = new ArrayList<Block>();
 
 		TextureRegion blockTextureRegionDefault = getTextureManager().getTextureRegion("btn-large-normal.png");
@@ -65,20 +65,18 @@ public class ArkanoidLevel1 extends GameStateAdapter {
 		final float viewHeight = getCamera().getViewportHeight();
 
 		final float blockRatio = blockTextureRegionDefault.getWidth() / blockTextureRegionDefault.getHeight();
-		final float blockWidth = viewWidth / numRows;
-		final float blockHeight = blockWidth / blockRatio;
+		final float blockWidth = viewWidth;
+		final float blockHeight = (blockWidth / blockRatio) / 3.0f;
+
+		float blockX = 0;
 
 		for (int rowIndex = 1; rowIndex <= numRows; rowIndex++) {
 			float blockY = viewHeight - (rowIndex * blockHeight);
 
-			for (int columnIndex = 0; columnIndex < numColumns; columnIndex++) {
-				float blockX = columnIndex * blockWidth;
+			Block block = createBlock(blockX, blockY, blockWidth, blockHeight,
+					blockTextureRegionDefault, blockTextureRegionCollided, 10);
 
-				Block block = createBlock(blockX, blockY, blockWidth, blockHeight,
-						blockTextureRegionDefault, blockTextureRegionCollided, 10);
-
-				blocks.add(block);
-			}
+			blocks.add(block);
 		}
 
 		return blocks;
