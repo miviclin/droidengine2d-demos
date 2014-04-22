@@ -33,9 +33,9 @@ public class SimpleBreakoutGame extends AbstractGame {
 		buttonsTextureAtlas.loadFromFile("textures/buttons-atlas.xml", getActivity());
 		getTextureManager().addTextureAtlas(buttonsTextureAtlas);
 
-		getGameStateManager().registerGameState(SimpleBreakoutGameStates.LEVEL_1, new SimpleBreakoutLevel1(this));
+		getGameStateManager().registerGameState(SimpleBreakoutGameStates.LEVEL, new SimpleBreakoutLevel(this));
 
-		getGameStateManager().pushActiveGameState(SimpleBreakoutGameStates.LEVEL_1);
+		getGameStateManager().pushActiveGameState(SimpleBreakoutGameStates.LEVEL);
 	}
 
 }

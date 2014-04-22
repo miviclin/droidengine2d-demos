@@ -16,7 +16,7 @@ package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 public class SimpleBreakoutGameStates {
 
-	public static final int LEVEL_1 = 0;
+	public static final int LEVEL = 0;
 
 	private SimpleBreakoutGameStates() {
 		super();

@@ -27,7 +27,7 @@ import com.miviclin.droidengine2d.input.sensor.Accelerometer;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class SimpleBreakoutLevel1 extends GameStateAdapter {
+public class SimpleBreakoutLevel extends GameStateAdapter {
 
 	private static final String SOUND_HIT_BLOCK = "audio/hit-block.wav";
 	private static final String SOUND_HIT_SIDE = "audio/hit-side.wav";
@@ -37,7 +37,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 	private Player player;
 	private Ball ball;
 
-	public SimpleBreakoutLevel1(Game game) {
+	public SimpleBreakoutLevel(Game game) {
 		super(game);
 	}
 
