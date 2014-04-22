@@ -17,6 +17,7 @@ package com.miviclin.droidengine2ddemos.games.simplebreakout;
 import java.util.ArrayList;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.audio.SoundManager;
 import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
@@ -27,6 +28,10 @@ import com.miviclin.droidengine2d.util.math.Vector2;
 
 public class SimpleBreakoutLevel1 extends GameStateAdapter {
 
+	private static final String SOUND_HIT_BLOCK = "audio/hit-block.wav";
+	private static final String SOUND_HIT_SIDE = "audio/hit-side.wav";
+
+	private SoundManager soundManager;
 	private ArrayList<Block> blocks;
 	private Player player;
 	private Ball ball;
@@ -55,9 +60,20 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 
 	@Override
 	public void onRegister() {
+		int maxStreams = 10;
+		int initialCapacity = 10;
+		soundManager = new SoundManager(maxStreams, initialCapacity);
+		soundManager.loadSound(getActivity(), SOUND_HIT_BLOCK);
+		soundManager.loadSound(getActivity(), SOUND_HIT_SIDE);
+
 		blocks = createBlocks(5);
 		player = createPlayer();
 		ball = createBall(player);
+	}
+
+	@Override
+	public void onDispose() {
+		soundManager.release();
 	}
 
 	private ArrayList<Block> createBlocks(int numRows) {
@@ -173,10 +189,12 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			newBallPositionX = viewWidth - ball.getRadius();
 			ball.reverseDirectionX();
 			ball.hit();
+			soundManager.playSound(SOUND_HIT_SIDE);
 		} else if (newBallPositionX - ball.getRadius() < 0) {
 			newBallPositionX = ball.getRadius();
 			ball.reverseDirectionX();
 			ball.hit();
+			soundManager.playSound(SOUND_HIT_SIDE);
 		}
 
 		ball.getPosition().set(newBallPositionX, newBallPositionY);
@@ -190,6 +208,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 				ball.reverseDirectionY();
 				ball.hit();
 				blockAtBottom.hit();
+				soundManager.playSound(SOUND_HIT_BLOCK);
 			}
 		}
 
@@ -229,6 +248,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 				}
 				ball.hit();
 				player.hit();
+				soundManager.playSound(SOUND_HIT_BLOCK);
 			}
 		}
 
@@ -241,6 +261,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			newBallPositionY = viewHeight - ball.getRadius();
 			ball.reverseDirectionY();
 			ball.hit();
+			soundManager.playSound(SOUND_HIT_SIDE);
 		}
 
 		ball.getPosition().set(newBallPositionX, newBallPositionY);
