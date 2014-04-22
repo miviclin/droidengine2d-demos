@@ -203,8 +203,8 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 	private void checkCollisionWithBlockAtBottom(float newBallPositionX, float newBallPositionY) {
 		if (blocks.size() > 0) {
 			Block blockAtBottom = blocks.get(blocks.size() - 1);
-			if (newBallPositionY + ball.getRadius() > blockAtBottom.getPosition().getY()) {
-				newBallPositionY = blockAtBottom.getPosition().getY() - ball.getRadius();
+			if (newBallPositionY + ball.getRadius() > blockAtBottom.getBottom()) {
+				newBallPositionY = blockAtBottom.getBottom() - ball.getRadius();
 				ball.reverseDirectionY();
 				ball.hit();
 				blockAtBottom.hit();
@@ -216,34 +216,25 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 	}
 
 	private void checkCollisionWithPlayer(float newBallPositionX, float newBallPositionY) {
-		final float playerPositionX = player.getTransform().getPosition().getX();
-		final float playerPositionY = player.getTransform().getPosition().getY();
-		final float playerScaleX = player.getTransform().getScale().getX();
-		final float playerScaleY = player.getTransform().getScale().getY();
-
-		final float playerLeft = playerPositionX - (playerScaleX / 2.0f);
-		final float playerRight = playerPositionX + (playerScaleX / 2.0f);
-		final float playerTop = playerPositionY + (playerScaleY / 2.0f);
-
-		float overlapY = playerTop - (newBallPositionY - ball.getRadius());
+		float overlapY = player.getTop() - (newBallPositionY - ball.getRadius());
 
 		if (overlapY > 0.0f) {
-			float overlapLeftX = (newBallPositionX + ball.getRadius()) - playerLeft;
-			float overlapRightX = playerRight - (newBallPositionX - ball.getRadius());
+			float overlapLeftX = (newBallPositionX + ball.getRadius()) - player.getLeft();
+			float overlapRightX = player.getRight() - (newBallPositionX - ball.getRadius());
 
 			if ((overlapLeftX > 0.0f) && (overlapRightX > 0.0f)) {
 				float minOverlapX = Math.min(overlapLeftX, overlapRightX);
 				boolean compensateX = Math.min(minOverlapX, overlapY) == minOverlapX;
 				if (compensateX) {
 					if (minOverlapX == overlapLeftX) {
-						newBallPositionX = playerLeft - ball.getRadius();
+						newBallPositionX = player.getLeft() - ball.getRadius();
 						ball.reverseDirectionX();
 					} else {
-						newBallPositionX = playerRight + ball.getRadius();
+						newBallPositionX = player.getRight() + ball.getRadius();
 						ball.reverseDirectionX();
 					}
 				} else {
-					newBallPositionY = playerTop + ball.getRadius();
+					newBallPositionY = player.getTop() + ball.getRadius();
 					ball.reverseDirectionY();
 				}
 				ball.hit();

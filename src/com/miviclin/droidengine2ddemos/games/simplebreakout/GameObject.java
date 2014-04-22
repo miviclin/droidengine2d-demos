@@ -34,7 +34,9 @@ public abstract class GameObject<M extends Material> {
 
 	public abstract void update(float delta);
 
-	public abstract void draw(Graphics g);
+	public void draw(Graphics g) {
+		g.drawRect(currentMaterial, transform);
+	}
 
 	protected Transform getTransform() {
 		return transform;

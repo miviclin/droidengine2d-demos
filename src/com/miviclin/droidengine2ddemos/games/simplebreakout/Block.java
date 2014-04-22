@@ -14,12 +14,10 @@
  */
 package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
-import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.util.Transform;
-import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class Block extends GameObject<TextureColorMaterial> {
+public class Block extends RectangularGameObject<TextureColorMaterial> {
 
 	private static final long DELAY_BEFORE_DESTRUCTION_MS = 100;
 
@@ -48,11 +46,6 @@ public class Block extends GameObject<TextureColorMaterial> {
 		}
 	}
 
-	@Override
-	public void draw(Graphics g) {
-		g.drawRect(getCurrentMaterial(), getTransform());
-	}
-
 	public int getPoints() {
 		return points;
 	}
@@ -63,10 +56,6 @@ public class Block extends GameObject<TextureColorMaterial> {
 
 	protected void setDestroyed(boolean destroyed) {
 		this.destroyed = destroyed;
-	}
-
-	public Vector2 getPosition() {
-		return getTransform().getPosition();
 	}
 
 	public void hit() {

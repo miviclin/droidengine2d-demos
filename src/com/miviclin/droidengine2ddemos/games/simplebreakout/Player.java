@@ -14,11 +14,10 @@
  */
 package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
-import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.util.Transform;
 
-public class Player extends GameObject<TextureColorMaterial> {
+public class Player extends RectangularGameObject<TextureColorMaterial> {
 
 	private static final long DELAY_BEFORE_DESTRUCTION_MS = 150;
 
@@ -39,11 +38,6 @@ public class Player extends GameObject<TextureColorMaterial> {
 		} else {
 			setCurrentMaterial(getOnCollisionMaterial());
 		}
-	}
-
-	@Override
-	public void draw(Graphics g) {
-		g.drawRect(getCurrentMaterial(), getTransform());
 	}
 
 	public int getScore() {
