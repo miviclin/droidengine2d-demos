@@ -17,6 +17,7 @@ package com.miviclin.droidengine2ddemos.games.simplebreakout;
 import android.app.Activity;
 
 import com.miviclin.droidengine2d.AbstractGame;
+import com.miviclin.droidengine2d.gamestate.GameStateManager;
 import com.miviclin.droidengine2d.graphics.GLView;
 import com.miviclin.droidengine2d.graphics.texture.TextureAtlas;
 import com.miviclin.droidengine2d.graphics.texture.TexturePackerAtlas;
@@ -33,9 +34,14 @@ public class SimpleBreakoutGame extends AbstractGame {
 		buttonsTextureAtlas.loadFromFile("textures/buttons-atlas.xml", getActivity());
 		getTextureManager().addTextureAtlas(buttonsTextureAtlas);
 
-		getGameStateManager().registerGameState(SimpleBreakoutGameStates.LEVEL, new SimpleBreakoutLevel(this));
+		GameStateManager gameStateManager = getGameStateManager();
 
-		getGameStateManager().pushActiveGameState(SimpleBreakoutGameStates.LEVEL);
+		gameStateManager.registerGameState(SimpleBreakoutGameStates.MAIN_MENU, new MainMenuGameState(this));
+		gameStateManager.registerGameState(SimpleBreakoutGameStates.LEVEL, new LevelGameState(this));
+		gameStateManager.registerGameState(SimpleBreakoutGameStates.GAME_LOST, new GameLostGameState(this));
+		gameStateManager.registerGameState(SimpleBreakoutGameStates.GAME_WON, new GameWonGameState(this));
+
+		gameStateManager.pushActiveGameState(SimpleBreakoutGameStates.MAIN_MENU);
 	}
 
 }

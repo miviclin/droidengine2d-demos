@@ -27,7 +27,7 @@ import com.miviclin.droidengine2d.input.sensor.Accelerometer;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class SimpleBreakoutLevel extends GameStateAdapter {
+public class LevelGameState extends GameStateAdapter {
 
 	private static final String SOUND_HIT_BLOCK = "audio/hit-block.wav";
 	private static final String SOUND_HIT_SIDE = "audio/hit-side.wav";
@@ -37,7 +37,7 @@ public class SimpleBreakoutLevel extends GameStateAdapter {
 	private Player player;
 	private Ball ball;
 
-	public SimpleBreakoutLevel(Game game) {
+	public LevelGameState(Game game) {
 		super(game);
 	}
 
@@ -295,9 +295,7 @@ public class SimpleBreakoutLevel extends GameStateAdapter {
 
 	private void checkCollisionWithBottomOfBoard(float newBallPositionX, float newBallPositionY) {
 		if (newBallPositionY + ball.getRadius() < 0) {
-			newBallPositionY = ball.getRadius();
-			ball.reverseDirectionY();
-			ball.hit();
+			getGameStateManager().pushActiveGameState(SimpleBreakoutGameStates.GAME_LOST);
 		}
 
 		ball.getPosition().set(newBallPositionX, newBallPositionY);
@@ -308,6 +306,9 @@ public class SimpleBreakoutLevel extends GameStateAdapter {
 			if (blocks.get(i).isDestroyed()) {
 				blocks.remove(i);
 			}
+		}
+		if (blocks.size() == 0) {
+			getGameStateManager().pushActiveGameState(SimpleBreakoutGameStates.GAME_WON);
 		}
 	}
 
