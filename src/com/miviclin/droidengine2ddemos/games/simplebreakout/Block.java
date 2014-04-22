@@ -15,38 +15,63 @@
 package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.Graphics;
-import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
+import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class Block extends GameObject<TextureHsvMaterial> {
+public class Block extends GameObject<TextureColorMaterial> {
+
+	private static final long DELAY_BEFORE_DESTRUCTION_MS = 100;
 
 	private int points;
-	private long lastCollisionTime;
+	private long hitTime;
+	private boolean destroyed;
 
-	public Block(Transform transform, TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial,
+	public Block(Transform transform, TextureColorMaterial defaultMaterial, TextureColorMaterial onCollisionMaterial,
 			int points) {
 
 		super(transform, defaultMaterial, onCollisionMaterial);
 		this.points = points;
-		this.lastCollisionTime = 0;
+		this.hitTime = 0;
+		this.destroyed = false;
+	}
+
+	@Override
+	public void update(float delta) {
+		if (hitTime == 0) {
+			return;
+		}
+
+		long timeElapsedSinceCollision = System.currentTimeMillis() - hitTime;
+		if (timeElapsedSinceCollision >= DELAY_BEFORE_DESTRUCTION_MS) {
+			setDestroyed(true);
+		}
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(getDefaultMaterial(), getTransform());
+		g.drawRect(getCurrentMaterial(), getTransform());
 	}
 
 	public int getPoints() {
 		return points;
 	}
 
+	public boolean isDestroyed() {
+		return destroyed;
+	}
+
+	protected void setDestroyed(boolean destroyed) {
+		this.destroyed = destroyed;
+	}
+
 	public Vector2 getPosition() {
 		return getTransform().getPosition();
 	}
-	
-	public void onBallCollision() {
-		lastCollisionTime = System.currentTimeMillis();
+
+	public void hit() {
+		hitTime = System.currentTimeMillis();
+		setCurrentMaterial(getOnCollisionMaterial());
 	}
 
 }

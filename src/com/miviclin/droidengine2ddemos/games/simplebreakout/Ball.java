@@ -15,29 +15,44 @@
 package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.Graphics;
-import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
+import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
-public class Ball extends GameObject<TextureHsvMaterial> {
+public class Ball extends GameObject<TextureColorMaterial> {
+
+	private static final long DELAY_BEFORE_DESTRUCTION_MS = 150;
 
 	private Vector2 velocity;
+	private long hitTime;
 
 	public Ball(Vector2 position, float radius, float speed,
-			TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial) {
+			TextureColorMaterial defaultMaterial, TextureColorMaterial onCollisionMaterial) {
 
 		super(new Transform(position, new Vector2(radius * 2, radius * 2)), defaultMaterial, onCollisionMaterial);
 
 		int random = (int) (Math.random() * 2);
 		int initialDirectionX = (random == 0) ? -1 : 1;
 		int initialDirectionY = 1;
-		velocity = new Vector2(initialDirectionX, initialDirectionY);
-		velocity.setLength(speed);
+		this.velocity = new Vector2(initialDirectionX, initialDirectionY);
+		this.velocity.setLength(speed);
+
+		this.hitTime = 0;
+	}
+
+	@Override
+	public void update(float delta) {
+		long timeElapsedSinceCollision = System.currentTimeMillis() - hitTime;
+		if (timeElapsedSinceCollision >= DELAY_BEFORE_DESTRUCTION_MS) {
+			setCurrentMaterial(getDefaultMaterial());
+		} else {
+			setCurrentMaterial(getOnCollisionMaterial());
+		}
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(getDefaultMaterial(), getTransform());
+		g.drawRect(getCurrentMaterial(), getTransform());
 	}
 
 	public float calculateNextPositionX(float delta) {
@@ -62,6 +77,10 @@ public class Ball extends GameObject<TextureHsvMaterial> {
 
 	public float getRadius() {
 		return getTransform().getScale().getX() / 2.0f;
+	}
+
+	public void hit() {
+		hitTime = System.currentTimeMillis();
 	}
 
 }

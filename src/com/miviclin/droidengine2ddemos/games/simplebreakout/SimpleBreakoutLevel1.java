@@ -18,8 +18,9 @@ import java.util.ArrayList;
 
 import com.miviclin.droidengine2d.Game;
 import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
+import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
-import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
+import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
@@ -36,6 +37,10 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 
 	@Override
 	public void update(float delta) {
+		removeDestroyedBlocks();
+		updateBlocks(delta);
+		player.update(delta);
+		ball.update(delta);
 		updateBallPosition(delta);
 	}
 
@@ -83,39 +88,45 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 	}
 
 	private Block createBlock(float positionX, float positionY, float blockWidth, float blockHeight,
-			TextureRegion blockTextureRegionDefault, TextureRegion blockTextureRegionCollided, int points) {
+			TextureRegion defaultTextureregion, TextureRegion onCollisionTextureRegion, int points) {
 
 		Vector2 origin = new Vector2(0, 0);
 		Vector2 scale = new Vector2(blockWidth, blockHeight);
 		Vector2 position = new Vector2(positionX, positionY);
 		Transform transform = new Transform(position, scale, origin, 0.0f);
 
-		TextureHsvMaterial defaultMaterial = new TextureHsvMaterial(blockTextureRegionDefault);
-		TextureHsvMaterial onCollisionMaterial = new TextureHsvMaterial(blockTextureRegionCollided);
+		Color defaultColor = new Color(1, 0.3f, 1);
+		TextureColorMaterial defaultMaterial = new TextureColorMaterial(defaultTextureregion, defaultColor);
+
+		Color onCollisionColor = new Color(defaultColor);
+		TextureColorMaterial onCollisionMaterial = new TextureColorMaterial(onCollisionTextureRegion, onCollisionColor);
 
 		return new Block(transform, defaultMaterial, onCollisionMaterial, points);
 	}
 
 	private Player createPlayer() {
-		TextureRegion playerTextureRegionDefault = getTextureManager().getTextureRegion("btn-large-normal.png");
-		TextureRegion playerTextureRegionCollided = getTextureManager().getTextureRegion("btn-large-selected.png");
+		TextureRegion defaultTextureregion = getTextureManager().getTextureRegion("btn-large-normal.png");
+		TextureRegion onCollisionTextureRegion = getTextureManager().getTextureRegion("btn-large-selected.png");
 
 		final float viewWidth = getCamera().getViewportWidth();
 
-		final float playerRatio = playerTextureRegionDefault.getWidth() / playerTextureRegionDefault.getHeight();
+		final float playerRatio = defaultTextureregion.getWidth() / defaultTextureregion.getHeight();
 		final float playerWidth = viewWidth / 3.0f;
 		final float playerHeight = playerWidth / playerRatio;
 
 		final float bottomMargin = 10.0f;
 
-		Vector2 playerScale = new Vector2(playerWidth, playerHeight);
+		Vector2 scale = new Vector2(playerWidth, playerHeight);
 		Vector2 playerPosition = new Vector2(viewWidth / 2.0f, playerHeight + bottomMargin);
-		Transform playerTransform = new Transform(playerPosition, playerScale);
+		Transform playerTransform = new Transform(playerPosition, scale);
 
-		TextureHsvMaterial playerDefaultMaterial = new TextureHsvMaterial(playerTextureRegionDefault);
-		TextureHsvMaterial playerOnCollisionMaterial = new TextureHsvMaterial(playerTextureRegionCollided);
+		Color defaultColor = new Color(0.3f, 1, 1);
+		TextureColorMaterial defaultMaterial = new TextureColorMaterial(defaultTextureregion, defaultColor);
 
-		return new Player(playerTransform, playerDefaultMaterial, playerOnCollisionMaterial);
+		Color onCollisionColor = new Color(defaultColor);
+		TextureColorMaterial onCollisionMaterial = new TextureColorMaterial(onCollisionTextureRegion, onCollisionColor);
+
+		return new Player(playerTransform, defaultMaterial, onCollisionMaterial);
 	}
 
 	private Ball createBall(Player player) {
@@ -133,11 +144,13 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		float positionY = playerPositionY + (playerScaleY / 2.0f) + bottomMargin + ballRadius;
 		Vector2 ballPosition = new Vector2(positionX, positionY);
 
-		TextureRegion ballTextureRegionDefault = getTextureManager().getTextureRegion("btn-small-circle-normal.png");
-		TextureHsvMaterial defaultMaterial = new TextureHsvMaterial(ballTextureRegionDefault);
+		Color defaultColor = new Color(1, 1, 0.3f);
+		TextureRegion defaultTextureregion = getTextureManager().getTextureRegion("btn-small-circle-normal.png");
+		TextureColorMaterial defaultMaterial = new TextureColorMaterial(defaultTextureregion, defaultColor);
 
-		TextureRegion ballTextureRegionCollided = getTextureManager().getTextureRegion("btn-small-circle-selected.png");
-		TextureHsvMaterial onCollisionMaterial = new TextureHsvMaterial(ballTextureRegionCollided);
+		Color onCollisionColor = new Color(defaultColor);
+		TextureRegion onCollisionTextureRegion = getTextureManager().getTextureRegion("btn-small-circle-selected.png");
+		TextureColorMaterial onCollisionMaterial = new TextureColorMaterial(onCollisionTextureRegion, onCollisionColor);
 
 		return new Ball(ballPosition, ballRadius, ballSpeed, defaultMaterial, onCollisionMaterial);
 	}
@@ -149,6 +162,7 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		checkCollisionWithSidesOfBoard(newBallPositionX, newBallPositionY);
 		checkCollisionWithBlockAtBottom(newBallPositionX, newBallPositionY);
 		checkCollisionWithPlayer(newBallPositionX, newBallPositionY);
+		checkCollisionWithTopOfBoard(newBallPositionX, newBallPositionY);
 		checkCollisionWithBottomOfBoard(newBallPositionX, newBallPositionY);
 	}
 
@@ -158,9 +172,11 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		if (newBallPositionX + ball.getRadius() > viewWidth) {
 			newBallPositionX = viewWidth - ball.getRadius();
 			ball.reverseDirectionX();
+			ball.hit();
 		} else if (newBallPositionX - ball.getRadius() < 0) {
 			newBallPositionX = ball.getRadius();
 			ball.reverseDirectionX();
+			ball.hit();
 		}
 
 		ball.getPosition().set(newBallPositionX, newBallPositionY);
@@ -172,6 +188,8 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 			if (newBallPositionY + ball.getRadius() > blockAtBottom.getPosition().getY()) {
 				newBallPositionY = blockAtBottom.getPosition().getY() - ball.getRadius();
 				ball.reverseDirectionY();
+				ball.hit();
+				blockAtBottom.hit();
 			}
 		}
 
@@ -209,7 +227,20 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 					newBallPositionY = playerTop + ball.getRadius();
 					ball.reverseDirectionY();
 				}
+				ball.hit();
+				player.hit();
 			}
+		}
+
+		ball.getPosition().set(newBallPositionX, newBallPositionY);
+	}
+
+	private void checkCollisionWithTopOfBoard(float newBallPositionX, float newBallPositionY) {
+		final float viewHeight = getCamera().getViewportHeight();
+		if (newBallPositionY + ball.getRadius() > viewHeight) {
+			newBallPositionY = viewHeight - ball.getRadius();
+			ball.reverseDirectionY();
+			ball.hit();
 		}
 
 		ball.getPosition().set(newBallPositionX, newBallPositionY);
@@ -219,8 +250,23 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		if (newBallPositionY + ball.getRadius() < 0) {
 			newBallPositionY = ball.getRadius();
 			ball.reverseDirectionY();
+			ball.hit();
 		}
 
 		ball.getPosition().set(newBallPositionX, newBallPositionY);
+	}
+
+	private void removeDestroyedBlocks() {
+		for (int i = blocks.size() - 1; i >= 0; i--) {
+			if (blocks.get(i).isDestroyed()) {
+				blocks.remove(i);
+			}
+		}
+	}
+
+	private void updateBlocks(float delta) {
+		for (int i = 0; i < blocks.size(); i++) {
+			blocks.get(i).update(delta);
+		}
 	}
 }

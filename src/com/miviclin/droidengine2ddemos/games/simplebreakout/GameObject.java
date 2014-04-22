@@ -23,17 +23,29 @@ public abstract class GameObject<M extends Material> {
 	private Transform transform;
 	private M defaultMaterial;
 	private M onCollisionMaterial;
+	private M currentMaterial;
 
 	public GameObject(Transform transform, M defaultMaterial, M onCollisionMaterial) {
 		this.transform = transform;
 		this.defaultMaterial = defaultMaterial;
 		this.onCollisionMaterial = onCollisionMaterial;
+		this.currentMaterial = defaultMaterial;
 	}
+
+	public abstract void update(float delta);
 
 	public abstract void draw(Graphics g);
 
 	protected Transform getTransform() {
 		return transform;
+	}
+
+	protected M getCurrentMaterial() {
+		return currentMaterial;
+	}
+
+	protected void setCurrentMaterial(M currentMaterial) {
+		this.currentMaterial = currentMaterial;
 	}
 
 	protected M getDefaultMaterial() {

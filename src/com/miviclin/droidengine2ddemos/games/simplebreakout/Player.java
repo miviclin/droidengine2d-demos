@@ -15,21 +15,35 @@
 package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.Graphics;
-import com.miviclin.droidengine2d.graphics.material.TextureHsvMaterial;
+import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.util.Transform;
 
-public class Player extends GameObject<TextureHsvMaterial> {
+public class Player extends GameObject<TextureColorMaterial> {
+
+	private static final long DELAY_BEFORE_DESTRUCTION_MS = 150;
 
 	private int score;
+	private long hitTime;
 
-	public Player(Transform transform, TextureHsvMaterial defaultMaterial, TextureHsvMaterial onCollisionMaterial) {
+	public Player(Transform transform, TextureColorMaterial defaultMaterial, TextureColorMaterial onCollisionMaterial) {
 		super(transform, defaultMaterial, onCollisionMaterial);
 		this.score = 0;
+		this.hitTime = 0;
+	}
+
+	@Override
+	public void update(float delta) {
+		long timeElapsedSinceCollision = System.currentTimeMillis() - hitTime;
+		if (timeElapsedSinceCollision >= DELAY_BEFORE_DESTRUCTION_MS) {
+			setCurrentMaterial(getDefaultMaterial());
+		} else {
+			setCurrentMaterial(getOnCollisionMaterial());
+		}
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(getDefaultMaterial(), getTransform());
+		g.drawRect(getCurrentMaterial(), getTransform());
 	}
 
 	public int getScore() {
@@ -43,4 +57,9 @@ public class Player extends GameObject<TextureHsvMaterial> {
 	public void addPointsToScore(int points) {
 		this.score += points;
 	}
+
+	public void hit() {
+		hitTime = System.currentTimeMillis();
+	}
+
 }
