@@ -23,6 +23,7 @@ import com.miviclin.droidengine2d.graphics.Color;
 import com.miviclin.droidengine2d.graphics.Graphics;
 import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.graphics.texture.TextureRegion;
+import com.miviclin.droidengine2d.input.sensor.Accelerometer;
 import com.miviclin.droidengine2d.util.Transform;
 import com.miviclin.droidengine2d.util.math.Vector2;
 
@@ -44,9 +45,8 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 	public void update(float delta) {
 		removeDestroyedBlocks();
 		updateBlocks(delta);
-		player.update(delta);
-		ball.update(delta);
-		updateBallPosition(delta);
+		updatePlayer(delta);
+		updateBall(delta);
 	}
 
 	@Override
@@ -69,6 +69,22 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		blocks = createBlocks(5);
 		player = createPlayer();
 		ball = createBall(player);
+
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
+		accelerometer.getValuesListener().useCoordinateSystemOfDisplay();
+		accelerometer.startListening();
+	}
+
+	@Override
+	public void onPause() {
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
+		accelerometer.stopListening();
+	}
+
+	@Override
+	public void onResume() {
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
+		accelerometer.startListening();
 	}
 
 	@Override
@@ -171,7 +187,26 @@ public class SimpleBreakoutLevel1 extends GameStateAdapter {
 		return new Ball(ballPosition, ballRadius, ballSpeed, defaultMaterial, onCollisionMaterial);
 	}
 
-	private void updateBallPosition(float delta) {
+	private void updatePlayer(float delta) {
+		player.update(delta);
+
+		final float accelerationReduction = 0.2f;
+		final float maxAccelerationAbs = 0.5f;
+
+		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
+		float accelerometerX = accelerometer.getValuesListener().getX();
+		int accelerometerXSign = (accelerometerX < 0) ? -1 : 1;
+		float ax = accelerometerXSign * Math.min(Math.abs(accelerometerX * accelerationReduction), maxAccelerationAbs);
+		player.move(-ax, 0, delta);
+
+		final float viewWidth = getCamera().getViewportWidth();
+		final float viewHeight = getCamera().getViewportHeight();
+		player.handleCollisionWithViewBounds(viewWidth, viewHeight);
+	}
+
+	private void updateBall(float delta) {
+		ball.update(delta);
+
 		float newBallPositionX = ball.calculateNextPositionX(delta);
 		float newBallPositionY = ball.calculateNextPositionY(delta);
 

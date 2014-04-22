@@ -16,6 +16,7 @@ package com.miviclin.droidengine2ddemos.games.simplebreakout;
 
 import com.miviclin.droidengine2d.graphics.material.TextureColorMaterial;
 import com.miviclin.droidengine2d.util.Transform;
+import com.miviclin.droidengine2d.util.math.Vector2;
 
 public class Player extends RectangularGameObject<TextureColorMaterial> {
 
@@ -37,6 +38,21 @@ public class Player extends RectangularGameObject<TextureColorMaterial> {
 			setCurrentMaterial(getDefaultMaterial());
 		} else {
 			setCurrentMaterial(getOnCollisionMaterial());
+		}
+	}
+
+	public void move(float ax, float ay, float delta) {
+		Vector2 position = getTransform().getPosition();
+		float x = position.getX() + ax * delta;
+		float y = position.getY() + ay * delta;
+		position.set(x, y);
+	}
+
+	public void handleCollisionWithViewBounds(float viewWidth, float viewHeight) {
+		if (getLeft() < 0) {
+			getPosition().set(getScale().getX() / 2.0f, getPosition().getY());
+		} else if (getRight() > viewWidth) {
+			getPosition().set(viewWidth - (getScale().getX() / 2.0f), getPosition().getY());
 		}
 	}
 
