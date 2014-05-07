@@ -66,13 +66,16 @@ public class LevelGameState extends GameStateAdapter {
 		soundManager.loadSound(getActivity(), SOUND_HIT_BLOCK);
 		soundManager.loadSound(getActivity(), SOUND_HIT_SIDE);
 
-		blocks = createBlocks(5);
-		player = createPlayer();
-		ball = createBall(player);
-
 		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.getValuesListener().useCoordinateSystemOfDisplay();
 		accelerometer.startListening();
+	}
+
+	@Override
+	public void onActivation() {
+		blocks = createBlocks(5);
+		player = createPlayer();
+		ball = createBall(player);
 	}
 
 	@Override
