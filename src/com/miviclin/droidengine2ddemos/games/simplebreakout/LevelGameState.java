@@ -223,12 +223,12 @@ public class LevelGameState extends GameStateAdapter {
 		if (newBallPositionX + ball.getRadius() > viewWidth) {
 			newBallPositionX = viewWidth - ball.getRadius();
 			ball.reverseDirectionX();
-			ball.hit();
+			ball.hitWall();
 			soundManager.playSound(SOUND_HIT_SIDE);
 		} else if (newBallPositionX - ball.getRadius() < 0) {
 			newBallPositionX = ball.getRadius();
 			ball.reverseDirectionX();
-			ball.hit();
+			ball.hitWall();
 			soundManager.playSound(SOUND_HIT_SIDE);
 		}
 
@@ -236,12 +236,12 @@ public class LevelGameState extends GameStateAdapter {
 	}
 
 	private void checkCollisionWithBlockAtBottom(float newBallPositionX, float newBallPositionY) {
-		if (blocks.size() > 0) {
+		if ((blocks.size() > 0) && !ball.isInmune()) {
 			Block blockAtBottom = blocks.get(blocks.size() - 1);
 			if (newBallPositionY + ball.getRadius() > blockAtBottom.getBottom()) {
 				newBallPositionY = blockAtBottom.getBottom() - ball.getRadius();
 				ball.reverseDirectionY();
-				ball.hit();
+				ball.hitEntity();
 				blockAtBottom.hit();
 				soundManager.playSound(SOUND_HIT_BLOCK);
 			}
@@ -253,7 +253,7 @@ public class LevelGameState extends GameStateAdapter {
 	private void checkCollisionWithPlayer(float newBallPositionX, float newBallPositionY) {
 		float overlapY = player.getTop() - (newBallPositionY - ball.getRadius());
 
-		if (overlapY > 0.0f) {
+		if ((overlapY > 0.0f) && !ball.isInmune()) {
 			float overlapLeftX = (newBallPositionX + ball.getRadius()) - player.getLeft();
 			float overlapRightX = player.getRight() - (newBallPositionX - ball.getRadius());
 
@@ -272,7 +272,7 @@ public class LevelGameState extends GameStateAdapter {
 					newBallPositionY = player.getTop() + ball.getRadius();
 					ball.reverseDirectionY();
 				}
-				ball.hit();
+				ball.hitEntity();
 				player.hit();
 				soundManager.playSound(SOUND_HIT_BLOCK);
 			}
@@ -286,7 +286,7 @@ public class LevelGameState extends GameStateAdapter {
 		if (newBallPositionY + ball.getRadius() > viewHeight) {
 			newBallPositionY = viewHeight - ball.getRadius();
 			ball.reverseDirectionY();
-			ball.hit();
+			ball.hitWall();
 			soundManager.playSound(SOUND_HIT_SIDE);
 		}
 

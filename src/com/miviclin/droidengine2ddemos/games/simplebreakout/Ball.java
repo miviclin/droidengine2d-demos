@@ -21,9 +21,11 @@ import com.miviclin.droidengine2d.util.math.Vector2;
 
 public class Ball extends GameObject<TextureColorMaterial> {
 
-	private static final long DELAY_BEFORE_DESTRUCTION_MS = 150;
+	private static final long DELAY_AFTER_HIT_MS = 150;
+	private static final long DELAY_INMUNE_AFTER_HIT_MS = 70;
 
 	private Vector2 velocity;
+	private long hitEntityTime;
 	private long hitTime;
 
 	public Ball(Vector2 position, float radius, float speed,
@@ -37,13 +39,14 @@ public class Ball extends GameObject<TextureColorMaterial> {
 		this.velocity = new Vector2(initialDirectionX, initialDirectionY);
 		this.velocity.setLength(speed);
 
+		this.hitEntityTime = 0;
 		this.hitTime = 0;
 	}
 
 	@Override
 	public void update(float delta) {
-		long timeElapsedSinceCollision = System.currentTimeMillis() - hitTime;
-		if (timeElapsedSinceCollision >= DELAY_BEFORE_DESTRUCTION_MS) {
+		long timeElapsedSinceEntityHit = System.currentTimeMillis() - hitTime;
+		if (timeElapsedSinceEntityHit >= DELAY_AFTER_HIT_MS) {
 			setCurrentMaterial(getDefaultMaterial());
 		} else {
 			setCurrentMaterial(getOnCollisionMaterial());
@@ -79,8 +82,17 @@ public class Ball extends GameObject<TextureColorMaterial> {
 		return getTransform().getScale().getX() / 2.0f;
 	}
 
-	public void hit() {
+	public void hitEntity() {
+		hitEntityTime = System.currentTimeMillis();
 		hitTime = System.currentTimeMillis();
+	}
+
+	public void hitWall() {
+		hitTime = System.currentTimeMillis();
+	}
+
+	public boolean isInmune() {
+		return (System.currentTimeMillis() - hitEntityTime) < DELAY_INMUNE_AFTER_HIT_MS;
 	}
 
 }
