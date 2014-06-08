@@ -49,10 +49,11 @@ public class Player extends RectangularGameObject<TextureColorMaterial> {
 	}
 
 	public void handleCollisionWithViewBounds(float viewWidth, float viewHeight) {
+		float halfWidth = getScale().getX() / 2.0f;
 		if (getLeft() < 0) {
-			getPosition().set(getScale().getX() / 2.0f, getPosition().getY());
+			getPosition().set(halfWidth + 1, getPosition().getY());
 		} else if (getRight() > viewWidth) {
-			getPosition().set(viewWidth - (getScale().getX() / 2.0f), getPosition().getY());
+			getPosition().set(viewWidth - halfWidth - 1, getPosition().getY());
 		}
 	}
 
