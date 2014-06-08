@@ -21,6 +21,7 @@ import com.miviclin.droidengine2d.util.math.Vector2;
 public class Player extends RectangularGameObject<TextureColorMaterial> {
 
 	private static final long DELAY_BEFORE_DESTRUCTION_MS = 150;
+	private static final long DELAY_INMUNE_AFTER_HIT_MS = 300;
 
 	private int score;
 	private long hitTime;
@@ -71,6 +72,10 @@ public class Player extends RectangularGameObject<TextureColorMaterial> {
 
 	public void hit() {
 		hitTime = System.currentTimeMillis();
+	}
+	
+	public boolean isInmune() {
+		return (System.currentTimeMillis() - hitTime) < DELAY_INMUNE_AFTER_HIT_MS;
 	}
 
 }

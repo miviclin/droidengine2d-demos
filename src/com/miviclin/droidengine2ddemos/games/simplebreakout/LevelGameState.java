@@ -256,7 +256,7 @@ public class LevelGameState extends GameStateAdapter {
 	private void checkCollisionWithPlayer(float newBallPositionX, float newBallPositionY) {
 		float overlapY = player.getTop() - (newBallPositionY - ball.getRadius());
 
-		if ((overlapY > 0.0f) && !ball.isInmune()) {
+		if ((overlapY > 0.0f) && !ball.isInmune() && !player.isInmune()) {
 			float overlapLeftX = (newBallPositionX + ball.getRadius()) - player.getLeft();
 			float overlapRightX = player.getRight() - (newBallPositionX - ball.getRadius());
 
