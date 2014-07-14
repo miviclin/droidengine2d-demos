@@ -17,6 +17,7 @@ package com.miviclin.droidengine2ddemos.games.simplebreakout;
 import java.util.ArrayList;
 
 import com.miviclin.droidengine2d.Game;
+import com.miviclin.droidengine2d.audio.MusicPlayer;
 import com.miviclin.droidengine2d.audio.SoundManager;
 import com.miviclin.droidengine2d.gamestate.GameStateAdapter;
 import com.miviclin.droidengine2d.graphics.Color;
@@ -31,8 +32,10 @@ public class LevelGameState extends GameStateAdapter {
 
 	private static final String SOUND_HIT_BLOCK = "audio/hit-block.wav";
 	private static final String SOUND_HIT_SIDE = "audio/hit-side.wav";
+	private static final String BACKGROUND_MUSIC = "audio/drums-track.wav";
 
 	private SoundManager soundManager;
+	private MusicPlayer musicPlayer;
 	private ArrayList<Block> blocks;
 	private Player player;
 	private Ball ball;
@@ -65,6 +68,9 @@ public class LevelGameState extends GameStateAdapter {
 		soundManager = new SoundManager(maxStreams, initialCapacity);
 		soundManager.loadSound(getActivity(), SOUND_HIT_BLOCK);
 		soundManager.loadSound(getActivity(), SOUND_HIT_SIDE);
+		
+		musicPlayer = new MusicPlayer();
+		musicPlayer.loadMusicFromAssets(getActivity(), BACKGROUND_MUSIC);
 
 		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.getValuesListener().useCoordinateSystemOfDisplay();
@@ -76,23 +82,43 @@ public class LevelGameState extends GameStateAdapter {
 		blocks = createBlocks(5);
 		player = createPlayer();
 		ball = createBall(player);
+		
+		if (!musicPlayer.isPlaying()) {
+			musicPlayer.play();
+		}
+	}
+	
+	@Override
+	public void onDeactivation() {
+		if (musicPlayer.isPlaying()) {
+			musicPlayer.pause();
+		}
 	}
 
 	@Override
 	public void onPause() {
 		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.stopListening();
+		
+		if (musicPlayer.isPlaying()) {
+			musicPlayer.pause();
+		}
 	}
 
 	@Override
 	public void onResume() {
 		Accelerometer accelerometer = getGameStateInputManager().getAccelerometer();
 		accelerometer.startListening();
+		
+		if (!musicPlayer.isPlaying()) {
+			musicPlayer.play();
+		}
 	}
 
 	@Override
 	public void onDispose() {
 		soundManager.release();
+		musicPlayer.release();
 	}
 
 	private ArrayList<Block> createBlocks(int numRows) {
