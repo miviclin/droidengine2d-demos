@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.miviclin.droidengine2ddemos"
-    android:versionCode="1"
-    android:versionName="1.0.1" >
+    android:versionCode="2"
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -188,6 +188,13 @@
         </activity>
         <activity
             android:name="com.miviclin.droidengine2ddemos.batchrendering.multiplematerials.MultipleMaterialsBatchRenderingCase3DemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar.FullScreen" >
+        </activity>
+        <activity
+            android:name="com.miviclin.droidengine2ddemos.games.simplebreakout.SimpleBreakoutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

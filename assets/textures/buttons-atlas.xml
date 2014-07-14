@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:00aae07be4fe1ab6e04935529955a163$ -->
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:784741dae9e4518fee16cdcec729ab82:b5cd75f0a8b4f8ac17b009595f1d34ff:5dcc2a128d7f4afb9fd785bbfae84aa0$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -32,23 +32,29 @@ r => 'y' only set if sprite is rotated
     <sprite n="btn-large-jump-selected.png" x="2" y="734" w="360" h="120"/>
     <sprite n="btn-large-levels-normal.png" x="364" y="734" w="360" h="120"/>
     <sprite n="btn-large-levels-selected.png" x="2" y="856" w="360" h="120"/>
-    <sprite n="btn-large-normal.png" x="364" y="856" w="360" h="120"/>
-    <sprite n="btn-large-power-up-normal.png" x="2" y="978" w="360" h="120"/>
-    <sprite n="btn-large-power-up-selected.png" x="364" y="978" w="360" h="120"/>
-    <sprite n="btn-large-selected.png" x="2" y="1100" w="360" h="120"/>
-    <sprite n="btn-music-pause-normal.png" x="364" y="1100" w="120" h="120"/>
-    <sprite n="btn-music-pause-selected.png" x="486" y="1100" w="120" h="120"/>
-    <sprite n="btn-music-play-normal.png" x="608" y="1100" w="120" h="120"/>
-    <sprite n="btn-music-play-selected.png" x="730" y="1100" w="120" h="120"/>
-    <sprite n="btn-music-volume-down-normal.png" x="852" y="1100" w="120" h="120"/>
-    <sprite n="btn-music-volume-down-selected.png" x="2" y="1222" w="120" h="120"/>
-    <sprite n="btn-music-volume-up-normal.png" x="124" y="1222" w="120" h="120"/>
-    <sprite n="btn-music-volume-up-selected.png" x="246" y="1222" w="120" h="120"/>
-    <sprite n="btn-small-1-normal.png" x="368" y="1222" w="120" h="120"/>
-    <sprite n="btn-small-1-selected.png" x="490" y="1222" w="120" h="120"/>
-    <sprite n="btn-small-2-normal.png" x="612" y="1222" w="120" h="120"/>
-    <sprite n="btn-small-2-selected.png" x="734" y="1222" w="120" h="120"/>
-    <sprite n="btn-small-3-normal.png" x="856" y="1222" w="120" h="120"/>
-    <sprite n="btn-small-3-selected.png" x="2" y="1344" w="120" h="120"/>
-    <sprite n="btn-small-disabled.png" x="124" y="1344" w="120" h="120"/>
+    <sprite n="btn-large-main-menu-normal.png" x="364" y="856" w="360" h="120"/>
+    <sprite n="btn-large-main-menu-selected.png" x="2" y="978" w="360" h="120"/>
+    <sprite n="btn-large-normal.png" x="364" y="978" w="360" h="120"/>
+    <sprite n="btn-large-play-normal.png" x="2" y="1100" w="360" h="120"/>
+    <sprite n="btn-large-play-selected.png" x="364" y="1100" w="360" h="120"/>
+    <sprite n="btn-large-power-up-normal.png" x="2" y="1222" w="360" h="120"/>
+    <sprite n="btn-large-power-up-selected.png" x="364" y="1222" w="360" h="120"/>
+    <sprite n="btn-large-selected.png" x="2" y="1344" w="360" h="120"/>
+    <sprite n="btn-music-pause-normal.png" x="364" y="1344" w="120" h="120"/>
+    <sprite n="btn-music-pause-selected.png" x="486" y="1344" w="120" h="120"/>
+    <sprite n="btn-music-play-normal.png" x="608" y="1344" w="120" h="120"/>
+    <sprite n="btn-music-play-selected.png" x="730" y="1344" w="120" h="120"/>
+    <sprite n="btn-music-volume-down-normal.png" x="852" y="1344" w="120" h="120"/>
+    <sprite n="btn-music-volume-down-selected.png" x="2" y="1466" w="120" h="120"/>
+    <sprite n="btn-music-volume-up-normal.png" x="124" y="1466" w="120" h="120"/>
+    <sprite n="btn-music-volume-up-selected.png" x="246" y="1466" w="120" h="120"/>
+    <sprite n="btn-small-1-normal.png" x="368" y="1466" w="120" h="120"/>
+    <sprite n="btn-small-1-selected.png" x="490" y="1466" w="120" h="120"/>
+    <sprite n="btn-small-2-normal.png" x="612" y="1466" w="120" h="120"/>
+    <sprite n="btn-small-2-selected.png" x="734" y="1466" w="120" h="120"/>
+    <sprite n="btn-small-3-normal.png" x="856" y="1466" w="120" h="120"/>
+    <sprite n="btn-small-3-selected.png" x="2" y="1588" w="120" h="120"/>
+    <sprite n="btn-small-circle-normal.png" x="124" y="1588" w="120" h="120"/>
+    <sprite n="btn-small-circle-selected.png" x="246" y="1588" w="120" h="120"/>
+    <sprite n="btn-small-disabled.png" x="368" y="1588" w="120" h="120"/>
 </TextureAtlas>

@@ -65,6 +65,10 @@
     <string name="group_batch_rendering_multiple_materials_case_2">Multiple materials (case 2)</string>
     <string name="group_batch_rendering_multiple_materials_case_3">Multiple materials (case 3)</string>
 
+    <!-- Games -->
+    <string name="group_games">Games</string>
+    <string name="group_games_simple_breakout">Simple Breakout</string>
+
     <!--  -->
     <!-- Demos -->
     <!--  -->
